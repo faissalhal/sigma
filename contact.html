@@ -315,18 +315,20 @@ FACEBOOK: https://www.facebook.com/themefisher
         </form>
 
 
-        <script>
-          const scriptURL = 'https://script.google.com/macros/s/AKfycbzSIYoIUai0_1y2pE5B0tsqzIuDDRWvHb5nJ5oDmyIVGInHTA2FDu-CNRizDVm-0k5W/exec'
-          const form = document.forms['contact-form']
-          
-          form.addEventListener('submit', e => {
-            e.preventDefault()
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => alert("Merci! votre formulaire est soumis avec succès. Nous vous contacterons plus tard" ))
-            .then(() => {  window.location.reload(); })
-            .catch(error => console.error('Error!', error.message))
-          })
-          </script>
+       <script>
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const formData = new FormData(this);
+  const url = 'https://script.google.com/macros/s/AKfycbznk4ubY76GpN7fn53DLWDNSbtxOGAuqe75cs7SVM8F5eydulFsTZksHlqbNQ23-sto7A/exec';
+  
+  fetch(url, { method: 'POST', body: formData })
+    .then(() => {
+      window.location.href = 'demande-envoye.html';
+    })
+    .catch(err => console.error(err));
+});
+</script>
 
 
       </div>
