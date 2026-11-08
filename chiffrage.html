@@ -26,14 +26,16 @@
 <main>
 <div class="entete-page"><div class="conteneur">
   <div class="fil"><a href="index.html">Accueil</a> / Chiffrage</div>
-  <h1>Estimez le coût de vos travaux</h1>
-  <p>Notre outil reprend la méthode de chiffrage du bureau : 23 lots tous corps d'état, plus de 500 ouvrages et des prix moyens du marché marocain, fourniture et pose comprises. Choisissez une fourchette rapide au m² ou un chiffrage détaillé à partir de vos quantités.</p>
+  <h1>Chiffrage des travaux</h1>
+  <p>Notre outil reprend le moteur de calcul du bureau : 15 pays, 9 devises, 23 lots tous corps d'état et 508 ouvrages. Les prix d'achat sont saisis dans chaque devise, sans conversion. Le prix de vente est calculé selon la méthode en usage dans chaque pays : coefficients au Maroc et en France, déboursé sec ailleurs.</p>
 </div></div>
 
 <section class="ch-zone"><div class="conteneur ch">
   <form class="ch-projet" id="ch-projet" onsubmit="return false">
+    <label for="ch-pays">Pays<select id="ch-pays"></select></label>
+    <label for="ch-devise">Devise<select id="ch-devise"></select></label>
     <label for="ch-type">Type de projet
-      <select id="ch-type"><option>Villa</option><option>Maison individuelle</option><option>Immeuble</option><option>Riad</option><option>Commerce</option><option>Bureaux</option><option>Bâtiment industriel</option><option>Autre</option></select>
+      <select id="ch-type"><option>Villa</option><option>Maison individuelle</option><option>Immeuble</option><option>Riad</option><option>Hôtel</option><option>Commerce</option><option>Bureaux</option><option>Bâtiment industriel</option><option>Établissement public</option><option>Autre</option></select>
     </label>
     <label for="ch-ville">Ville<input id="ch-ville" value="Marrakech" autocomplete="address-level2"></label>
     <label for="ch-surface">Surface couverte (m²)<input id="ch-surface" type="number" min="10" step="1" value="250" inputmode="numeric"></label>
@@ -47,20 +49,11 @@
   </form>
 
   <div class="ch-onglets" role="tablist" aria-label="Mode de chiffrage">
-    <button role="tab" id="tab-rapide" aria-controls="pan-rapide" aria-selected="true">Estimation rapide au m²</button>
-    <button role="tab" id="tab-detail" aria-controls="pan-detail" aria-selected="false">Chiffrage détaillé par lot</button>
+    <button role="tab" id="tab-detail" aria-controls="pan-detail" aria-selected="true">Devis détaillé</button>
+    <button role="tab" id="tab-rapide" aria-controls="pan-rapide" aria-selected="false">Estimation rapide au m²</button>
   </div>
 
-  <div id="pan-rapide" role="tabpanel" aria-labelledby="tab-rapide" class="ch-panneau">
-    <div class="ch-tuiles num" id="r-tuiles"></div>
-    <div class="ch-carte">
-      <div class="ch-carte-tete"><h2>Répartition indicative par lot</h2><span class="ch-note" id="r-note"></span></div>
-      <div class="ch-barres" id="r-lots"></div>
-    </div>
-    <p class="ch-avert">Fourchette calculée à partir des coûts de construction constatés au Maroc pour la gamme choisie, et répartie selon une villa type de 250 m² chiffrée avec notre méthode. Le terrain, les honoraires et les taxes d'urbanisme ne sont pas compris.</p>
-  </div>
-
-  <div id="pan-detail" role="tabpanel" aria-labelledby="tab-detail" class="ch-panneau" hidden>
+  <div id="pan-detail" role="tabpanel" aria-labelledby="tab-detail" class="ch-panneau">
     <div class="ch-detail">
       <div class="ch-liste">
         <div class="ch-outils">
@@ -68,27 +61,40 @@
           <label class="ch-case" for="d-seules"><input id="d-seules" type="checkbox"> Lignes chiffrées seulement</label>
           <div class="ch-outils-btn">
             <button type="button" class="btn petit secondaire" id="d-exemple">Charger l'exemple : villa 250 m²</button>
+            <button type="button" class="btn petit secondaire" id="d-tout-ouvrir">Tout déplier</button>
             <button type="button" class="btn petit secondaire" id="d-vider">Tout effacer</button>
           </div>
         </div>
+        <p class="ch-note ch-legende">Saisissez la <b>quantité</b> et, si vous le souhaitez, votre <b>prix d'achat</b> (case vide = prix suggéré). <span class="ico">⧉</span> copie la ligne juste en dessous, <span class="ico">✕</span> supprime une ligne ajoutée.</p>
         <div id="d-lots"></div>
       </div>
       <aside class="ch-synthese" aria-label="Totaux">
         <div class="ch-carte">
           <h2>Total des travaux</h2>
           <dl class="ch-totaux num" id="d-totaux"></dl>
-          <div id="d-controle"></div>
+          <div class="ch-methodes num" id="d-methodes"></div>
+          <div id="d-controle" class="ch-controles"></div>
           <div class="ch-barres petit" id="d-lots-barres"></div>
           <div class="ch-actions">
             <button type="button" class="btn" id="d-demande">Joindre à ma demande de devis</button>
-            <button type="button" class="btn secondaire" id="d-copier">Copier le récapitulatif</button>
+            <button type="button" class="btn secondaire" id="d-pdf">Télécharger le devis en PDF</button>
             <span class="ch-note" id="d-etat" role="status"></span>
           </div>
         </div>
       </aside>
     </div>
-    <p class="ch-avert">Prix de vente HT moyens au Maroc (novembre 2026), fourniture et pose, calculés par la méthode des coefficients : prix d'achat × coefficient matériel du lot + temps de pose × taux horaire × coefficient main-d'œuvre. Montants indicatifs : seul un chiffrage établi sur vos plans fait foi.</p>
   </div>
+
+  <div id="pan-rapide" role="tabpanel" aria-labelledby="tab-rapide" class="ch-panneau" hidden>
+    <div class="ch-tuiles num" id="r-tuiles"></div>
+    <div class="ch-carte">
+      <div class="ch-carte-tete"><h2>Répartition indicative par lot</h2><span class="ch-note" id="r-note"></span></div>
+      <div class="ch-barres" id="r-lots"></div>
+    </div>
+    <p class="ch-avert">Fourchette calculée à partir des coûts de construction au m² constatés dans le pays pour la gamme choisie, et répartie selon une villa type de 250 m² chiffrée avec notre méthode. Le terrain, les honoraires et les taxes d'urbanisme ne sont pas compris.</p>
+  </div>
+
+  <p class="ch-avert">Prix indicatifs (relevés de novembre 2026), fourniture et pose. Retenue de garantie et cautionnement affichés pour information. Le PDF porte la mention « Généré par SIGMA ICC B.E.T ». Seul un chiffrage établi sur vos plans fait foi.</p>
 </div></section>
 
 <section class="fond-carte" id="demande"><div class="conteneur contact">

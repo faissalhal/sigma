@@ -5,8 +5,8 @@
 .ch-gamme { border: 0; padding: 0; margin: 0; display: grid; gap: 6px; }
 .ch-gamme legend { font-weight: 600; font-size: .95rem; padding: 0; margin-bottom: 6px; }
 .seg { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--trait); border-radius: var(--rayon); overflow: hidden; }
-.seg label { display: block; font-weight: 600; }
-.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg label { display: block; font-weight: 600; position: relative; }
+.seg input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; pointer-events: none; }
 .seg span { display: block; text-align: center; padding: 10px 6px; cursor: pointer; background: var(--papier); border-left: 1px solid var(--trait); font-size: .95rem; }
 .seg label:first-child span { border-left: 0; }
 .seg input:checked + span { background: var(--encre); color: var(--papier); }
@@ -45,7 +45,7 @@
 @media (max-width: 600px) { .ch-barre { grid-template-columns: 1fr auto; } .ch-barre .piste { grid-column: 1 / -1; grid-row: 2; } }
 .ch-avert { color: var(--gris); font-size: .9rem; max-width: 95ch; }
 
-.ch-detail { display: grid; grid-template-columns: 1fr 340px; gap: 22px; align-items: start; }
+.ch-detail { display: grid; grid-template-columns: minmax(0, 1fr) 370px; gap: 22px; align-items: start; }
 @media (max-width: 1020px) { .ch-detail { grid-template-columns: 1fr; } }
 .ch-synthese { position: sticky; top: 92px; }
 @media (max-width: 1020px) { .ch-synthese { position: static; order: -1; } }
@@ -77,11 +77,47 @@
 .ch-vide { color: var(--gris); padding: 16px; }
 
 .ch-totaux { display: grid; grid-template-columns: 1fr auto; gap: 6px 14px; margin: 0; }
-.ch-totaux dt { color: var(--gris); white-space: nowrap; }
-.ch-totaux dd { margin: 0; text-align: right; }
-.ch-totaux .ttc { font: 700 1.6rem/1.1 var(--f-titre); color: var(--calque-texte); }
+.ch-totaux dt { color: var(--gris); min-width: 0; }
+.ch-totaux dd { margin: 0; text-align: right; white-space: nowrap; }
+.ch-totaux .ttc { font: 700 1.45rem/1.1 var(--f-titre); color: var(--calque-texte); }
 .ch-totaux dt.ttc { font-size: 1.1rem; color: var(--encre); align-self: end; }
 .ch-pastille { display: flex; gap: 10px; align-items: flex-start; font-size: .9rem; padding: 10px 12px; border-radius: var(--rayon); border-left: 4px solid var(--ok); background: var(--papier); }
 .ch-pastille.attention { border-left-color: var(--alerte); }
 .ch-actions { display: grid; gap: 8px; }
 .ch-actions .btn { justify-content: center; }
+
+/* devis détaillé : saisie des prix, lignes ajoutées, blocs personnalisés */
+.ch-projet { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.ch-projet .ch-gamme { grid-column: 1 / -1; max-width: 560px; }
+@media (max-width: 1020px) { .ch-projet { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .ch-projet { grid-template-columns: 1fr 1fr; } }
+.ch-legende { margin: -4px 0 12px; }
+.ch-legende .ico { display: inline-grid; place-items: center; width: 22px; height: 22px; border: 1px solid var(--trait); border-radius: 4px; background: var(--carte); font-size: .8rem; }
+.ch-table { min-width: 860px; }
+.ch-table td .des { font-weight: 400; display: block; }
+.ch-table input.pu { width: 104px; }
+.ch-table input.qte { width: 84px; }
+.ch-table input.h-in { width: 64px; }
+.ch-table input.des-in { width: 100%; min-width: 220px; text-align: left; }
+.ch-table input.u-in { width: 56px; text-align: center; }
+.ch-table input::placeholder { color: color-mix(in srgb, var(--gris) 75%, transparent); }
+.ch-table td.h { color: var(--gris); }
+.ch-table td.pv { color: var(--gris); }
+.ch-table tr.ajout td { background: color-mix(in srgb, var(--calque-fond) 45%, transparent); }
+.ch-table tr.ajout td:first-child { box-shadow: inset 3px 0 0 var(--calque); }
+.ch-table td.act { white-space: nowrap; width: 1%; }
+.ic { width: 28px; height: 28px; border: 1px solid var(--trait); background: var(--carte); color: var(--encre); border-radius: 4px; cursor: pointer; font-size: .85rem; margin-left: 2px; }
+.ic:hover { border-color: var(--calque); background: var(--calque); color: var(--sur-jaune); }
+.ch-table tr.ajouter td { padding: 4px 10px 10px; border-bottom: 1px solid var(--trait); }
+.lien { background: none; border: 0; padding: 4px 0; color: var(--calque-texte); font: 600 .92rem var(--f-texte); cursor: pointer; }
+.lien:hover { text-decoration: underline; }
+.ch-nouveau-bloc { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; padding: 12px 16px 16px; border-top: 1px dashed var(--trait); }
+.ch-nouveau-bloc label { flex: 1 1 260px; font-size: .9rem; }
+.ch-methodes { display: grid; gap: 6px; }
+.ch-methodes .m { display: grid; font-size: .88rem; color: var(--gris); padding: 8px 10px; border: 1px solid var(--trait); border-radius: var(--rayon); }
+.ch-methodes .m.actif { border-color: var(--calque); background: var(--calque-fond); color: var(--encre); }
+.ch-methodes .m span { font-weight: 700; color: var(--encre); }
+.ch-controles { display: grid; gap: 6px; }
+.ch-liste, .ch-lot, .ch-panneau, .ch { min-width: 0; }
+@media (max-width: 1020px) { .ch-detail { grid-template-columns: minmax(0, 1fr); } }
+.ch-synthese .ch-carte { min-width: 0; } .ch-totaux { font-size: .95rem; }
