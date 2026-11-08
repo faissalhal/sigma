@@ -1,0 +1,70 @@
+[
+  {
+    "id": "villa",
+    "cat": "villa",
+    "catlib": "Villas individuelles",
+    "titre": "Construction de villas de R+1 avec sous-sol",
+    "texte": "Études techniques et suivi des travaux de construction de nombreuses villas individuelles.",
+    "client": "",
+    "lieu": "Marrakech, Rabat, El Jadida…",
+    "surface": "",
+    "annee": "2022",
+    "moe": "Divers architectes",
+    "img": [
+      "images/projects/villa1.jpg",
+      "images/projects/villa2.jpg"
+    ]
+  },
+  {
+    "id": "magasin",
+    "cat": "magasin",
+    "catlib": "Magasin",
+    "titre": "Construction de 9 magasins",
+    "texte": "Études techniques des lots (électricité, CVC, détection incendie, protection incendie) pour 9 magasins.",
+    "client": "",
+    "lieu": "Marrakech, Rabat, Fès",
+    "surface": "",
+    "annee": "2022",
+    "moe": "Divers architectes",
+    "img": [
+      "images/projects/magasin1.png",
+      "images/projects/magasin2.jpg",
+      "images/projects/magasin3.jpg"
+    ]
+  },
+  {
+    "id": "riad",
+    "cat": "riad",
+    "catlib": "Riad",
+    "titre": "Réhabilitation des riads",
+    "texte": "Études de stabilité et réhabilitation des riads de R+1.",
+    "client": "",
+    "lieu": "Marrakech",
+    "surface": "",
+    "annee": "2023",
+    "moe": "",
+    "img": [
+      "images/projects/riad1.jpg",
+      "images/projects/riad2.jpg",
+      "images/projects/riad3.jpg",
+      "images/projects/riad4.jpg"
+    ]
+  },
+  {
+    "id": "solaire",
+    "cat": "solaire",
+    "catlib": "Pompage solaire",
+    "titre": "Construction des bornes fontaines alimentées par système de pompage solaire",
+    "texte": "Énergie renouvelable : étude et dimensionnement des systèmes de pompage solaire.",
+    "client": "",
+    "lieu": "Settat",
+    "surface": "",
+    "annee": "2022",
+    "moe": "",
+    "img": [
+      "images/projects/pompage1.jpeg",
+      "images/projects/pompage2.jpeg",
+      "images/projects/pompage3.jpeg"
+    ]
+  }
+]

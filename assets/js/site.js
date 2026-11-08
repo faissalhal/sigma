@@ -85,45 +85,47 @@
     document.querySelectorAll(".extrait").forEach(function (x) { x.classList.add("vu"); });
   }
 
-  // Filtres de la page Projets
-  var filtres = document.querySelectorAll(".filtres button");
-  filtres.forEach(function (b) {
-    b.addEventListener("click", function () {
-      var f = b.getAttribute("data-f");
-      filtres.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
-      document.querySelectorAll(".projet, .vignette").forEach(function (p) {
-        var ok = f === "tous" || p.getAttribute("data-cat") === f;
-        p.hidden = !ok;
-        if (ok && !calme) { p.classList.remove("rv-vu"); p.classList.add("rv-cache"); requestAnimationFrame(function () { requestAnimationFrame(function () { p.classList.add("rv-vu"); p.classList.remove("rv-cache"); }); }); }
-      });
+  // Filtres des projets (délégation : marche aussi pour les projets chargés depuis data/projets.json)
+  document.addEventListener("click", function (ev) {
+    var b = ev.target.closest(".filtres button"); if (!b) return;
+    var grp = b.closest(".filtres"), f = b.getAttribute("data-f");
+    grp.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+    document.querySelectorAll(".projet, .vignette").forEach(function (p) {
+      var ok = f === "tous" || p.getAttribute("data-cat") === f;
+      p.hidden = !ok;
+      if (ok && !calme) { p.classList.remove("rv-vu"); p.classList.add("rv-cache"); requestAnimationFrame(function () { requestAnimationFrame(function () { p.classList.add("rv-vu"); p.classList.remove("rv-cache"); }); }); }
     });
   });
 
-  // Visionneuse des photos de projets
-  var photos = Array.prototype.slice.call(document.querySelectorAll(".projet .galerie img, .vignette img, .contenu .visuels img, .coupe-vue > img:first-child"));
-  if (photos.length) {
-    var v = document.createElement("div");
-    v.className = "visionneuse"; v.hidden = true; v.setAttribute("role", "dialog"); v.setAttribute("aria-modal", "true"); v.setAttribute("aria-label", "Photo du projet");
-    v.innerHTML = '<img alt=""><p></p><button class="fermer" type="button" aria-label="Fermer">×</button><button class="prec" type="button" aria-label="Photo précédente">‹</button><button class="suiv" type="button" aria-label="Photo suivante">›</button>';
-    document.body.appendChild(v);
-    var vi = v.querySelector("img"), vp = v.querySelector("p"), cour = 0, retour = null;
-    var ouvrir = function (n) {
-      cour = (n + photos.length) % photos.length;
-      vi.src = photos[cour].src; vi.alt = photos[cour].alt; vp.textContent = photos[cour].alt;
-      vi.style.animation = "none"; void vi.offsetWidth; vi.style.animation = "";
-      if (v.hidden) { retour = document.activeElement; v.hidden = false; v.querySelector(".fermer").focus(); }
-    };
-    var fermer = function () { v.hidden = true; if (retour) retour.focus(); };
-    photos.forEach(function (p, n) { p.tabIndex = 0; p.addEventListener("click", function () { if (!p.closest("[hidden]")) ouvrir(n); }); p.addEventListener("keydown", function (e) { if (e.key === "Enter") ouvrir(n); }); });
-    v.querySelector(".fermer").addEventListener("click", fermer);
-    v.querySelector(".prec").addEventListener("click", function () { ouvrir(cour - 1); });
-    v.querySelector(".suiv").addEventListener("click", function () { ouvrir(cour + 1); });
-    v.addEventListener("click", function (e) { if (e.target === v) fermer(); });
-    document.addEventListener("keydown", function (e) {
-      if (v.hidden) return;
-      if (e.key === "Escape") fermer(); else if (e.key === "ArrowLeft") ouvrir(cour - 1); else if (e.key === "ArrowRight") ouvrir(cour + 1);
-    });
-  }
+  // Visionneuse des photos (la liste des photos est relue à chaque ouverture)
+  var SEL_PHOTOS = ".projet .galerie img, .vignette img, .contenu .visuels img, .coupe-vue > img:first-child";
+  var v = document.createElement("div");
+  v.className = "visionneuse"; v.hidden = true; v.setAttribute("role", "dialog"); v.setAttribute("aria-modal", "true"); v.setAttribute("aria-label", "Photo");
+  v.innerHTML = '<img alt=""><p></p><button class="fermer" type="button" aria-label="Fermer">×</button><button class="prec" type="button" aria-label="Photo précédente">‹</button><button class="suiv" type="button" aria-label="Photo suivante">›</button>';
+  document.body.appendChild(v);
+  var vi = v.querySelector("img"), vp = v.querySelector("p"), photos = [], cour = 0, retour = null;
+  var ouvrir = function (n) {
+    cour = (n + photos.length) % photos.length;
+    vi.src = photos[cour].currentSrc || photos[cour].src; vi.alt = photos[cour].alt; vp.textContent = photos[cour].alt;
+    vi.style.animation = "none"; void vi.offsetWidth; vi.style.animation = "";
+    if (v.hidden) { retour = document.activeElement; v.hidden = false; v.querySelector(".fermer").focus(); }
+  };
+  var fermer = function () { v.hidden = true; if (retour) retour.focus(); };
+  var depuis = function (img) {
+    photos = Array.prototype.filter.call(document.querySelectorAll(SEL_PHOTOS), function (p) { return !p.closest("[hidden]"); });
+    var n = photos.indexOf(img); if (n >= 0) ouvrir(n);
+  };
+  document.addEventListener("click", function (e) { var img = e.target.closest && e.target.closest(SEL_PHOTOS); if (img && !img.closest(".visionneuse")) depuis(img); });
+  document.addEventListener("keydown", function (e) {
+    if (!v.hidden) { if (e.key === "Escape") fermer(); else if (e.key === "ArrowLeft") ouvrir(cour - 1); else if (e.key === "ArrowRight") ouvrir(cour + 1); return; }
+    if (e.key === "Enter" && e.target.matches && e.target.matches(SEL_PHOTOS)) depuis(e.target);
+  });
+  var rendreFocusables = function () { document.querySelectorAll(SEL_PHOTOS).forEach(function (p) { p.tabIndex = 0; }); };
+  rendreFocusables(); document.addEventListener("projets-charges", rendreFocusables);
+  v.querySelector(".fermer").addEventListener("click", fermer);
+  v.querySelector(".prec").addEventListener("click", function () { ouvrir(cour - 1); });
+  v.querySelector(".suiv").addEventListener("click", function () { ouvrir(cour + 1); });
+  v.addEventListener("click", function (e) { if (e.target === v) fermer(); });
 
   // Newsletter
   var lettre = document.getElementById("lettre");
@@ -137,7 +139,7 @@
   });
 
   // Formulaire de devis : envoi vers la feuille Google existante, puis page de confirmation
-  document.querySelectorAll("form.formulaire").forEach(function (form) {
+  document.querySelectorAll("form.formulaire[data-url]").forEach(function (form) {
     form.addEventListener("submit", function (ev) {
       ev.preventDefault();
       var etat = form.querySelector(".message-etat"), bouton = form.querySelector("button[type=submit]");
