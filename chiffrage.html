@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chiffrage des travaux, SIGMA ICC</title>
+<meta name="description" content="Estimez le coût de vos travaux de construction au Maroc : fourchette au m² ou chiffrage détaillé sur 23 lots et plus de 500 ouvrages.">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/sigma.css">
+<link rel="stylesheet" href="assets/css/chiffrage.css">
+</head>
+<body>
+<div class="bandeau"><div class="conteneur">
+  <span>Lun.–ven. 8 h 30–18 h 30 · sam. 8 h 30–12 h 30 · urgences 7 j/7</span>
+  <span><a href="tel:+212661057455">+212 6 61 05 74 55</a> · <a href="mailto:sigma.icc@gmail.com">sigma.icc@gmail.com</a></span>
+</div></div>
+<header class="entete"><div class="conteneur">
+  <a class="logo" href="index.html" aria-label="SIGMA ICC, accueil"><img src="images/logo.png" alt="SIGMA ICC" width="106" height="46"></a>
+  <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Navigation principale"><a href="index.html">Accueil</a><a href="services.html">Services</a><a href="projects.html">Projets</a><a href="about.html">Le bureau</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a class="btn-nav" href="chiffrage.html" aria-current="page">Estimer mon projet</a></nav>
+</div></header>
+<main>
+<div class="entete-page"><div class="conteneur">
+  <div class="fil"><a href="index.html">Accueil</a> / Chiffrage</div>
+  <h1>Estimez le coût de vos travaux</h1>
+  <p>Notre outil reprend la méthode de chiffrage du bureau : 23 lots tous corps d'état, plus de 500 ouvrages et des prix moyens du marché marocain, fourniture et pose comprises. Choisissez une fourchette rapide au m² ou un chiffrage détaillé à partir de vos quantités.</p>
+</div></div>
+
+<section class="ch-zone"><div class="conteneur ch">
+  <form class="ch-projet" id="ch-projet" onsubmit="return false">
+    <label for="ch-type">Type de projet
+      <select id="ch-type"><option>Villa</option><option>Maison individuelle</option><option>Immeuble</option><option>Riad</option><option>Commerce</option><option>Bureaux</option><option>Bâtiment industriel</option><option>Autre</option></select>
+    </label>
+    <label for="ch-ville">Ville<input id="ch-ville" value="Marrakech" autocomplete="address-level2"></label>
+    <label for="ch-surface">Surface couverte (m²)<input id="ch-surface" type="number" min="10" step="1" value="250" inputmode="numeric"></label>
+    <fieldset class="ch-gamme"><legend>Gamme de finition</legend>
+      <div class="seg" role="radiogroup">
+        <label><input type="radio" name="gamme" value="Économique"><span>Économique</span></label>
+        <label><input type="radio" name="gamme" value="Standard" checked><span>Standard</span></label>
+        <label><input type="radio" name="gamme" value="Haut de gamme"><span>Haut de gamme</span></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <div class="ch-onglets" role="tablist" aria-label="Mode de chiffrage">
+    <button role="tab" id="tab-rapide" aria-controls="pan-rapide" aria-selected="true">Estimation rapide au m²</button>
+    <button role="tab" id="tab-detail" aria-controls="pan-detail" aria-selected="false">Chiffrage détaillé par lot</button>
+  </div>
+
+  <div id="pan-rapide" role="tabpanel" aria-labelledby="tab-rapide" class="ch-panneau">
+    <div class="ch-tuiles num" id="r-tuiles"></div>
+    <div class="ch-carte">
+      <div class="ch-carte-tete"><h2>Répartition indicative par lot</h2><span class="ch-note" id="r-note"></span></div>
+      <div class="ch-barres" id="r-lots"></div>
+    </div>
+    <p class="ch-avert">Fourchette calculée à partir des coûts de construction constatés au Maroc pour la gamme choisie, et répartie selon une villa type de 250 m² chiffrée avec notre méthode. Le terrain, les honoraires et les taxes d'urbanisme ne sont pas compris.</p>
+  </div>
+
+  <div id="pan-detail" role="tabpanel" aria-labelledby="tab-detail" class="ch-panneau" hidden>
+    <div class="ch-detail">
+      <div class="ch-liste">
+        <div class="ch-outils">
+          <label for="d-recherche" class="ch-recherche">Rechercher un ouvrage<input id="d-recherche" type="search" placeholder="Ex. : prise, enduit, carrelage, climatiseur…"></label>
+          <label class="ch-case" for="d-seules"><input id="d-seules" type="checkbox"> Lignes chiffrées seulement</label>
+          <div class="ch-outils-btn">
+            <button type="button" class="btn petit secondaire" id="d-exemple">Charger l'exemple : villa 250 m²</button>
+            <button type="button" class="btn petit secondaire" id="d-vider">Tout effacer</button>
+          </div>
+        </div>
+        <div id="d-lots"></div>
+      </div>
+      <aside class="ch-synthese" aria-label="Totaux">
+        <div class="ch-carte">
+          <h2>Total des travaux</h2>
+          <dl class="ch-totaux num" id="d-totaux"></dl>
+          <div id="d-controle"></div>
+          <div class="ch-barres petit" id="d-lots-barres"></div>
+          <div class="ch-actions">
+            <button type="button" class="btn" id="d-demande">Joindre à ma demande de devis</button>
+            <button type="button" class="btn secondaire" id="d-copier">Copier le récapitulatif</button>
+            <span class="ch-note" id="d-etat" role="status"></span>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <p class="ch-avert">Prix de vente HT moyens au Maroc (novembre 2026), fourniture et pose, calculés par la méthode des coefficients : prix d'achat × coefficient matériel du lot + temps de pose × taux horaire × coefficient main-d'œuvre. Montants indicatifs : seul un chiffrage établi sur vos plans fait foi.</p>
+  </div>
+</div></section>
+
+<section class="fond-carte" id="demande"><div class="conteneur contact">
+  <div class="coordonnees">
+    <span class="repere">Aller plus loin</span>
+    <h2>Faites chiffrer votre projet sur plans</h2>
+    <p style="color:var(--gris)">Envoyez-nous votre estimation et vos plans d'architecte : nous établissons un métré précis et un chiffrage détaillé de chaque lot, avec le descriptif technique (CCTP).</p>
+  </div>
+  <form class="formulaire" id="formulaire" data-url="https://script.google.com/macros/s/AKfycbznk4ubY76GpN7fn53DLWDNSbtxOGAuqe75cs7SVM8F5eydulFsTZksHlqbNQ23-sto7A/exec">
+  <h2 style="font-size:1.6rem">Demande de devis</h2>
+  <div class="ligne"><label for="f-nom">Nom<input id="f-nom" name="Name" autocomplete="name" required></label>
+  <label for="f-tel">Téléphone<input id="f-tel" name="number" type="tel" autocomplete="tel" required></label></div>
+  <div class="ligne"><label for="f-mail">E-mail<input id="f-mail" name="Email" type="email" autocomplete="email" required></label>
+  <label for="f-sujet">Objet<select id="f-sujet" name="Sujet">
+    <option>Étude technique tous corps d'état</option><option>Structure</option><option>Voiries et réseaux divers</option><option>Énergie et génie thermique</option><option>Fluides, CVC et désenfumage</option><option>Électricité courants forts et courants faibles</option><option>Coordination SSI</option><option>Building Information Modeling</option><option>Chiffrage des travaux</option><option>Autre demande</option></select></label></div>
+  <label for="f-msg">Votre projet<textarea id="f-msg" name="Message" rows="7" placeholder="Type de bâtiment, ville, surface, étape du projet…" required></textarea></label>
+  <div class="actions" style="align-items:center"><button class="btn" type="submit">Envoyer ma demande</button><span class="message-etat" id="f-etat" role="status"></span></div>
+</form>
+</div></section>
+
+</main>
+<footer class="pied"><div class="conteneur">
+  <div class="colonnes">
+    <div style="display:grid;gap:14px;align-content:start">
+      <img src="images/logo.png" alt="SIGMA ICC" width="124" height="54">
+      <p>Bureau d'études techniques tous corps d'état à Marrakech : structure, fluides, électricité, VRD, sécurité incendie et BIM.</p>
+    </div>
+    <div><h4>Services</h4><ul><li><a href="service-STRUCTURE.html">Béton armé et charpente métallique</a></li><li><a href="service-VRD.html">VRD</a></li><li><a href="service-EGT.html">Énergie et thermique</a></li><li><a href="service-FD.html">Fluides et CVC</a></li><li><a href="service-CFA.html">Électricité CFO / CFA</a></li><li><a href="service-CSSI.html">Coordination SSI</a></li><li><a href="service-BIM.html">BIM</a></li></ul></div>
+    <div><h4>Le site</h4><ul>
+      <li><a href="projects.html">Projets</a></li><li><a href="about.html">Le bureau</a></li>
+      <li><a href="chiffrage.html">Chiffrage</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Contact</h4><ul>
+      <li>Le Noyer A, n° 23, 2ᵉ étage, Ibn Sina, Guéliz, Marrakech</li>
+      <li><a href="tel:+212661057455">+212 6 61 05 74 55</a></li><li><a href="tel:+212525262738">+212 5 25 26 27 38</a></li>
+      <li><a href="mailto:sigma.icc@gmail.com">sigma.icc@gmail.com</a></li></ul></div>
+  </div>
+  <div class="bas"><span>© 2026 SIGMA ICC, bureau d'études techniques</span><span>Marrakech, Maroc</span></div>
+</div></footer>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/moteur.js"></script>
+<script src="assets/js/donnees-prix.js"></script>
+<script src="assets/js/chiffrage.js"></script>
+</body>
+</html>

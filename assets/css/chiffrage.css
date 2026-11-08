@@ -1,0 +1,87 @@
+/* SIGMA ICC – page Chiffrage */
+.ch-zone { padding-top: 36px; }
+.ch { display: grid; gap: 22px; }
+.ch-projet { display: grid; grid-template-columns: 1fr 1fr 1fr 1.6fr; gap: 14px; align-items: end; background: var(--carte); border: 1px solid var(--trait); border-radius: var(--rayon); padding: 18px 20px; }
+.ch-gamme { border: 0; padding: 0; margin: 0; display: grid; gap: 6px; }
+.ch-gamme legend { font-weight: 600; font-size: .95rem; padding: 0; margin-bottom: 6px; }
+.seg { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--trait); border-radius: var(--rayon); overflow: hidden; }
+.seg label { display: block; font-weight: 600; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg span { display: block; text-align: center; padding: 10px 6px; cursor: pointer; background: var(--papier); border-left: 1px solid var(--trait); font-size: .95rem; }
+.seg label:first-child span { border-left: 0; }
+.seg input:checked + span { background: var(--encre); color: var(--papier); }
+.seg input:focus-visible + span { outline: 3px solid var(--ambre); outline-offset: -3px; }
+@media (max-width: 960px) { .ch-projet { grid-template-columns: 1fr 1fr; } .ch-gamme { grid-column: 1 / -1; } }
+@media (max-width: 480px) { .ch-projet { grid-template-columns: 1fr; } }
+
+.ch-onglets { display: flex; gap: 0; border-bottom: 2px solid var(--trait); }
+.ch-onglets button { font: 600 1.08rem var(--f-titre); background: none; border: 0; color: var(--gris); padding: 12px 18px; cursor: pointer; margin-bottom: -2px; border-bottom: 3px solid transparent; }
+.ch-onglets button[aria-selected="true"] { color: var(--encre); border-bottom-color: var(--calque); }
+.ch-panneau { display: grid; gap: 18px; }
+.ch-panneau[hidden] { display: none; }
+
+.ch-tuiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--trait); background: var(--carte); border-radius: var(--rayon); overflow: hidden; }
+.ch-tuiles div { padding: 18px 20px; border-left: 1px solid var(--trait); display: grid; gap: 4px; }
+.ch-tuiles div:first-child { border-left: 0; }
+.ch-tuiles b { font: 600 .74rem var(--f-titre); letter-spacing: .12em; text-transform: uppercase; color: var(--gris); }
+.ch-tuiles strong { font: 700 1.9rem/1.1 var(--f-titre); }
+.ch-tuiles span { color: var(--gris); font-size: .9rem; }
+.ch-tuiles .fort { background: var(--calque-fond); }
+.ch-tuiles .fort strong { color: var(--calque); }
+@media (max-width: 860px) { .ch-tuiles { grid-template-columns: 1fr 1fr; } .ch-tuiles div:nth-child(3) { border-left: 0; } .ch-tuiles div:nth-child(n+3) { border-top: 1px solid var(--trait); } }
+
+.ch-carte { background: var(--carte); border: 1px solid var(--trait); border-radius: var(--rayon); padding: 20px 22px; display: grid; gap: 14px; }
+.ch-carte h2 { font-size: 1.35rem; }
+.ch-carte-tete { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; align-items: baseline; }
+.ch-note { color: var(--gris); font-size: .9rem; }
+.ch-barres { display: grid; gap: 7px; }
+.ch-barre { display: grid; grid-template-columns: minmax(150px, 260px) 1fr auto; gap: 12px; align-items: center; font-size: .94rem; }
+.ch-barre .piste { height: 12px; background: var(--papier); border-radius: 2px; position: relative; overflow: hidden; }
+.ch-barre .piste i { position: absolute; inset: 0 auto 0 0; background: var(--calque); border-radius: 2px; }
+.ch-barre .val { text-align: right; min-width: 9.5em; font-variant-numeric: tabular-nums; }
+.ch-barre .val small { color: var(--gris); margin-left: 6px; }
+.ch-barres.petit .ch-barre { grid-template-columns: 1fr 70px auto; font-size: .86rem; gap: 8px; }
+.ch-barres.petit .val { min-width: 0; }
+@media (max-width: 600px) { .ch-barre { grid-template-columns: 1fr auto; } .ch-barre .piste { grid-column: 1 / -1; grid-row: 2; } }
+.ch-avert { color: var(--gris); font-size: .9rem; max-width: 95ch; }
+
+.ch-detail { display: grid; grid-template-columns: 1fr 340px; gap: 22px; align-items: start; }
+@media (max-width: 1020px) { .ch-detail { grid-template-columns: 1fr; } }
+.ch-synthese { position: sticky; top: 92px; }
+@media (max-width: 1020px) { .ch-synthese { position: static; order: -1; } }
+.ch-outils { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: end; margin-bottom: 14px; }
+.ch-recherche { flex: 1 1 280px; }
+.ch-case { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.ch-case input { width: 18px; height: 18px; }
+.ch-outils-btn { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.ch-lot { background: var(--carte); border: 1px solid var(--trait); border-radius: var(--rayon); margin-bottom: 8px; }
+.ch-lot > summary { cursor: pointer; list-style: none; display: grid; grid-template-columns: 52px 1fr auto; gap: 12px; padding: 12px 16px; align-items: center; }
+.ch-lot > summary::-webkit-details-marker { display: none; }
+.ch-lot > summary .code { font: 600 .82rem var(--f-titre); color: var(--calque); letter-spacing: .08em; }
+.ch-lot > summary .lib { font: 600 1.05rem var(--f-titre); }
+.ch-lot > summary .tot { font-variant-numeric: tabular-nums; color: var(--gris); }
+.ch-lot > summary .tot.plein { color: var(--encre); font-weight: 700; }
+.ch-lot[open] > summary { border-bottom: 1px solid var(--trait); }
+.ch-table-zone { overflow-x: auto; }
+.ch-table { width: 100%; border-collapse: collapse; font-size: .93rem; min-width: 640px; }
+.ch-table th { text-align: left; font: 600 .74rem var(--f-titre); letter-spacing: .1em; text-transform: uppercase; color: var(--gris); padding: 8px 10px; border-bottom: 1px solid var(--trait); }
+.ch-table td { padding: 6px 10px; border-bottom: 1px solid var(--trait); vertical-align: middle; }
+.ch-table tr.bloc td { background: var(--papier); font: 600 .9rem var(--f-titre); letter-spacing: .03em; padding-top: 9px; }
+.ch-table tr.bloc td span { color: var(--gris); font-weight: 500; margin-left: 6px; }
+.ch-table td.n, .ch-table th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ch-table td.u { color: var(--gris); white-space: nowrap; }
+.ch-table input { width: 92px; padding: 6px 8px; text-align: right; font-variant-numeric: tabular-nums; }
+.ch-table tr.saisi td { background: color-mix(in srgb, var(--calque-fond) 60%, transparent); }
+.ch-table tr.saisi td.t { font-weight: 700; }
+.ch-vide { color: var(--gris); padding: 16px; }
+
+.ch-totaux { display: grid; grid-template-columns: 1fr auto; gap: 6px 14px; margin: 0; }
+.ch-totaux dt { color: var(--gris); white-space: nowrap; }
+.ch-totaux dd { margin: 0; text-align: right; }
+.ch-totaux .ttc { font: 700 1.6rem/1.1 var(--f-titre); color: var(--calque); }
+.ch-totaux dt.ttc { font-size: 1.1rem; color: var(--encre); align-self: end; }
+.ch-pastille { display: flex; gap: 10px; align-items: flex-start; font-size: .9rem; padding: 10px 12px; border-radius: var(--rayon); border-left: 4px solid var(--ok); background: var(--papier); }
+.ch-pastille.attention { border-left-color: var(--alerte); }
+.ch-actions { display: grid; gap: 8px; }
+.ch-actions .btn { justify-content: center; }
