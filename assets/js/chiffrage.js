@@ -33,6 +33,10 @@
   try { var sv = JSON.parse(localStorage.getItem(CLE) || "null"); if (sv) Object.assign(etat, sv); } catch (e) { }
   function sauver() { try { localStorage.setItem(CLE, JSON.stringify(etat)); } catch (e) { } }
 
+  // Type de projet : coefficient sur la fourchette au m² (base villa) et répartition type par lot
+  var TYPES = REF.typesProjet || [];
+  function typeProjet() { return TYPES.find(function (t) { return t.nom === etat.type; }) || TYPES[0] || { nom: "Villa", k: 1, rep: {} }; }
+  function fourchette(ctx) { var r = E.ratioRange(ctx), k = typeProjet().k; return [r[0] * k, r[1] * k]; }
   function pays() { return REF.pays.find(function (p) { return p.pays === etat.pays; }) || REF.pays[0]; }
   function devise() { return etat.devise || pays().devise; }
   function blocsDuLot(code) {
@@ -78,6 +82,10 @@
     }).join("");
     $("#ch-devise").value = devise();
   }
+  if (TYPES.length) {
+    $("#ch-type").innerHTML = TYPES.map(function (t) { return '<option value="' + esc(t.nom) + '">' + esc(t.nom) + "</option>"; }).join("");
+    if (!TYPES.some(function (t) { return t.nom === etat.type; })) etat.type = TYPES[0].nom;
+  }
   $("#ch-pays").value = etat.pays; remplirDevises();
   $("#ch-type").value = etat.type; $("#ch-ville").value = etat.ville; $("#ch-surface").value = etat.surface;
   document.querySelectorAll('input[name="gamme"]').forEach(function (r) { r.checked = r.value === etat.gamme; });
@@ -88,10 +96,12 @@
   $("#ch-projet").addEventListener("input", function () {
     etat.type = $("#ch-type").value; etat.ville = $("#ch-ville").value.trim();
     var s = parseNum($("#ch-surface").value); etat.surface = s && s > 0 ? s : 0;
+    // les études techniques au m² suivent la surface du projet
+    ["IC12-10", "IC12-11", "IC12-12"].forEach(function (r) { if (etat.q[r] > 0 && etat.surface > 0) etat.q[r] = etat.surface; });
     var g = document.querySelector('input[name="gamme"]:checked'); etat.gamme = g ? g.value : "Standard";
     sauver(); toutRendre();
   });
-  $("#ch-projet").addEventListener("change", function () { sauver(); toutRendre(); });
+  $("#ch-projet").addEventListener("change", function (ev) { if (ev.target.tagName === "SELECT") { sauver(); toutRendre(); } });
 
   // ------------------------------------------------------------ onglets
   function onglet(n) {
@@ -103,21 +113,24 @@
 
   // ------------------------------------------------------------ estimation rapide
   function rendreRapide() {
-    var pe = projet(REF.exemple.lines), ctx = E.context(REF, {}, pe), res = E.computeProject(ctx, pe);
-    var parts = Object.keys(res.byLot).filter(function (k) { return res.byLot[k].ht > 0; })
-      .map(function (k) { return { lot: k, part: res.byLot[k].ht / res.T.ht }; }).sort(function (a, b) { return b.part - a.part; });
-    var r = E.ratioRange(ctx), s = etat.surface || 0, p = pays();
+    var ctx = E.context(REF, {}, projet([])), t = typeProjet(), r = fourchette(ctx), s = etat.surface || 0, p = pays();
+    // part du gros œuvre plus forte en économique, plus faible en haut de gamme (sources 2025-2026)
+    var fGO = { "Économique": 1.35, "Standard": 1, "Haut de gamme": 0.78 }[etat.gamme] || 1, GO = { L03: 1, L04: 1, L05: 1 };
+    var poids = Object.keys(t.rep).map(function (k) { return { lot: k, w: t.rep[k] * (GO[k] ? fGO : 1) }; });
+    var somme = poids.reduce(function (a, x) { return a + x.w; }, 0);
+    var parts = poids.map(function (x) { return { lot: x.lot, part: x.w / somme }; }).sort(function (a, b) { return b.part - a.part; });
     if (ctx.devise !== p.devise) {
       $("#r-tuiles").innerHTML = '<div style="grid-column:1/-1"><b>Fourchette indisponible</b><span>Les coûts au m² sont connus dans la devise du pays (' + p.devise + "). Revenez à cette devise pour l'estimation rapide, ou utilisez le devis détaillé.</span></div>";
       $("#r-lots").innerHTML = ""; $("#r-note").textContent = ""; return;
     }
     var bas = r[0] * s, haut = r[1] * s, mil = (bas + haut) / 2;
+    var coef = t.k === 1 ? "base villa" : "× " + fmt(t.k, 2).replace(/0$/, "") + " par rapport à une villa";
     $("#r-tuiles").innerHTML =
-      '<div><b>Coût au m² TTC</b><strong>' + fmt(r[0]) + " – " + fmt(r[1]) + "</strong><span>" + sym(ctx) + "/m², gamme " + esc(etat.gamme.toLowerCase()) + ", " + esc(p.pays) + "</span></div>" +
+      '<div><b>Coût au m² TTC</b><strong>' + fmt(r[0]) + " – " + fmt(r[1]) + "</strong><span>" + sym(ctx) + "/m², " + esc(t.nom.toLowerCase()) + ", gamme " + esc(etat.gamme.toLowerCase()) + " (" + coef + ")</span></div>" +
       "<div><b>Fourchette basse</b><strong>" + court(bas, ctx) + "</strong><span>TTC</span></div>" +
       '<div class="fort"><b>Valeur médiane</b><strong>' + court(mil, ctx) + "</strong><span>TTC, dont TVA " + fmt(ctx.tva * 100, 2).replace(/,00$/, "") + " % : " + court(mil - mil / (1 + ctx.tva), ctx) + "</span></div>" +
       "<div><b>Fourchette haute</b><strong>" + court(haut, ctx) + "</strong><span>TTC</span></div>";
-    $("#r-note").textContent = fmt(s) + " m² · " + (etat.type || "Projet") + (etat.ville ? " · " + etat.ville : "") + " · montants TTC";
+    $("#r-note").textContent = fmt(s) + " m² · " + t.nom + (etat.ville ? " · " + etat.ville : "") + " · montants TTC";
     var max = parts[0] ? parts[0].part : 1;
     $("#r-lots").innerHTML = parts.map(function (q) {
       return '<div class="ch-barre"><span>' + esc(LIB_LOT[q.lot]) + '</span><span class="piste"><i style="width:' + (q.part / max * 100).toFixed(1) + '%"></i></span><span class="val">' + court(mil * q.part, ctx) + "<small>" + fmt(q.part * 100, 1) + " %</small></span></div>";
@@ -208,14 +221,14 @@
       "<dt>Cautionnement " + fmt(ctx.caution * 100, 0) + " %</dt><dd>" + mt(T.caution, ctx) + "</dd>";
     $("#d-methodes").innerHTML = n ? '<div class="m actif"><b>' + nomM(ctx.methode) + "</b> (méthode du pays)<span>" + mt(T.ht, ctx, 0) + " HT</span></div>" +
       '<div class="m"><b>' + nomM(ctx.methode === "COEF" ? "DS" : "COEF") + "</b> pour comparaison<span>" + mt(A.ht, ctx, 0) + " HT · écart " + (T.ht > 0 ? fmt((A.ht / T.ht - 1) * 100, 1) : "0") + " %</span></div>" : "";
-    var ctrl = E.controls(ctx, c.p, c.res).filter(function (k) { return k.s !== "ok" && k.k !== "Lignes sans quantité" && k.k !== "Références inconnues" && k.k !== "Blocs inconnus"; });
+    var ctrl = E.controls(ctx, c.p, c.res).filter(function (k) { return k.s !== "ok" && !k.range && k.k !== "Lignes sans quantité" && k.k !== "Références inconnues" && k.k !== "Blocs inconnus"; });
     var h = "";
     if (!n) h = '<div class="ch-pastille attention">Saisissez des quantités dans les lots, ou chargez l\'exemple de villa pour voir un devis complet.</div>';
     else {
-      ctrl.forEach(function (k) {
-        if (k.range) h += '<div class="ch-pastille attention">Le coût au m² (' + mt(k.v, ctx, 0) + ") sort de la fourchette habituelle de la gamme " + esc(etat.gamme.toLowerCase()) + " (" + fmt(k.range[0]) + " à " + fmt(k.range[1]) + " " + sym(ctx) + "/m² TTC).</div>";
-        else h += '<div class="ch-pastille attention">' + esc(k.k) + " : " + k.v + "</div>";
-      });
+      ctrl.forEach(function (k) { if (!k.range) h += '<div class="ch-pastille attention">' + esc(k.k) + " : " + k.v + "</div>"; });
+      var fr = fourchette(ctx), v = T.ttcM2;
+      if (s > 0 && ctx.devise === pays().devise && (v < fr[0] || v > fr[1]))
+        h += '<div class="ch-pastille attention">Le coût au m² (' + mt(v, ctx, 0) + ") sort de la fourchette habituelle pour un projet « " + esc(typeProjet().nom.toLowerCase()) + " », gamme " + esc(etat.gamme.toLowerCase()) + " (" + fmt(fr[0]) + " à " + fmt(fr[1]) + " " + sym(ctx) + "/m² TTC).</div>";
       if (!h) h = '<div class="ch-pastille">Contrôles du devis : aucune anomalie.</div>';
     }
     $("#d-controle").innerHTML = h;
