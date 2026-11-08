@@ -100,7 +100,7 @@
   });
 
   // Visionneuse des photos de projets
-  var photos = Array.prototype.slice.call(document.querySelectorAll(".projet .galerie img, .vignette img, .contenu .visuels img, .coupe img"));
+  var photos = Array.prototype.slice.call(document.querySelectorAll(".projet .galerie img, .vignette img, .contenu .visuels img, .coupe-vue > img:first-child"));
   if (photos.length) {
     var v = document.createElement("div");
     v.className = "visionneuse"; v.hidden = true; v.setAttribute("role", "dialog"); v.setAttribute("aria-modal", "true"); v.setAttribute("aria-label", "Photo du projet");
