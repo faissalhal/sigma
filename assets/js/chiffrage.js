@@ -106,6 +106,7 @@
   // ------------------------------------------------------------ onglets
   function onglet(n) {
     etat.onglet = n; sauver();
+    document.body.classList.toggle("ch-detail-actif", n === "detail");
     ["rapide", "detail"].forEach(function (k) { $("#tab-" + k).setAttribute("aria-selected", k === n ? "true" : "false"); $("#pan-" + k).hidden = k !== n; });
   }
   $("#tab-rapide").addEventListener("click", function () { onglet("rapide"); });
@@ -150,23 +151,23 @@
     var q = etat.q[a.ref], r = ligneLib(ctx, a), sug = puSuggere(ctx, a), id = "q-" + a.ref.replace(/[^A-Za-z0-9-]/g, "_");
     var manque = ctx.prixMode === "saisie" || sug == null;
     return '<tr class="' + (q > 0 ? "saisi" : "") + '" data-ref="' + esc(a.ref) + '">' +
-      '<td><label for="' + id + '" class="des">' + esc(a.des) + "</label></td><td class=\"u\">" + esc(a.u) + "</td>" +
-      '<td class="n"><input class="pu" value="' + numIn(etat.pu[a.ref]) + '" placeholder="' + (sug == null ? "à saisir" : fmt(sug, ctx.dec, " ")) + '" inputmode="decimal" aria-label="Prix d\'achat HT"></td>' +
-      '<td class="n h">' + fmt(a.h, 2) + '</td><td class="n pv">' + (r.pv > 0 ? fmt(r.pv, ctx.dec) : (manque ? "–" : fmt(0, ctx.dec))) + "</td>" +
-      '<td class="n"><input id="' + id + '" class="qte" value="' + numIn(q) + '" inputmode="decimal" aria-label="Quantité"></td>' +
-      '<td class="n t">' + (q > 0 ? fmt(q * r.pv, ctx.dec) : "–") + "</td>" +
+      '<td><label for="' + id + '" class="des">' + esc(a.des) + "</label></td><td class=\"u\" data-l=\"Unité\">" + esc(a.u) + "</td>" +
+      '<td class="n" data-l="Prix d\'achat HT"><input class="pu" value="' + numIn(etat.pu[a.ref]) + '" placeholder="' + (sug == null ? "à saisir" : fmt(sug, ctx.dec, " ")) + '" inputmode="decimal" aria-label="Prix d\'achat HT"></td>' +
+      '<td class="n h" data-l="Temps (h)">' + fmt(a.h, 2) + '</td><td class="n pv" data-l="PV unitaire HT">' + (r.pv > 0 ? fmt(r.pv, ctx.dec) : (manque ? "–" : fmt(0, ctx.dec))) + "</td>" +
+      '<td class="n" data-l="Quantité"><input id="' + id + '" class="qte" value="' + numIn(q) + '" inputmode="decimal" aria-label="Quantité"></td>' +
+      '<td class="n t" data-l="Total HT">' + (q > 0 ? fmt(q * r.pv, ctx.dec) : "–") + "</td>" +
       '<td class="act"><button type="button" class="ic" data-act="copier" title="Copier la ligne en dessous" aria-label="Copier la ligne en dessous">⧉</button></td></tr>';
   }
   function trExtra(ctx, x) {
     var r = ligneExtra(ctx, x);
     return '<tr class="ajout' + (x.q > 0 ? " saisi" : "") + '" data-x="' + x.id + '">' +
       '<td><input class="des-in" value="' + esc(x.des) + '" placeholder="Désignation de l\'ouvrage" aria-label="Désignation"></td>' +
-      '<td class="u"><input class="u-in" value="' + esc(x.u) + '" aria-label="Unité"></td>' +
-      '<td class="n"><input class="pu" value="' + numIn(x.pu) + '" placeholder="à saisir" inputmode="decimal" aria-label="Prix d\'achat HT"></td>' +
-      '<td class="n"><input class="h-in" value="' + numIn(x.h) + '" placeholder="0" inputmode="decimal" aria-label="Temps de pose (h)"></td>' +
-      '<td class="n pv">' + fmt(r.pv, ctx.dec) + "</td>" +
-      '<td class="n"><input class="qte" value="' + numIn(x.q) + '" inputmode="decimal" aria-label="Quantité"></td>' +
-      '<td class="n t">' + (x.q > 0 ? fmt(x.q * r.pv, ctx.dec) : "–") + "</td>" +
+      '<td class="u" data-l="Unité"><input class="u-in" value="' + esc(x.u) + '" aria-label="Unité"></td>' +
+      '<td class="n" data-l="Prix d\'achat HT"><input class="pu" value="' + numIn(x.pu) + '" placeholder="à saisir" inputmode="decimal" aria-label="Prix d\'achat HT"></td>' +
+      '<td class="n" data-l="Temps (h)"><input class="h-in" value="' + numIn(x.h) + '" placeholder="0" inputmode="decimal" aria-label="Temps de pose (h)"></td>' +
+      '<td class="n pv" data-l="PV unitaire HT">' + fmt(r.pv, ctx.dec) + "</td>" +
+      '<td class="n" data-l="Quantité"><input class="qte" value="' + numIn(x.q) + '" inputmode="decimal" aria-label="Quantité"></td>' +
+      '<td class="n t" data-l="Total HT">' + (x.q > 0 ? fmt(x.q * r.pv, ctx.dec) : "–") + "</td>" +
       '<td class="act"><button type="button" class="ic" data-act="copier" title="Copier la ligne en dessous" aria-label="Copier la ligne en dessous">⧉</button><button type="button" class="ic" data-act="suppr" title="Supprimer la ligne" aria-label="Supprimer la ligne">✕</button></td></tr>';
   }
   // Les lignes ajoutées s'insèrent juste après leur ligne d'origine (« apres »), ou en fin de bloc
@@ -219,6 +220,8 @@
       "<dt>Coût TTC au m²</dt><dd>" + (s > 0 && T.ttc > 0 ? mt(T.ttcM2, ctx, 0) : "–") + "</dd>" +
       "<dt>Retenue de garantie " + fmt(ctx.rg * 100, 0) + " %</dt><dd>" + mt(T.rg, ctx) + "</dd>" +
       "<dt>Cautionnement " + fmt(ctx.caution * 100, 0) + " %</dt><dd>" + mt(T.caution, ctx) + "</dd>";
+    var bm = document.getElementById("ch-barre-mobile");
+    if (bm) { bm.querySelector("strong").textContent = mt(T.ttc, ctx, 0); bm.querySelector("span").textContent = n + " ligne" + (n > 1 ? "s" : "") + " · TTC" + (s > 0 && T.ttc > 0 ? " · " + mt(T.ttcM2, ctx, 0) + "/m²" : ""); }
     $("#d-methodes").innerHTML = n ? '<div class="m actif"><b>' + nomM(ctx.methode) + "</b> (méthode du pays)<span>" + mt(T.ht, ctx, 0) + " HT</span></div>" +
       '<div class="m"><b>' + nomM(ctx.methode === "COEF" ? "DS" : "COEF") + "</b> pour comparaison<span>" + mt(A.ht, ctx, 0) + " HT · écart " + (T.ht > 0 ? fmt((A.ht / T.ht - 1) * 100, 1) : "0") + " %</span></div>" : "";
     var ctrl = E.controls(ctx, c.p, c.res).filter(function (k) { return k.s !== "ok" && !k.range && k.k !== "Lignes sans quantité" && k.k !== "Références inconnues" && k.k !== "Blocs inconnus"; });
@@ -440,6 +443,9 @@
       catch (e) { $("#d-etat").textContent = "Ce navigateur bloque le téléchargement. Essayez depuis le site en ligne."; }
     }).catch(function () { $("#d-etat").textContent = "Impossible de charger le module PDF. Vérifiez votre connexion internet."; });
   });
+
+  var barre = document.getElementById("ch-barre-mobile");
+  if (barre) barre.querySelector("button").addEventListener("click", function () { document.querySelector(".ch-synthese").scrollIntoView({ behavior: "smooth", block: "start" }); });
 
   function toutRendre() { rendreRapide(); rendreDetail(); }
   onglet(etat.onglet === "rapide" ? "rapide" : "detail");

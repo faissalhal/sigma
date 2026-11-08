@@ -121,3 +121,58 @@
 .ch-liste, .ch-lot, .ch-panneau, .ch { min-width: 0; }
 @media (max-width: 1020px) { .ch-detail { grid-template-columns: minmax(0, 1fr); } }
 .ch-synthese .ch-carte { min-width: 0; } .ch-totaux { font-size: .95rem; }
+
+/* ---------------------------------------------------------------- téléphone */
+.ch-barre-mobile { display: none; }
+@media (max-width: 1020px) {
+  body.ch-detail-actif .ch-barre-mobile { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 45; justify-content: space-between; align-items: center; gap: 12px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: var(--nuit); color: #fff; box-shadow: 0 -6px 20px rgb(0 0 0 / .2); }
+  .ch-barre-mobile div { display: grid; line-height: 1.15; }
+  .ch-barre-mobile strong { font: 700 1.25rem var(--f-titre); color: var(--calque); font-variant-numeric: tabular-nums; }
+  .ch-barre-mobile span { font-size: .8rem; color: #c9c9c9; }
+  body.ch-detail-actif .haut { bottom: 76px; }
+  body.ch-detail-actif { padding-bottom: 64px; }
+}
+@media (max-width: 700px) {
+  .ch-zone { padding-top: 20px; }
+  .ch { gap: 16px; }
+  .ch-projet { padding: 14px; gap: 10px; }
+  .seg span { padding: 9px 4px; font-size: .86rem; }
+  .ch-onglets button { flex: 1; padding: 10px 6px; font-size: .98rem; }
+  .ch-tuiles div { padding: 12px 14px; }
+  .ch-tuiles strong { font-size: 1.3rem; }
+  .ch-tuiles span { font-size: .8rem; }
+  .ch-carte { padding: 14px; }
+  .ch-barre { grid-template-columns: 1fr auto; gap: 4px 10px; font-size: .9rem; }
+  .ch-barre .val { min-width: 0; }
+  .ch-outils { gap: 10px; }
+  .ch-outils-btn { width: 100%; }
+  .ch-outils-btn .btn { flex: 1 1 auto; justify-content: center; }
+  .ch-lot > summary { grid-template-columns: 40px 1fr; padding: 10px 12px; gap: 6px 10px; }
+  .ch-lot > summary .tot { grid-column: 2; font-size: .9rem; }
+  .ch-lot > summary .lib { font-size: 1rem; }
+
+  /* le tableau devient une liste de fiches : désignation en haut, champs en grille en dessous */
+  .ch-table-zone { overflow: visible; }
+  .ch-table, .ch-table tbody { display: block; min-width: 0; width: 100%; }
+  .ch-table thead { display: none; }
+  .ch-table tr { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px 10px; padding: 12px; border-bottom: 1px solid var(--trait); }
+  .ch-table td { display: block; padding: 0; border: 0; text-align: left !important; }
+  .ch-table td:first-child { grid-column: 1 / -1; font-weight: 600; }
+  .ch-table td[data-l]::before { content: attr(data-l); display: block; font: 600 .66rem var(--f-titre); letter-spacing: .08em; text-transform: uppercase; color: var(--gris); margin-bottom: 2px; }
+  .ch-table td.act { grid-column: 3; grid-row: 1; justify-self: end; align-self: start; display: none; width: auto; }
+  .ch-table tr[data-ref] td:first-child, .ch-table tr[data-x] td:first-child { grid-column: 1 / 3; }
+  .ch-table tr[data-ref] td.act, .ch-table tr[data-x] td.act { display: flex; gap: 4px; }
+  .ch-table td.t { font-weight: 700; color: var(--encre); }
+  .ch-table tr.saisi td, .ch-table tr.ajout td { background: transparent; box-shadow: none; }
+  .ch-table tr.saisi { background: color-mix(in srgb, var(--calque-fond) 70%, transparent); }
+  .ch-table tr.ajout { box-shadow: inset 4px 0 0 var(--calque); }
+  .ch-table input.pu, .ch-table input.qte, .ch-table input.h-in, .ch-table input.u-in { width: 100%; text-align: left; font-size: 16px; padding: 8px; }
+  .ch-table input.des-in { min-width: 0; font-size: 16px; }
+  .ch-table tr.bloc, .ch-table tr.ajouter { display: block; padding: 8px 12px; }
+  .ch-table tr.bloc td, .ch-table tr.ajouter td { display: block; }
+  .ch-nouveau-bloc { padding: 12px; }
+  .ch-nouveau-bloc .btn { width: 100%; justify-content: center; }
+  input, select, textarea { font-size: 16px; }
+}
+@media (max-width: 380px) { .ch-table tr { grid-template-columns: 1fr 1fr; } .ch-table td.act { grid-column: 2; } }

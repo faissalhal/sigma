@@ -459,3 +459,10 @@ input:focus, select:focus, textarea:focus { border-color: var(--calque-texte); o
 .a-apercu .ic { position: absolute; top: 4px; right: 4px; }
 .a-apercu span { position: absolute; left: 4px; bottom: 6px; background: var(--calque); color: var(--sur-jaune); font-size: .72rem; font-weight: 700; padding: 1px 6px; border-radius: 3px; }
 @media (max-width: 700px) { .a-projet { grid-template-columns: 72px 1fr; } .a-btns { grid-column: 1 / -1; justify-content: flex-start; } }
+/* bandeau du haut plus compact sur téléphone */
+@media (max-width: 700px) {
+  .bandeau .conteneur > span:first-child { display: none; }
+  .bandeau .conteneur { justify-content: center; }
+  .bandeau .b-opt { display: none; }
+  .bandeau { font-size: .82rem; }
+}
