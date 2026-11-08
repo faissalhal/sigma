@@ -464,5 +464,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--calque-texte); o
   .bandeau .conteneur > span:first-child { display: none; }
   .bandeau .conteneur { justify-content: center; }
   .bandeau .b-opt { display: none; }
+  .bandeau .reseaux { display: none; }
+  .bandeau-droite { white-space: nowrap; }
   .bandeau { font-size: .82rem; }
 }
