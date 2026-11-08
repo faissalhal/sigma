@@ -418,9 +418,9 @@ input:focus, select:focus, textarea:focus { border-color: var(--calque-texte); o
 /* image « villa finie / coupe technique » : un scan continu révèle le plan technique */
 .coupe { margin: 0; position: relative; border-radius: var(--rayon); overflow: hidden; border: 1px solid var(--trait); background: var(--carte); }
 .coupe-vue { position: relative; overflow: hidden; }
-.coupe-vue img { width: 100%; display: block; }
+.coupe-vue img { width: 100%; display: block; aspect-ratio: 16 / 9; object-fit: cover; object-position: center 36%; }
 .coupe-vue > img:first-child { cursor: zoom-in; }
-.coupe-vue .scan { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center bottom; pointer-events: none; clip-path: inset(0 100% 0 0); animation: scan-bande 6s cubic-bezier(.45,0,.55,1) infinite alternate; }
+.coupe-vue .scan { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%; pointer-events: none; clip-path: inset(0 100% 0 0); animation: scan-bande 6s cubic-bezier(.45,0,.55,1) infinite alternate; }
 .scan-ligne { position: absolute; top: 0; bottom: 0; left: 0; width: 3px; margin-left: -1.5px; background: var(--calque); box-shadow: 0 0 14px 3px color-mix(in srgb, var(--calque) 70%, transparent), 0 0 40px 8px color-mix(in srgb, var(--calque) 30%, transparent); pointer-events: none; animation: scan-ligne 6s cubic-bezier(.45,0,.55,1) infinite alternate; }
 .scan-ligne::before, .scan-ligne::after { content: ""; position: absolute; left: -7px; width: 17px; height: 17px; border: 3px solid var(--calque); border-radius: 50%; background: var(--nuit); }
 .scan-ligne::before { top: 10px; } .scan-ligne::after { bottom: 10px; }
@@ -431,5 +431,5 @@ input:focus, select:focus, textarea:focus { border-color: var(--calque-texte); o
 .coupe figcaption span + span { border-left: 4px solid var(--calque); }
 .coupe figcaption b { color: #fff; font: 600 1.05rem var(--f-titre); text-transform: uppercase; letter-spacing: .06em; }
 @media (prefers-reduced-motion: reduce) { .coupe-vue .scan, .scan-ligne { animation: none; } .scan-ligne { display: none; } }
-.coupe-zone { align-items: center; }
-.coupe-zone .coupe { max-width: 560px; justify-self: center; width: 100%; }
+.coupe-zone .engagements.quatre { grid-template-columns: repeat(4, 1fr); margin-top: 16px; }
+@media (max-width: 760px) { .coupe-zone .engagements.quatre { grid-template-columns: 1fr 1fr; } }
