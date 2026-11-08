@@ -424,8 +424,8 @@ input:focus, select:focus, textarea:focus { border-color: var(--calque-texte); o
 .scan-ligne { position: absolute; top: 0; bottom: 0; left: 0; width: 3px; margin-left: -1.5px; background: var(--calque); box-shadow: 0 0 14px 3px color-mix(in srgb, var(--calque) 70%, transparent), 0 0 40px 8px color-mix(in srgb, var(--calque) 30%, transparent); pointer-events: none; animation: scan-ligne 5s linear infinite alternate; }
 .scan-ligne::before, .scan-ligne::after { content: ""; position: absolute; left: -7px; width: 17px; height: 17px; border: 3px solid var(--calque); border-radius: 50%; background: var(--nuit); }
 .scan-ligne::before { top: 10px; } .scan-ligne::after { bottom: 10px; }
-@keyframes scan-bande { 0% { clip-path: inset(0 56% 0 44%); } 40% { clip-path: inset(0 34% 0 44%); } 100% { clip-path: inset(0 0 0 78%); } }
-@keyframes scan-ligne { 0% { left: 44%; } 40% { left: 66%; } 100% { left: 100%; } }
+@keyframes scan-bande { 0% { clip-path: inset(0 50% 0 50%); } 40% { clip-path: inset(0 30% 0 50%); } 100% { clip-path: inset(0 0 0 80%); } }
+@keyframes scan-ligne { 0% { left: 50%; } 40% { left: 70%; } 100% { left: 100%; } }
 .coupe figcaption { display: grid; grid-template-columns: 1fr 1fr; background: var(--nuit); color: #fff; }
 .coupe figcaption span { padding: 12px 18px; display: grid; font-size: .92rem; color: #c9c9c9; }
 .coupe figcaption span + span { border-left: 4px solid var(--calque); }
