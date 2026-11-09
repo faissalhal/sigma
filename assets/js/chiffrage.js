@@ -28,7 +28,7 @@
 
   // ------------------------------------------------------------ état
   var CLE = "sigma-chiffrage-v2";
-  var etat = { pays: "Maroc", devise: "", type: "Villa", ville: "Marrakech", surface: 250, gamme: "Standard", onglet: "detail",
+  var etat = { pays: "Maroc", devise: "", type: "Villa", ville: "Marrakech", surface: 250, gamme: "Standard", complexite: "Standard", onglet: "detail",
     q: {}, pu: {}, extra: [], blocsPerso: [] };
   try { var sv = JSON.parse(localStorage.getItem(CLE) || "null"); if (sv) Object.assign(etat, sv); } catch (e) { }
   function sauver() { try { localStorage.setItem(CLE, JSON.stringify(etat)); } catch (e) { } }
@@ -37,6 +37,39 @@
   var TYPES = REF.typesProjet || [];
   function typeProjet() { return TYPES.find(function (t) { return t.nom === etat.type; }) || TYPES[0] || { nom: "Villa", k: 1, rep: {} }; }
   function fourchette(ctx) { var r = E.ratioRange(ctx), k = typeProjet().k; return [r[0] * k, r[1] * k]; }
+  // Honoraires d'études (grille SIGMA ICC) : ratio HT/m² par usage et par lot, position dans la fourchette selon la gamme,
+  // × coefficient de complexité × coefficient d'échelle (surface). Études de conception seules : le suivi et la synthèse EXE restent des lignes à part.
+  var HON = REF.honoraires || null, HON_LOT = {};
+  if (HON) Object.keys(HON.lots).forEach(function (k) { HON_LOT[HON.lots[k]] = k; });
+  function honUsage() { return HON ? HON.usages[typeProjet().usage || "standing"] || HON.usages.standing : null; }
+  function honKComplexite() { var c = HON && HON.complexite.find(function (x) { return x.nom === etat.complexite; }); return c ? c.k : 1; }
+  function honKEchelle() {
+    var s = etat.surface || 0, e = HON ? HON.echelle : [];
+    for (var i = 0; i < e.length; i++) if (e[i].max == null || s <= e[i].max) return e[i].k;
+    return 1;
+  }
+  function honPos() { return HON ? (HON.position[etat.gamme] != null ? HON.position[etat.gamme] : 0.5) : 0.5; }
+  function honConv(dev) { var g = ART["IC12-01"]; return g && g.p.MAD && g.p[dev] != null ? g.p[dev] / g.p.MAD : null; }
+  // renvoie { pv } (prix de vente HT unitaire), { txt } (non prévu / sur étude) ou null si la ligne n'est pas concernée
+  function honoraire(ref, dev) {
+    if (!HON) return null;
+    var conv = honConv(dev), pos = honPos(), v;
+    if (HON.forfaits[ref]) { if (conv == null) return null; v = HON.forfaits[ref]; return { pv: Math.round((v[0] + (v[1] - v[0]) * pos) * conv * 100) / 100 }; }
+    var lot = HON_LOT[ref]; if (!lot) return null;
+    var r = honUsage()[lot];
+    if (r === null) return { txt: "non prévu", pv: 0 };
+    if (r === "etude") return { txt: "sur étude" };
+    if (conv == null) return null;
+    return { pv: Math.round((r[0] + (r[1] - r[0]) * pos) * honKComplexite() * honKEchelle() * conv * 100) / 100 };
+  }
+  function honInfo() {
+    var el = document.getElementById("ch-hon-info"); if (!el || !HON) return;
+    var u = honUsage(), d = devise(), tot = 0, ok = true;
+    Object.keys(HON.lots).forEach(function (k) { var h = honoraire(HON.lots[k], d); if (h && h.pv != null) tot += h.pv; else if (!h || h.txt === "sur étude") ok = ok && !!(h && h.txt); });
+    var sy = (REF.devises.find(function (x) { return x.code === d; }) || {}).sym || d;
+    el.innerHTML = "<b>Études techniques</b> : grille « " + esc(u.nom) + " », gamme " + esc(etat.gamme.toLowerCase()) + ", complexité × " + fmt(honKComplexite(), 2).replace(/,?0+$/, "") +
+      ", échelle × " + fmt(honKEchelle(), 2).replace(/,?0+$/, "") + " (" + fmt(etat.surface || 0) + " m²) → <b>" + fmt(tot, 2) + " " + esc(sy) + " HT/m²</b> tous lots techniques" + (u.cvc === "etude" ? " (CVC sur étude)" : "") + ".";
+  }
   function pays() { return REF.pays.find(function (p) { return p.pays === etat.pays; }) || REF.pays[0]; }
   function devise() { return etat.devise || pays().devise; }
   function blocsDuLot(code) {
@@ -48,7 +81,10 @@
   function lignes() {
     var L = [];
     Object.keys(etat.q).forEach(function (r) {
-      if (etat.q[r] > 0 && ART[r]) L.push({ bloc: ART[r].bloc, ref: r, q: etat.q[r], puForce: etat.pu[r] != null ? etat.pu[r] : undefined });
+      if (etat.q[r] > 0 && ART[r]) {
+        var h = etat.pu[r] == null ? honoraire(r, devise()) : null;
+        L.push({ bloc: ART[r].bloc, ref: r, q: etat.q[r], puForce: etat.pu[r] != null ? etat.pu[r] : undefined, pvForce: h && h.pv != null ? h.pv : undefined });
+      }
     });
     etat.extra.forEach(function (x) {
       if (x.q > 0) L.push({ bloc: x.bloc, q: x.q, libre: { des: x.des || "Ligne ajoutée", u: x.u || "U", pu: x.pu, h: x.h || 0 } });
@@ -87,6 +123,7 @@
     if (!TYPES.some(function (t) { return t.nom === etat.type; })) etat.type = TYPES[0].nom;
   }
   $("#ch-pays").value = etat.pays; remplirDevises();
+  if (document.getElementById("ch-complexite")) $("#ch-complexite").value = etat.complexite || "Standard";
   $("#ch-type").value = etat.type; $("#ch-ville").value = etat.ville; $("#ch-surface").value = etat.surface;
   document.querySelectorAll('input[name="gamme"]').forEach(function (r) { r.checked = r.value === etat.gamme; });
   $("#ch-projet").addEventListener("change", function (ev) {
@@ -97,8 +134,9 @@
     etat.type = $("#ch-type").value; etat.ville = $("#ch-ville").value.trim();
     var s = parseNum($("#ch-surface").value); etat.surface = s && s > 0 ? s : 0;
     // les études techniques au m² suivent la surface du projet
-    ["IC12-10", "IC12-11", "IC12-12"].forEach(function (r) { if (etat.q[r] > 0 && etat.surface > 0) etat.q[r] = etat.surface; });
+    ["IC12-10", "IC12-11", "IC12-12", "IC12-13"].forEach(function (r) { if (etat.q[r] > 0 && etat.surface > 0) etat.q[r] = etat.surface; });
     var g = document.querySelector('input[name="gamme"]:checked'); etat.gamme = g ? g.value : "Standard";
+    var cx = document.getElementById("ch-complexite"); if (cx) etat.complexite = cx.value;
     sauver(); toutRendre();
   });
   $("#ch-projet").addEventListener("change", function (ev) { if (ev.target.tagName === "SELECT") { sauver(); toutRendre(); } });
@@ -142,18 +180,21 @@
   var ouverts = {};
   function puSuggere(ctx, a) { var v = a.p[ctx.devise]; return v == null ? null : v * ctx.gammeK; }
   function ligneLib(ctx, a) {
-    var line = { bloc: a.bloc, ref: a.ref, q: 1, puForce: etat.pu[a.ref] != null ? etat.pu[a.ref] : undefined };
+    var h = etat.pu[a.ref] == null ? honoraire(a.ref, ctx.devise) : null;
+    var line = { bloc: a.bloc, ref: a.ref, q: 1, puForce: etat.pu[a.ref] != null ? etat.pu[a.ref] : undefined, pvForce: h && h.pv != null ? h.pv : undefined };
     return E.computeLine(ctx, line);
   }
   function ligneExtra(ctx, x) { return E.computeLine(ctx, { bloc: x.bloc, q: 1, libre: { des: x.des, u: x.u, pu: x.pu, h: x.h || 0 } }); }
 
   function trLib(ctx, a) {
     var q = etat.q[a.ref], r = ligneLib(ctx, a), sug = puSuggere(ctx, a), id = "q-" + a.ref.replace(/[^A-Za-z0-9-]/g, "_");
+    var hon = honoraire(a.ref, ctx.devise);
     var manque = ctx.prixMode === "saisie" || sug == null;
+    if (hon) sug = null;
     return '<tr class="' + (q > 0 ? "saisi" : "") + '" data-ref="' + esc(a.ref) + '">' +
       '<td><label for="' + id + '" class="des">' + esc(a.des) + "</label></td><td class=\"u\" data-l=\"Unité\">" + esc(a.u) + "</td>" +
-      '<td class="n" data-l="Prix d\'achat HT"><input class="pu" value="' + numIn(etat.pu[a.ref]) + '" placeholder="' + (sug == null ? "à saisir" : fmt(sug, ctx.dec, " ")) + '" inputmode="decimal" aria-label="Prix d\'achat HT"></td>' +
-      '<td class="n h" data-l="Temps (h)">' + fmt(a.h, 2) + '</td><td class="n pv" data-l="PV unitaire HT">' + (r.pv > 0 ? fmt(r.pv, ctx.dec) : (manque ? "–" : fmt(0, ctx.dec))) + "</td>" +
+      '<td class="n" data-l="Prix d\'achat HT"><input class="pu" value="' + numIn(etat.pu[a.ref]) + '" placeholder="' + (hon ? (hon.txt === "sur étude" ? "à saisir" : "honoraires") : sug == null ? "à saisir" : fmt(sug, ctx.dec, " ")) + '" inputmode="decimal" aria-label="Prix d\'achat HT"></td>' +
+      '<td class="n h" data-l="Temps (h)">' + fmt(a.h, 2) + '</td><td class="n pv" data-l="PV unitaire HT">' + (hon && hon.txt && etat.pu[a.ref] == null ? hon.txt : r.pv > 0 ? fmt(r.pv, ctx.dec) : (manque ? "–" : fmt(0, ctx.dec))) + "</td>" +
       '<td class="n" data-l="Quantité"><input id="' + id + '" class="qte" value="' + numIn(q) + '" inputmode="decimal" aria-label="Quantité"></td>' +
       '<td class="n t" data-l="Total HT">' + (q > 0 ? fmt(q * r.pv, ctx.dec) : "–") + "</td>" +
       '<td class="act"><button type="button" class="ic" data-act="copier" title="Copier la ligne en dessous" aria-label="Copier la ligne en dessous">⧉</button></td></tr>';
@@ -447,7 +488,7 @@
   var barre = document.getElementById("ch-barre-mobile");
   if (barre) barre.querySelector("button").addEventListener("click", function () { document.querySelector(".ch-synthese").scrollIntoView({ behavior: "smooth", block: "start" }); });
 
-  function toutRendre() { rendreRapide(); rendreDetail(); }
+  function toutRendre() { honInfo(); rendreRapide(); rendreDetail(); }
   onglet(etat.onglet === "rapide" ? "rapide" : "detail");
   toutRendre();
 })();

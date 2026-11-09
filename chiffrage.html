@@ -37,7 +37,7 @@
 <div class="entete-page"><div class="conteneur">
   <div class="fil"><a href="index.html">Accueil</a> / Chiffrage</div>
   <h1>Chiffrage des travaux</h1>
-  <p>Notre outil reprend le moteur de calcul du bureau : 15 pays, 9 devises, 23 lots tous corps d'état et 508 ouvrages. Les prix d'achat sont saisis dans chaque devise, sans conversion. Le prix de vente est calculé selon la méthode en usage dans chaque pays : coefficients au Maroc et en France, déboursé sec ailleurs.</p>
+  <p>Notre outil reprend le moteur de calcul du bureau : 15 pays, 9 devises, 23 lots tous corps d'état et 515 ouvrages. Les prix d'achat sont saisis dans chaque devise, sans conversion. Le prix de vente est calculé selon la méthode en usage dans chaque pays : coefficients au Maroc et en France, déboursé sec ailleurs.</p>
 </div></div>
 
 <section class="ch-zone"><div class="conteneur ch">
@@ -45,7 +45,7 @@
     <label for="ch-pays">Pays<select id="ch-pays"></select></label>
     <label for="ch-devise">Devise<select id="ch-devise"></select></label>
     <label for="ch-type">Type de projet
-      <select id="ch-type"><option>Villa</option><option>Maison individuelle</option><option>Immeuble</option><option>Riad (réhabilitation)</option><option>Hôtel</option><option>Commerce</option><option>Bureaux</option><option>Bâtiment industriel</option><option>Établissement public</option></select>
+      <select id="ch-type"><option>Villa</option><option>Maison individuelle</option><option>Immeuble</option><option>Riad (réhabilitation)</option><option>Hôtel</option><option>Commerce</option><option>Bureaux</option><option>Bâtiment industriel</option><option>Établissement public</option><option>Clinique / hôpital</option></select>
     </label>
     <label for="ch-ville">Ville<input id="ch-ville" value="Marrakech" autocomplete="address-level2"></label>
     <label for="ch-surface">Surface couverte (m²)<input id="ch-surface" type="number" min="10" step="1" value="250" inputmode="numeric"></label>
@@ -56,6 +56,10 @@
         <label><input type="radio" name="gamme" value="Haut de gamme"><span>Haut de gamme</span></label>
       </div>
     </fieldset>
+    <label for="ch-complexite" class="ch-complexite">Complexité technique (études)
+      <select id="ch-complexite"><option value="Standard">Standard (× 1)</option><option value="Technique">Technique : domotique, GTB, solaire… (× 1,2)</option><option value="Haute performance">Haute performance : LEED, BREEAM… (× 1,35)</option></select>
+    </label>
+    <p class="ch-hon-info" id="ch-hon-info" aria-live="polite"></p>
   </form>
 
   <div class="ch-onglets" role="tablist" aria-label="Mode de chiffrage">

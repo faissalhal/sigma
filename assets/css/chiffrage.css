@@ -176,3 +176,9 @@
   input, select, textarea { font-size: 16px; }
 }
 @media (max-width: 380px) { .ch-table tr { grid-template-columns: 1fr 1fr; } .ch-table td.act { grid-column: 2; } }
+/* honoraires d'études : complexité et résumé */
+.ch-projet .ch-complexite { grid-column: span 2; }
+@media (min-width: 1021px) { .ch-projet .ch-gamme { grid-column: span 3; } }
+@media (max-width: 1020px) { .ch-projet .ch-complexite { grid-column: 1 / -1; } }
+.ch-hon-info { grid-column: 1 / -1; margin: 0; font-size: .88rem; color: var(--gris); border-top: 1px dashed var(--trait); padding-top: 10px; }
+.ch-hon-info b { color: var(--texte, inherit); }
