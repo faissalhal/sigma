@@ -427,13 +427,16 @@ input:focus, select:focus, textarea:focus { border-color: var(--calque-texte); o
 .scan-ligne { position: absolute; top: 0; bottom: 0; left: 0; width: 3px; margin-left: -1.5px; background: var(--calque); box-shadow: 0 0 14px 3px color-mix(in srgb, var(--calque) 70%, transparent), 0 0 40px 8px color-mix(in srgb, var(--calque) 30%, transparent); pointer-events: none; animation: scan-ligne 7s linear infinite; }
 .scan-ligne::before, .scan-ligne::after { content: ""; position: absolute; left: -7px; width: 17px; height: 17px; border: 3px solid var(--calque); border-radius: 50%; background: var(--nuit); }
 .scan-ligne::before { top: 10px; } .scan-ligne::after { bottom: 10px; }
-@keyframes scan-bande { 0% { clip-path: inset(0 0 0 100%); opacity: 0; } 1.5% { clip-path: inset(0 0 0 98.77%); opacity: 1; } 60% { clip-path: inset(0 0 0 50.6%); opacity: 1; } 85% { clip-path: inset(0 0 0 50.6%); opacity: 1; } 97% { clip-path: inset(0 0 0 50.6%); opacity: 0; } 100% { clip-path: inset(0 0 0 50.6%); opacity: 0; } }
+@keyframes scan-bande { 0% { clip-path: inset(0 0 0 100%); } 60% { clip-path: inset(0 0 0 50.6%); } 98% { clip-path: inset(0 0 0 50.6%); } 98.5% { clip-path: inset(0 0 0 100%); } 100% { clip-path: inset(0 0 0 100%); } }
+/* fin de cycle : la villa finie revient en fondu par-dessus ; la coupe est retirée en dessous, sans jamais redevenir visible */
+.coupe-vue::after { content: ""; position: absolute; inset: 0; background: url("../../images/villa-finie.jpg") center / 100% 100% no-repeat; opacity: 0; pointer-events: none; animation: scan-voile 7s linear infinite; }
+@keyframes scan-voile { 0%, 85% { opacity: 0; } 97%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
 @keyframes scan-ligne { 0% { left: 100%; opacity: 0; } 4% { opacity: 1; } 56% { opacity: 1; } 60% { left: 50.6%; opacity: 0; } 100% { left: 50.6%; opacity: 0; } }
 .coupe figcaption { display: grid; grid-template-columns: 1fr 1fr; background: var(--nuit); color: #fff; }
 .coupe figcaption span { padding: 12px 18px; display: grid; font-size: .92rem; color: #c9c9c9; }
 .coupe figcaption span + span { border-left: 4px solid var(--calque); }
 .coupe figcaption b { color: #fff; font: 600 1.05rem var(--f-titre); text-transform: uppercase; letter-spacing: .06em; }
-@media (prefers-reduced-motion: reduce) { .coupe-vue .scan, .scan-ligne { animation: none; } .scan-ligne { display: none; } }
+@media (prefers-reduced-motion: reduce) { .coupe-vue .scan, .scan-ligne, .coupe-vue::after { animation: none; } .scan-ligne { display: none; } }
 .coupe-zone .engagements.quatre { grid-template-columns: repeat(4, 1fr); margin-top: 16px; }
 @media (max-width: 760px) { .coupe-zone .engagements.quatre { grid-template-columns: 1fr 1fr; } }
 
