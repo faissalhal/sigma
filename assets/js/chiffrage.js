@@ -28,7 +28,7 @@
 
   // ------------------------------------------------------------ état
   var CLE = "sigma-chiffrage-v2";
-  var etat = { pays: "Maroc", devise: "", type: "Villa", ville: "Marrakech", surface: 250, gamme: "Standard", complexite: "Standard", onglet: "detail",
+  var etat = { pays: "Maroc", devise: "", type: "Villa", ville: "Marrakech", surface: 250, gamme: "Standard", complexite: "Standard", opt: { ss: false, ssM2: 0, pis: false, pisM2: 0, jar: false, jarM2: 0 }, onglet: "detail",
     q: {}, pu: {}, extra: [], blocsPerso: [] };
   try { var sv = JSON.parse(localStorage.getItem(CLE) || "null"); if (sv) Object.assign(etat, sv); } catch (e) { }
   function sauver() { try { localStorage.setItem(CLE, JSON.stringify(etat)); } catch (e) { } }
@@ -37,6 +37,19 @@
   var TYPES = REF.typesProjet || [];
   function typeProjet() { return TYPES.find(function (t) { return t.nom === etat.type; }) || TYPES[0] || { nom: "Villa", k: 1, rep: {} }; }
   function fourchette(ctx) { var r = E.ratioRange(ctx), k = typeProjet().k; return [r[0] * k, r[1] * k]; }
+  // Sous-sol, piscine, jardin (villa, hôtel, riad) : coefficients sur le coût au m² du bâtiment
+  var OPT = REF.options || null;
+  function optActives() { return !!OPT && OPT.types.indexOf(etat.type) >= 0; }
+  function optMontants(r) { // r = [bas, haut] au m² du bâtiment ; renvoie la liste des options retenues
+    if (!optActives()) return [];
+    var o = etat.opt || {}, L = [];
+    [["ss", "sousSol"], ["pis", "piscine"], ["jar", "jardin"]].forEach(function (x) {
+      var m2 = o[x[0] + "M2"] || 0, d = OPT[x[1]];
+      if (o[x[0]] && m2 > 0) L.push({ lib: d.lib, m2: m2, d: d.d, bas: r[0] * d.k * m2, haut: r[1] * d.k * m2 });
+    });
+    return L;
+  }
+  function surfaceEtudes() { var o = etat.opt || {}; return (etat.surface || 0) + (optActives() && o.ss ? o.ssM2 || 0 : 0); }
   // Honoraires d'études (grille SIGMA ICC) : ratio HT/m² par usage et par lot, position dans la fourchette selon la gamme,
   // × coefficient de complexité × coefficient d'échelle (surface). Études de conception seules : le suivi et la synthèse EXE restent des lignes à part.
   var HON = REF.honoraires || null, HON_LOT = {};
@@ -44,7 +57,7 @@
   function honUsage() { return HON ? HON.usages[typeProjet().usage || "standing"] || HON.usages.standing : null; }
   function honKComplexite() { var c = HON && HON.complexite.find(function (x) { return x.nom === etat.complexite; }); return c ? c.k : 1; }
   function honKEchelle() {
-    var s = etat.surface || 0, e = HON ? HON.echelle : [];
+    var s = surfaceEtudes(), e = HON ? HON.echelle : [];
     for (var i = 0; i < e.length; i++) if (e[i].max == null || s <= e[i].max) return e[i].k;
     return 1;
   }
@@ -74,7 +87,7 @@
     Object.keys(HON.lots).forEach(function (k) { var h = honoraire(HON.lots[k], d); if (h && h.pv != null) tot += h.pv; else if (!h || h.txt === "sur étude") ok = ok && !!(h && h.txt); });
     var sy = (REF.devises.find(function (x) { return x.code === d; }) || {}).sym || d;
     el.innerHTML = "<b>Études techniques</b> : grille « " + esc(u.nom) + " », gamme " + esc(etat.gamme.toLowerCase()) + ", complexité × " + fmt(honKComplexite(), 2).replace(/,?0+$/, "") +
-      ", échelle × " + fmt(honKEchelle(), 2).replace(/,?0+$/, "") + " (" + fmt(etat.surface || 0) + " m²), conception seule × " + fmt(honKMission(), 2).replace(/,?0+$/, "") + " → <b>" + fmt(tot, 2) + " " + esc(sy) + " HT/m²</b> tous lots techniques" + (u.cvc === "etude" ? " (CVC sur étude)" : "") + ". Suivi de chantier, synthèse EXE et forfaits en lignes séparées.";
+      ", échelle × " + fmt(honKEchelle(), 2).replace(/,?0+$/, "") + " (" + fmt(surfaceEtudes()) + " m²" + (surfaceEtudes() !== etat.surface ? ", sous-sol compris" : "") + "), conception seule × " + fmt(honKMission(), 2).replace(/,?0+$/, "") + " → <b>" + fmt(tot, 2) + " " + esc(sy) + " HT/m²</b> tous lots techniques" + (u.cvc === "etude" ? " (CVC sur étude)" : "") + ". Suivi de chantier, synthèse EXE et forfaits en lignes séparées.";
   }
   function pays() { return REF.pays.find(function (p) { return p.pays === etat.pays; }) || REF.pays[0]; }
   function devise() { return etat.devise || pays().devise; }
@@ -130,6 +143,26 @@
   }
   $("#ch-pays").value = etat.pays; remplirDevises();
   if (document.getElementById("ch-complexite")) $("#ch-complexite").value = etat.complexite || "Standard";
+  etat.opt = Object.assign({ ss: false, ssM2: 0, pis: false, pisM2: 0, jar: false, jarM2: 0 }, etat.opt || {});
+  function afficherOptions() {
+    var f = document.getElementById("ch-options"); if (!f) return;
+    f.hidden = !optActives();
+    ["ss", "pis", "jar"].forEach(function (k) {
+      $("#o-" + k).checked = !!etat.opt[k]; $("#o-" + k + "-m2").value = etat.opt[k + "M2"] || "";
+      $("#o-" + k + "-m2").disabled = !etat.opt[k]; $("#o-" + k).closest(".ch-opt").classList.toggle("actif", !!etat.opt[k]);
+    });
+  }
+  function lireOptions() {
+    if (!document.getElementById("ch-options")) return;
+    var def = (OPT && OPT.defauts[etat.type]) || {};
+    ["ss", "pis", "jar"].forEach(function (k) {
+      var c = $("#o-" + k).checked, v = parseNum($("#o-" + k + "-m2").value);
+      if (c && !etat.opt[k] && !(v > 0)) v = k === "ss" ? Math.round((etat.surface || 0) / 2) : k === "pis" ? def.piscine || 30 : Math.round(etat.surface || 0);
+      etat.opt[k] = c; etat.opt[k + "M2"] = v > 0 ? v : 0;
+    });
+    afficherOptions();
+  }
+  afficherOptions();
   $("#ch-type").value = etat.type; $("#ch-ville").value = etat.ville; $("#ch-surface").value = etat.surface;
   document.querySelectorAll('input[name="gamme"]').forEach(function (r) { r.checked = r.value === etat.gamme; });
   $("#ch-projet").addEventListener("change", function (ev) {
@@ -140,7 +173,8 @@
     etat.type = $("#ch-type").value; etat.ville = $("#ch-ville").value.trim();
     var s = parseNum($("#ch-surface").value); etat.surface = s && s > 0 ? s : 0;
     // les études techniques au m² suivent la surface du projet
-    ["IC12-10", "IC12-11", "IC12-12", "IC12-13"].forEach(function (r) { if (etat.q[r] > 0 && etat.surface > 0) etat.q[r] = etat.surface; });
+    lireOptions();
+    ["IC12-10", "IC12-11", "IC12-12", "IC12-13"].forEach(function (r) { if (etat.q[r] > 0 && surfaceEtudes() > 0) etat.q[r] = surfaceEtudes(); });
     var g = document.querySelector('input[name="gamme"]:checked'); etat.gamme = g ? g.value : "Standard";
     var cx = document.getElementById("ch-complexite"); if (cx) etat.complexite = cx.value;
     sauver(); toutRendre();
@@ -168,22 +202,27 @@
       $("#r-tuiles").innerHTML = '<div style="grid-column:1/-1"><b>Fourchette indisponible</b><span>Les coûts au m² sont connus dans la devise du pays (' + p.devise + "). Revenez à cette devise pour l'estimation rapide, ou utilisez le devis détaillé.</span></div>";
       $("#r-lots").innerHTML = ""; $("#r-note").textContent = ""; return;
     }
-    var bas = r[0] * s, haut = r[1] * s, mil = (bas + haut) / 2;
+    var opts = optMontants(r), oBas = 0, oHaut = 0;
+    opts.forEach(function (x) { oBas += x.bas; oHaut += x.haut; });
+    var bas = r[0] * s + oBas, haut = r[1] * s + oHaut, mil = (bas + haut) / 2, milBat = (r[0] + r[1]) / 2 * s;
     var coef = t.k === 1 ? "base villa" : "× " + fmt(t.k, 2).replace(/0$/, "") + " par rapport à une villa";
     $("#r-tuiles").innerHTML =
       '<div><b>Coût au m² TTC</b><strong>' + fmt(r[0]) + " – " + fmt(r[1]) + "</strong><span>" + sym(ctx) + "/m², " + esc(t.nom.toLowerCase()) + ", gamme " + esc(etat.gamme.toLowerCase()) + " (" + coef + ")</span></div>" +
-      "<div><b>Fourchette basse</b><strong>" + court(bas, ctx) + "</strong><span>TTC</span></div>" +
+      "<div><b>Fourchette basse</b><strong>" + court(bas, ctx) + "</strong><span>TTC" + (opts.length ? ", options comprises" : "") + "</span></div>" +
       '<div class="fort"><b>Valeur médiane</b><strong>' + court(mil, ctx) + "</strong><span>TTC, dont TVA " + fmt(ctx.tva * 100, 2).replace(/,00$/, "") + " % : " + court(mil - mil / (1 + ctx.tva), ctx) + "</span></div>" +
-      "<div><b>Fourchette haute</b><strong>" + court(haut, ctx) + "</strong><span>TTC</span></div>" +
+      "<div><b>Fourchette haute</b><strong>" + court(haut, ctx) + "</strong><span>TTC" + (opts.length ? ", options comprises" : "") + "</span></div>" +
+      (opts.length ? '<div class="options"><b>Sous-sol et extérieurs (compris ci-dessus)</b><span>' + opts.map(function (x) {
+        return "<b>" + esc(x.lib) + "</b> " + fmt(x.m2) + " m² : " + court(x.bas, ctx) + " à " + court(x.haut, ctx) + " TTC";
+      }).join(" · ") + ". Bâtiment seul : " + court(r[0] * s, ctx) + " à " + court(r[1] * s, ctx) + " TTC.</span></div>" : "") +
       (HON ? (function () {
-        var m2 = honTotalM2(ctx.devise), ht = m2 * s, u = honUsage();
-        return '<div class="etudes"><b>Études techniques BET</b><strong>' + court(ht, ctx) + " HT</strong><span>" + fmt(m2, 2) + " " + sym(ctx) + " HT/m² : électricité, fluides, CVC" + (u.cvc === "etude" ? " (sur étude, non comptée)" : u.cvc === null ? " (non prévue)" : "") +
+        var m2 = honTotalM2(ctx.devise), se = surfaceEtudes(), ht = m2 * se, u = honUsage();
+        return '<div class="etudes"><b>Études techniques BET</b><strong>' + court(ht, ctx) + " HT</strong><span>" + fmt(m2, 2) + " " + sym(ctx) + " HT/m² × " + fmt(se) + " m²" + (se !== s ? " (sous-sol compris)" : "") + " : électricité, fluides, CVC" + (u.cvc === "etude" ? " (sur étude, non comptée)" : u.cvc === null ? " (non prévue)" : "") +
           " et incendie, conception seule (grille « " + esc(u.nom) + " »). Soit " + court(ht * (1 + ctx.tva), ctx) + " TTC, en plus du coût de construction. Hors structure, suivi de chantier et forfaits.</span></div>";
       })() : "");
     $("#r-note").textContent = fmt(s) + " m² · " + t.nom + (etat.ville ? " · " + etat.ville : "") + " · montants TTC";
     var max = parts[0] ? parts[0].part : 1;
     $("#r-lots").innerHTML = parts.map(function (q) {
-      return '<div class="ch-barre"><span>' + esc(LIB_LOT[q.lot]) + '</span><span class="piste"><i style="width:' + (q.part / max * 100).toFixed(1) + '%"></i></span><span class="val">' + court(mil * q.part, ctx) + "<small>" + fmt(q.part * 100, 1) + " %</small></span></div>";
+      return '<div class="ch-barre"><span>' + esc(LIB_LOT[q.lot]) + '</span><span class="piste"><i style="width:' + (q.part / max * 100).toFixed(1) + '%"></i></span><span class="val">' + court(milBat * q.part, ctx) + "<small>" + fmt(q.part * 100, 1) + " %</small></span></div>";
     }).join("");
   }
 

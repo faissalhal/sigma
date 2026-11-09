@@ -184,3 +184,14 @@
 .ch-hon-info b { color: var(--texte, inherit); }
 .ch-tuiles .etudes { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--trait); background: var(--fond, transparent); }
 .ch-tuiles .etudes strong { font-size: 1.5rem; }
+/* sous-sol, piscine, jardin */
+.ch-options { grid-column: 1 / -1; border: 0; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.ch-options[hidden] { display: none; }
+.ch-options legend { font-weight: 600; font-size: .95rem; padding: 0; margin-bottom: 6px; }
+.ch-opt { display: grid; gap: 6px; border: 1px solid var(--trait); border-radius: var(--rayon); padding: 10px 12px; }
+.ch-coche { display: flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; }
+.ch-coche input { width: 18px; height: 18px; accent-color: var(--calque); }
+.ch-m2 { font-size: .85rem; color: var(--gris); }
+.ch-opt:not(.actif) .ch-m2 { opacity: .45; }
+@media (max-width: 700px) { .ch-options { grid-template-columns: 1fr; } }
+.ch-tuiles .options { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--trait); }

@@ -59,6 +59,11 @@
     <label for="ch-complexite" class="ch-complexite">Complexité technique (études)
       <select id="ch-complexite"><option value="Standard">Standard (× 1)</option><option value="Technique">Technique : domotique, GTB, solaire… (× 1,2)</option><option value="Haute performance">Haute performance : LEED, BREEAM… (× 1,35)</option></select>
     </label>
+    <fieldset class="ch-options" id="ch-options" hidden><legend>Sous-sol et extérieurs</legend>
+      <div class="ch-opt"><label class="ch-coche"><input type="checkbox" id="o-ss"> Sous-sol</label><label class="ch-m2">Surface du sous-sol (m²)<input id="o-ss-m2" type="number" min="0" step="1" inputmode="numeric"></label></div>
+      <div class="ch-opt"><label class="ch-coche"><input type="checkbox" id="o-pis"> Piscine</label><label class="ch-m2">Surface du bassin (m²)<input id="o-pis-m2" type="number" min="0" step="1" inputmode="numeric"></label></div>
+      <div class="ch-opt"><label class="ch-coche"><input type="checkbox" id="o-jar"> Jardin</label><label class="ch-m2">Surface du jardin (m²)<input id="o-jar-m2" type="number" min="0" step="1" inputmode="numeric"></label></div>
+    </fieldset>
     <p class="ch-hon-info" id="ch-hon-info" aria-live="polite"></p>
   </form>
 
@@ -104,7 +109,7 @@
   <div id="pan-rapide" role="tabpanel" aria-labelledby="tab-rapide" class="ch-panneau" hidden>
     <div class="ch-tuiles num" id="r-tuiles"></div>
     <div class="ch-carte">
-      <div class="ch-carte-tete"><h2>Répartition indicative par lot</h2><span class="ch-note" id="r-note"></span></div>
+      <div class="ch-carte-tete"><h2>Répartition indicative par lot (bâtiment)</h2><span class="ch-note" id="r-note"></span></div>
       <div class="ch-barres" id="r-lots"></div>
     </div>
     <p class="ch-avert">Fourchette calculée à partir des coûts de construction au m² d'une villa constatés dans le pays (Maroc : relevés de novembre 2026), corrigée selon le type de projet, puis répartie par lot selon une répartition type de ce projet. La part du gros œuvre augmente en gamme économique et diminue en haut de gamme. Le terrain, les honoraires d'architecte et les taxes d'urbanisme ne sont pas compris. Les études techniques du bureau d'études sont chiffrées à part, avec notre grille d'honoraires.</p>
