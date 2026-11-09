@@ -431,7 +431,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--calque-texte); o
 /* fin de cycle : la villa finie revient en fondu par-dessus ; la coupe est retirée en dessous, sans jamais redevenir visible */
 .coupe-vue::after { content: ""; position: absolute; inset: 0; background: url("../../images/villa-finie.jpg") center / 100% 100% no-repeat; opacity: 0; pointer-events: none; animation: scan-voile 7s linear infinite; }
 @keyframes scan-voile { 0%, 85% { opacity: 0; } 97%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
-@keyframes scan-ligne { 0% { left: 100%; opacity: 0; } 4% { opacity: 1; } 56% { opacity: 1; } 60% { left: 50.6%; opacity: 0; } 100% { left: 50.6%; opacity: 0; } }
+@keyframes scan-ligne { 0% { left: 100%; opacity: 0; visibility: visible; } 4% { opacity: 1; } 56% { opacity: 1; } 60% { left: 50.6%; opacity: 0; visibility: visible; } 60.5% { left: 50.6%; opacity: 0; visibility: hidden; } 61%, 100% { left: 115%; opacity: 0; visibility: hidden; } }
 .coupe figcaption { display: grid; grid-template-columns: 1fr 1fr; background: var(--nuit); color: #fff; }
 .coupe figcaption span { padding: 12px 18px; display: grid; font-size: .92rem; color: #c9c9c9; }
 .coupe figcaption span + span { border-left: 4px solid var(--calque); }
