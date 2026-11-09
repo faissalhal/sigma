@@ -67,6 +67,7 @@
   // renvoie { pv } (prix de vente HT unitaire), { txt } (non prévu / sur étude) ou null si la ligne n'est pas concernée
   function honoraire(ref, dev) {
     if (!HON) return null;
+    if (ref === ARCHI) return { pv: Math.round(baseTravaux() * tauxArchi() * 100) / 100, archi: true };
     var conv = honConv(dev), pos = honPos(), v;
     if (HON.forfaits[ref]) { if (conv == null) return null; v = HON.forfaits[ref]; return { pv: Math.round((v[0] + (v[1] - v[0]) * pos) * conv * 100) / 100 }; }
     var lot = HON_LOT[ref]; if (!lot) return null;
@@ -97,9 +98,18 @@
   function blocInfo(code) { return BLOCS_REF[code] || etat.blocsPerso.find(function (b) { return b.code === code; }); }
 
   // Lignes transmises au moteur
-  function lignes() {
+  // Honoraires d'architecte : % (selon la gamme) du montant HT des travaux, hors lignes d'études et d'honoraires (bloc IC-1.2)
+  var ARCHI = "IC12-17";
+  function tauxArchi() { return HON && HON.architecte ? HON.architecte.taux[etat.gamme] || 0 : 0; }
+  function baseTravaux() {
+    var L = lignes(true), p = projet(L), ctx = E.context(REF, {}, p), res = E.computeProject(ctx, p), b = 0;
+    res.rows.forEach(function (r) { if (r.line.bloc !== "IC-1.2") b += r.total; });
+    return b;
+  }
+  function lignes(sansArchi) {
     var L = [];
     Object.keys(etat.q).forEach(function (r) {
+      if (sansArchi && r === ARCHI) return;
       if (etat.q[r] > 0 && ART[r]) {
         var h = etat.pu[r] == null ? honoraire(r, devise()) : null;
         L.push({ bloc: ART[r].bloc, ref: r, q: etat.q[r], puForce: etat.pu[r] != null ? etat.pu[r] : undefined, pvForce: h && h.pv != null ? h.pv : undefined });
@@ -250,7 +260,7 @@
     if (hon) sug = null;
     return '<tr class="' + (q > 0 ? "saisi" : "") + '" data-ref="' + esc(a.ref) + '">' +
       '<td><label for="' + id + '" class="des">' + esc(a.des) + "</label></td><td class=\"u\" data-l=\"Unité\">" + esc(a.u) + "</td>" +
-      '<td class="n" data-l="Prix d\'achat HT"><input class="pu" value="' + numIn(etat.pu[a.ref]) + '" placeholder="' + (hon ? (hon.txt === "sur étude" ? "à saisir" : "honoraires") : sug == null ? "à saisir" : fmt(sug, ctx.dec, " ")) + '" inputmode="decimal" aria-label="Prix d\'achat HT"></td>' +
+      '<td class="n" data-l="Prix d\'achat HT"><input class="pu" value="' + numIn(etat.pu[a.ref]) + '" placeholder="' + (hon ? (hon.txt === "sur étude" ? "à saisir" : hon.archi ? fmt(tauxArchi() * 100, 2).replace(/,?0+$/, "") + " % travaux" : "honoraires") : sug == null ? "à saisir" : fmt(sug, ctx.dec, " ")) + '" inputmode="decimal" aria-label="Prix d\'achat HT"></td>' +
       '<td class="n h" data-l="Temps (h)">' + fmt(a.h, 2) + '</td><td class="n pv" data-l="PV unitaire HT">' + (hon && hon.txt && etat.pu[a.ref] == null ? hon.txt : r.pv > 0 ? fmt(r.pv, ctx.dec) : (manque ? "–" : fmt(0, ctx.dec))) + "</td>" +
       '<td class="n" data-l="Quantité"><input id="' + id + '" class="qte" value="' + numIn(q) + '" inputmode="decimal" aria-label="Quantité"></td>' +
       '<td class="n t" data-l="Total HT">' + (q > 0 ? fmt(q * r.pv, ctx.dec) : "–") + "</td>" +
@@ -347,6 +357,10 @@
     if (tr.hasAttribute("data-ref")) { var a = ART[tr.getAttribute("data-ref")]; r = ligneLib(ctx, a); q = etat.q[a.ref]; }
     else { var x = etat.extra.find(function (z) { return z.id === tr.getAttribute("data-x"); }); r = ligneExtra(ctx, x); q = x.q; }
     tr.classList.toggle("saisi", q > 0);
+    var ta = zone.querySelector('tr[data-ref="' + ARCHI + '"]');
+    if (ta && ta !== tr) { var ra = ligneLib(ctx, ART[ARCHI]), qa = etat.q[ARCHI]; ta.querySelector("td.pv").textContent = ra.pv > 0 ? fmt(ra.pv, ctx.dec) : "–"; ta.querySelector("td.t").textContent = qa > 0 ? fmt(qa * ra.pv, ctx.dec) : "–";
+      var da = ta.closest("details"), tl = c.res.byLot[da.getAttribute("data-lot")], sa = da.querySelector("summary .tot");
+      sa.textContent = tl && tl.ht > 0 ? mt(tl.ht, ctx, 0) + " HT" : ""; sa.classList.toggle("plein", !!(tl && tl.ht > 0)); }
     tr.querySelector("td.pv").textContent = r.pv > 0 ? fmt(r.pv, ctx.dec) : "–";
     tr.querySelector("td.t").textContent = q > 0 ? fmt(q * r.pv, ctx.dec) : "–";
     var det = tr.closest("details"), tot = c.res.byLot[det.getAttribute("data-lot")], span = det.querySelector("summary .tot");
