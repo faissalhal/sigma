@@ -215,9 +215,16 @@
         return "<b>" + esc(x.lib) + "</b> " + fmt(x.m2) + " m² : " + court(x.bas, ctx) + " à " + court(x.haut, ctx) + " TTC";
       }).join(" · ") + ". Bâtiment seul : " + court(r[0] * s, ctx) + " à " + court(r[1] * s, ctx) + " TTC.</span></div>" : "") +
       (HON ? (function () {
-        var m2 = honTotalM2(ctx.devise), se = surfaceEtudes(), ht = m2 * se, u = honUsage();
-        return '<div class="etudes"><b>Études techniques BET</b><strong>' + court(ht, ctx) + " HT</strong><span>" + fmt(m2, 2) + " " + sym(ctx) + " HT/m² × " + fmt(se) + " m²" + (se !== s ? " (sous-sol compris)" : "") + " : électricité, fluides, CVC" + (u.cvc === "etude" ? " (sur étude, non comptée)" : u.cvc === null ? " (non prévue)" : "") +
-          " et incendie, conception seule (grille « " + esc(u.nom) + " »). Soit " + court(ht * (1 + ctx.tva), ctx) + " TTC, en plus du coût de construction. Hors structure, suivi de chantier et forfaits.</span></div>";
+        var m2 = honTotalM2(ctx.devise), se = surfaceEtudes(), tech = m2 * se, u = honUsage();
+        var travHT = mil / (1 + ctx.tva), tA = HON.architecte ? HON.architecte.taux[etat.gamme] || 0 : 0, tS = HON.structure ? HON.structure.taux[etat.gamme] || 0 : 0;
+        var arch = travHT * tA, stru = travHT * tS, tot = arch + stru + tech;
+        var pc = function (t) { return fmt(t * 100, 2).replace(/,?0+$/, "") + " %"; };
+        return '<div class="etudes"><b>Honoraires (en plus des travaux)</b><strong>' + court(tot, ctx) + " HT</strong><span>soit " + court(tot * (1 + ctx.tva), ctx) + " TTC, sur la valeur médiane des travaux (" + court(travHT, ctx) + " HT)</span>" +
+          '<ul class="ch-hon-liste">' +
+          "<li><span>Architecte</span><span>" + pc(tA) + " des travaux HT</span><b>" + court(arch, ctx) + " HT</b></li>" +
+          "<li><span>Étude structure béton armé</span><span>" + pc(tS) + " des travaux HT</span><b>" + court(stru, ctx) + " HT</b></li>" +
+          "<li><span>Études techniques : électricité, fluides, CVC, incendie</span><span>" + fmt(m2, 2) + " " + sym(ctx) + " HT/m² × " + fmt(se) + " m²" + (se !== s ? " (sous-sol compris)" : "") + (u.cvc === "etude" ? ", CVC sur étude" : "") + "</span><b>" + court(tech, ctx) + " HT</b></li>" +
+          "</ul><span>Études techniques : grille « " + esc(u.nom) + " », conception seule. Hors suivi de chantier, synthèse EXE, géotechnique, bureau de contrôle et forfaits.</span></div>";
       })() : "");
     $("#r-note").textContent = fmt(s) + " m² · " + t.nom + (etat.ville ? " · " + etat.ville : "") + " · montants TTC";
     var max = parts[0] ? parts[0].part : 1;
