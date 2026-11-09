@@ -130,7 +130,7 @@
   .ch-barre-mobile div { display: grid; line-height: 1.15; }
   .ch-barre-mobile strong { font: 700 1.25rem var(--f-titre); color: var(--calque); font-variant-numeric: tabular-nums; }
   .ch-barre-mobile span { font-size: .8rem; color: #c9c9c9; }
-  body.ch-detail-actif .haut { bottom: 76px; }
+  body.ch-detail-actif .haut, body.ch-detail-actif .whatsapp { bottom: 76px; }
   body.ch-detail-actif { padding-bottom: 64px; }
 }
 @media (max-width: 700px) {

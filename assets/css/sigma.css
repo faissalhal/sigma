@@ -545,3 +545,11 @@ mark.a-completer { background: #fff1b8; color: #6b4f00; padding: 0 4px; border-r
 .p-avance { margin-top: 14px; }
 .p-avance .ch-table-zone { margin-top: 10px; }
 .a-modifs ul { margin: 6px 0 0; padding-left: 1.2em; color: var(--gris); font-size: .9rem; }
+
+/* bouton WhatsApp */
+.whatsapp { position: fixed; left: 18px; bottom: 18px; z-index: 40; display: flex; align-items: center; gap: 8px; height: 52px; padding: 0 18px 0 14px; border-radius: 26px; background: #25D366; color: #fff; font-weight: 700; font-size: .95rem; text-decoration: none; box-shadow: 0 6px 18px rgb(0 0 0 / .22); transition: transform .2s, box-shadow .2s; }
+.whatsapp:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgb(0 0 0 / .26); color: #fff; }
+.whatsapp svg { width: 26px; height: 26px; fill: currentColor; flex: none; }
+@media (max-width: 760px) { .whatsapp { width: 52px; padding: 0; justify-content: center; } .whatsapp span { display: none; } }
+[dir="rtl"] .whatsapp { left: auto; right: 18px; }
+@media print { .whatsapp { display: none; } }
