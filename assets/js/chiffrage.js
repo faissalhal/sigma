@@ -48,6 +48,7 @@
     for (var i = 0; i < e.length; i++) if (e[i].max == null || s <= e[i].max) return e[i].k;
     return 1;
   }
+  function honKMission() { return HON && HON.mission ? HON.mission.k : 1; }
   function honPos() { return HON ? (HON.position[etat.gamme] != null ? HON.position[etat.gamme] : 0.5) : 0.5; }
   function honConv(dev) { var g = ART["IC12-01"]; return g && g.p.MAD && g.p[dev] != null ? g.p[dev] / g.p.MAD : null; }
   // renvoie { pv } (prix de vente HT unitaire), { txt } (non prévu / sur étude) ou null si la ligne n'est pas concernée
@@ -60,7 +61,12 @@
     if (r === null) return { txt: "non prévu", pv: 0 };
     if (r === "etude") return { txt: "sur étude" };
     if (conv == null) return null;
-    return { pv: Math.round((r[0] + (r[1] - r[0]) * pos) * honKComplexite() * honKEchelle() * conv * 100) / 100 };
+    return { pv: Math.round((r[0] + (r[1] - r[0]) * pos) * honKComplexite() * honKEchelle() * honKMission() * conv * 100) / 100 };
+  }
+  function honTotalM2(dev) {
+    var tot = 0; if (!HON) return 0;
+    Object.keys(HON.lots).forEach(function (k) { var h = honoraire(HON.lots[k], dev); if (h && h.pv != null) tot += h.pv; });
+    return tot;
   }
   function honInfo() {
     var el = document.getElementById("ch-hon-info"); if (!el || !HON) return;
@@ -68,7 +74,7 @@
     Object.keys(HON.lots).forEach(function (k) { var h = honoraire(HON.lots[k], d); if (h && h.pv != null) tot += h.pv; else if (!h || h.txt === "sur étude") ok = ok && !!(h && h.txt); });
     var sy = (REF.devises.find(function (x) { return x.code === d; }) || {}).sym || d;
     el.innerHTML = "<b>Études techniques</b> : grille « " + esc(u.nom) + " », gamme " + esc(etat.gamme.toLowerCase()) + ", complexité × " + fmt(honKComplexite(), 2).replace(/,?0+$/, "") +
-      ", échelle × " + fmt(honKEchelle(), 2).replace(/,?0+$/, "") + " (" + fmt(etat.surface || 0) + " m²) → <b>" + fmt(tot, 2) + " " + esc(sy) + " HT/m²</b> tous lots techniques" + (u.cvc === "etude" ? " (CVC sur étude)" : "") + ".";
+      ", échelle × " + fmt(honKEchelle(), 2).replace(/,?0+$/, "") + " (" + fmt(etat.surface || 0) + " m²), conception seule × " + fmt(honKMission(), 2).replace(/,?0+$/, "") + " → <b>" + fmt(tot, 2) + " " + esc(sy) + " HT/m²</b> tous lots techniques" + (u.cvc === "etude" ? " (CVC sur étude)" : "") + ". Suivi de chantier, synthèse EXE et forfaits en lignes séparées.";
   }
   function pays() { return REF.pays.find(function (p) { return p.pays === etat.pays; }) || REF.pays[0]; }
   function devise() { return etat.devise || pays().devise; }
@@ -168,7 +174,12 @@
       '<div><b>Coût au m² TTC</b><strong>' + fmt(r[0]) + " – " + fmt(r[1]) + "</strong><span>" + sym(ctx) + "/m², " + esc(t.nom.toLowerCase()) + ", gamme " + esc(etat.gamme.toLowerCase()) + " (" + coef + ")</span></div>" +
       "<div><b>Fourchette basse</b><strong>" + court(bas, ctx) + "</strong><span>TTC</span></div>" +
       '<div class="fort"><b>Valeur médiane</b><strong>' + court(mil, ctx) + "</strong><span>TTC, dont TVA " + fmt(ctx.tva * 100, 2).replace(/,00$/, "") + " % : " + court(mil - mil / (1 + ctx.tva), ctx) + "</span></div>" +
-      "<div><b>Fourchette haute</b><strong>" + court(haut, ctx) + "</strong><span>TTC</span></div>";
+      "<div><b>Fourchette haute</b><strong>" + court(haut, ctx) + "</strong><span>TTC</span></div>" +
+      (HON ? (function () {
+        var m2 = honTotalM2(ctx.devise), ht = m2 * s, u = honUsage();
+        return '<div class="etudes"><b>Études techniques BET</b><strong>' + court(ht, ctx) + " HT</strong><span>" + fmt(m2, 2) + " " + sym(ctx) + " HT/m² : électricité, fluides, CVC" + (u.cvc === "etude" ? " (sur étude, non comptée)" : u.cvc === null ? " (non prévue)" : "") +
+          " et incendie, conception seule (grille « " + esc(u.nom) + " »). Soit " + court(ht * (1 + ctx.tva), ctx) + " TTC, en plus du coût de construction. Hors structure, suivi de chantier et forfaits.</span></div>";
+      })() : "");
     $("#r-note").textContent = fmt(s) + " m² · " + t.nom + (etat.ville ? " · " + etat.ville : "") + " · montants TTC";
     var max = parts[0] ? parts[0].part : 1;
     $("#r-lots").innerHTML = parts.map(function (q) {

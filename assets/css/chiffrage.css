@@ -182,3 +182,5 @@
 @media (max-width: 1020px) { .ch-projet .ch-complexite { grid-column: 1 / -1; } }
 .ch-hon-info { grid-column: 1 / -1; margin: 0; font-size: .88rem; color: var(--gris); border-top: 1px dashed var(--trait); padding-top: 10px; }
 .ch-hon-info b { color: var(--texte, inherit); }
+.ch-tuiles .etudes { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--trait); background: var(--fond, transparent); }
+.ch-tuiles .etudes strong { font-size: 1.5rem; }
