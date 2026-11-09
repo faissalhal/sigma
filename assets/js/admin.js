@@ -44,6 +44,8 @@
     }).then(function () {
       $("#a-connexion").hidden = true; $("#a-espace").hidden = false; $("#a-deconnexion").hidden = false;
       etat("Connecté au dépôt " + DEPOT + ".", "ok");
+      window.SigmaAdmin = { gh: gh, etat: etat, b64: b64DepuisTexte, texte: texteDepuisB64, BRANCHE: BRANCHE };
+      document.dispatchEvent(new Event("admin-connecte"));
     }).catch(function (e) {
       etat(e.status === 401 ? "Jeton refusé par GitHub : vérifiez-le ou créez-en un nouveau." : e.status === 404 ? "Dépôt introuvable avec ce jeton : il doit donner accès à " + DEPOT + "." : e.message, "err");
     });

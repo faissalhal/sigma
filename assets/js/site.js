@@ -1,6 +1,13 @@
 /* SIGMA ICC – menu, animations (diaporama, apparitions, compteurs), visionneuse photo, formulaire */
 (function () {
   "use strict";
+  var LG = (document.documentElement.lang || "fr").slice(0, 2);
+  var T = {
+    fr: { envoi: "Envoi en cours…", echec: "L'envoi a échoué. Écrivez-nous à sigma.icc@gmail.com ou appelez le +212 6 61 05 74 55.", nl_en: "Inscription en cours…", nl_ok: "Merci, votre inscription est enregistrée.", nl_ko: "L'inscription a échoué. Écrivez-nous à sigma.icc@gmail.com.", fermer: "Fermer", prec: "Photo précédente", suiv: "Photo suivante", photo: "Photo" },
+    en: { envoi: "Sending…", echec: "Sending failed. Write to sigma.icc@gmail.com or call +212 6 61 05 74 55.", nl_en: "Subscribing…", nl_ok: "Thank you, you are subscribed.", nl_ko: "Subscription failed. Write to sigma.icc@gmail.com.", fermer: "Close", prec: "Previous photo", suiv: "Next photo", photo: "Photo" },
+    ar: { envoi: "جارٍ الإرسال…", echec: "تعذر الإرسال. راسلونا على sigma.icc@gmail.com أو اتصلوا بالرقم ‎+212 6 61 05 74 55.", nl_en: "جارٍ التسجيل…", nl_ok: "شكرًا، تم تسجيل اشتراككم.", nl_ko: "تعذر التسجيل. راسلونا على sigma.icc@gmail.com.", fermer: "إغلاق", prec: "الصورة السابقة", suiv: "الصورة التالية", photo: "صورة" }
+  }[LG] || null;
+  if (!T) T = { envoi: "Envoi en cours…", echec: "L'envoi a échoué. Écrivez-nous à sigma.icc@gmail.com ou appelez le +212 6 61 05 74 55.", nl_en: "Inscription en cours…", nl_ok: "Merci, votre inscription est enregistrée.", nl_ko: "L'inscription a échoué. Écrivez-nous à sigma.icc@gmail.com.", fermer: "Fermer", prec: "Photo précédente", suiv: "Photo suivante", photo: "Photo" };
   var calme = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Menu mobile
@@ -100,8 +107,8 @@
   // Visionneuse des photos (la liste des photos est relue à chaque ouverture)
   var SEL_PHOTOS = ".projet .galerie img, .vignette img, .contenu .visuels img, .coupe-vue > img:first-child";
   var v = document.createElement("div");
-  v.className = "visionneuse"; v.hidden = true; v.setAttribute("role", "dialog"); v.setAttribute("aria-modal", "true"); v.setAttribute("aria-label", "Photo");
-  v.innerHTML = '<img alt=""><p></p><button class="fermer" type="button" aria-label="Fermer">×</button><button class="prec" type="button" aria-label="Photo précédente">‹</button><button class="suiv" type="button" aria-label="Photo suivante">›</button>';
+  v.className = "visionneuse"; v.hidden = true; v.setAttribute("role", "dialog"); v.setAttribute("aria-modal", "true"); v.setAttribute("aria-label", T.photo);
+  v.innerHTML = '<img alt=""><p></p><button class="fermer" type="button" aria-label="' + T.fermer + '">×</button><button class="prec" type="button" aria-label="' + T.prec + '">‹</button><button class="suiv" type="button" aria-label="' + T.suiv + '">›</button>';
   document.body.appendChild(v);
   var vi = v.querySelector("img"), vp = v.querySelector("p"), photos = [], cour = 0, retour = null;
   var ouvrir = function (n) {
@@ -132,10 +139,10 @@
   if (lettre) lettre.addEventListener("submit", function (ev) {
     ev.preventDefault();
     var etat = lettre.querySelector(".message-etat");
-    etat.textContent = "Inscription en cours…";
+    etat.textContent = T.nl_en;
     fetch(lettre.getAttribute("data-url"), { method: "POST", body: new FormData(lettre) })
-      .then(function () { etat.textContent = "Merci, votre inscription est enregistrée."; lettre.reset(); })
-      .catch(function () { etat.textContent = "L'inscription a échoué. Écrivez-nous à sigma.icc@gmail.com."; });
+      .then(function () { etat.textContent = T.nl_ok; lettre.reset(); })
+      .catch(function () { etat.textContent = T.nl_ko; });
   });
 
   // Formulaire de devis : envoi vers la feuille Google existante, puis page de confirmation
@@ -144,12 +151,12 @@
       ev.preventDefault();
       var etat = form.querySelector(".message-etat"), bouton = form.querySelector("button[type=submit]");
       if (bouton) bouton.disabled = true;
-      if (etat) etat.textContent = "Envoi en cours…";
+      if (etat) etat.textContent = T.envoi;
       fetch(form.getAttribute("data-url"), { method: "POST", body: new FormData(form) })
         .then(function () { window.location.href = "demande-envoye.html"; })
         .catch(function () {
           if (bouton) bouton.disabled = false;
-          if (etat) etat.textContent = "L'envoi a échoué. Écrivez-nous à sigma.icc@gmail.com ou appelez le +212 6 61 05 74 55.";
+          if (etat) etat.textContent = T.echec;
         });
     });
   });

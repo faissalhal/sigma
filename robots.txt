@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /demande-envoye.html
+Disallow: /constra-main-main/
+Disallow: /projet2/
+
+Sitemap: https://sigma-icc.ma/sitemap.xml
