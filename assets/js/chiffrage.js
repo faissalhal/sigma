@@ -28,7 +28,7 @@
 
   // ------------------------------------------------------------ état
   var CLE = "sigma-chiffrage-v2";
-  var etat = { pays: "Maroc", devise: "", type: "Villa", ville: "Marrakech", surface: 250, gamme: "Standard", complexite: "Standard", opt: { ss: false, ssM2: 0, pis: false, pisM2: 0, jar: false, jarM2: 0 }, onglet: "detail",
+  var etat = { pays: "Maroc", devise: "", type: "Villa", ville: "Marrakech", surface: 250, gamme: "Standard", complexite: "Standard", opt: { ss: false, ssM2: 0, pis: false, pisM2: 0, jar: false, jarM2: 0, knx: false }, onglet: "detail",
     q: {}, pu: {}, extra: [], blocsPerso: [] };
   try { var sv = JSON.parse(localStorage.getItem(CLE) || "null"); if (sv) Object.assign(etat, sv); } catch (e) { }
   function sauver() { try { localStorage.setItem(CLE, JSON.stringify(etat)); } catch (e) { } }
@@ -41,12 +41,13 @@
   var OPT = REF.options || null;
   function optActives() { return !!OPT && OPT.types.indexOf(etat.type) >= 0; }
   function optMontants(r) { // r = [bas, haut] au m² du bâtiment ; renvoie la liste des options retenues
-    if (!optActives()) return [];
+    if (!OPT) return [];
     var o = etat.opt || {}, L = [];
-    [["ss", "sousSol"], ["pis", "piscine"], ["jar", "jardin"]].forEach(function (x) {
+    if (optActives()) [["ss", "sousSol"], ["pis", "piscine"], ["jar", "jardin"]].forEach(function (x) {
       var m2 = o[x[0] + "M2"] || 0, d = OPT[x[1]];
       if (o[x[0]] && m2 > 0) L.push({ lib: d.lib, m2: m2, d: d.d, bas: r[0] * d.k * m2, haut: r[1] * d.k * m2 });
     });
+    if (o.knx && OPT.knx && etat.surface > 0) { var d = OPT.knx, m2 = surfaceEtudes(); L.push({ lib: d.lib, m2: m2, d: d.d, bas: r[0] * d.k * m2, haut: r[1] * d.k * m2 }); }
     return L;
   }
   function surfaceEtudes() { var o = etat.opt || {}; return (etat.surface || 0) + (optActives() && o.ss ? o.ssM2 || 0 : 0); }
@@ -153,14 +154,16 @@
   }
   $("#ch-pays").value = etat.pays; remplirDevises();
   if (document.getElementById("ch-complexite")) $("#ch-complexite").value = etat.complexite || "Standard";
-  etat.opt = Object.assign({ ss: false, ssM2: 0, pis: false, pisM2: 0, jar: false, jarM2: 0 }, etat.opt || {});
+  etat.opt = Object.assign({ ss: false, ssM2: 0, pis: false, pisM2: 0, jar: false, jarM2: 0, knx: false }, etat.opt || {});
   function afficherOptions() {
     var f = document.getElementById("ch-options"); if (!f) return;
-    f.hidden = !optActives();
+    f.hidden = false;
     ["ss", "pis", "jar"].forEach(function (k) {
       $("#o-" + k).checked = !!etat.opt[k]; $("#o-" + k + "-m2").value = etat.opt[k + "M2"] || "";
-      $("#o-" + k + "-m2").disabled = !etat.opt[k]; $("#o-" + k).closest(".ch-opt").classList.toggle("actif", !!etat.opt[k]);
+      $("#o-" + k + "-m2").disabled = !etat.opt[k]; var b = $("#o-" + k).closest(".ch-opt");
+      b.classList.toggle("actif", !!etat.opt[k]); b.hidden = !optActives();
     });
+    if (document.getElementById("o-knx")) { $("#o-knx").checked = !!etat.opt.knx; $("#o-knx").closest(".ch-opt").classList.toggle("actif", !!etat.opt.knx); }
   }
   function lireOptions() {
     if (!document.getElementById("ch-options")) return;
@@ -170,6 +173,7 @@
       if (c && !etat.opt[k] && !(v > 0)) v = k === "ss" ? Math.round((etat.surface || 0) / 2) : k === "pis" ? def.piscine || 30 : Math.round(etat.surface || 0);
       etat.opt[k] = c; etat.opt[k + "M2"] = v > 0 ? v : 0;
     });
+    if (document.getElementById("o-knx")) etat.opt.knx = $("#o-knx").checked;
     afficherOptions();
   }
   afficherOptions();
@@ -221,7 +225,7 @@
       "<div><b>Fourchette basse</b><strong>" + court(bas, ctx) + "</strong><span>TTC" + (opts.length ? ", options comprises" : "") + "</span></div>" +
       '<div class="fort"><b>Valeur médiane</b><strong>' + court(mil, ctx) + "</strong><span>TTC, dont TVA " + fmt(ctx.tva * 100, 2).replace(/,00$/, "") + " % : " + court(mil - mil / (1 + ctx.tva), ctx) + "</span></div>" +
       "<div><b>Fourchette haute</b><strong>" + court(haut, ctx) + "</strong><span>TTC" + (opts.length ? ", options comprises" : "") + "</span></div>" +
-      (opts.length ? '<div class="options"><b>Sous-sol et extérieurs (compris ci-dessus)</b><span>' + opts.map(function (x) {
+      (opts.length ? '<div class="options"><b>Options (comprises ci-dessus)</b><span>' + opts.map(function (x) {
         return "<b>" + esc(x.lib) + "</b> " + fmt(x.m2) + " m² : " + court(x.bas, ctx) + " à " + court(x.haut, ctx) + " TTC";
       }).join(" · ") + ". Bâtiment seul : " + court(r[0] * s, ctx) + " à " + court(r[1] * s, ctx) + " TTC.</span></div>" : "") +
       (HON ? (function () {

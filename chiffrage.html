@@ -37,7 +37,7 @@
 <div class="entete-page"><div class="conteneur">
   <div class="fil"><a href="index.html">Accueil</a> / Chiffrage</div>
   <h1>Chiffrage des travaux</h1>
-  <p>Notre outil reprend le moteur de calcul du bureau : 15 pays, 9 devises, 23 lots tous corps d'état et 515 ouvrages. Les prix d'achat sont saisis dans chaque devise, sans conversion. Le prix de vente est calculé selon la méthode en usage dans chaque pays : coefficients au Maroc et en France, déboursé sec ailleurs.</p>
+  <p>Notre outil reprend le moteur de calcul du bureau : 15 pays, 9 devises, 23 lots tous corps d'état et 538 ouvrages. Les prix d'achat sont saisis dans chaque devise, sans conversion. Le prix de vente est calculé selon la méthode en usage dans chaque pays : coefficients au Maroc et en France, déboursé sec ailleurs.</p>
 </div></div>
 
 <section class="ch-zone"><div class="conteneur ch">
@@ -59,10 +59,11 @@
     <label for="ch-complexite" class="ch-complexite">Complexité technique (études)
       <select id="ch-complexite"><option value="Standard">Standard (× 1)</option><option value="Technique">Technique : domotique, GTB, solaire… (× 1,2)</option><option value="Haute performance">Haute performance : LEED, BREEAM… (× 1,35)</option></select>
     </label>
-    <fieldset class="ch-options" id="ch-options" hidden><legend>Sous-sol et extérieurs</legend>
+    <fieldset class="ch-options" id="ch-options" hidden><legend>Options du projet</legend>
       <div class="ch-opt"><label class="ch-coche"><input type="checkbox" id="o-ss"> Sous-sol</label><label class="ch-m2">Surface du sous-sol (m²)<input id="o-ss-m2" type="number" min="0" step="1" inputmode="numeric"></label></div>
       <div class="ch-opt"><label class="ch-coche"><input type="checkbox" id="o-pis"> Piscine</label><label class="ch-m2">Surface du bassin (m²)<input id="o-pis-m2" type="number" min="0" step="1" inputmode="numeric"></label></div>
       <div class="ch-opt"><label class="ch-coche"><input type="checkbox" id="o-jar"> Jardin</label><label class="ch-m2">Surface du jardin (m²)<input id="o-jar-m2" type="number" min="0" step="1" inputmode="numeric"></label></div>
+      <div class="ch-opt ch-opt-knx"><label class="ch-coche"><input type="checkbox" id="o-knx"> Domotique KNX</label><span class="ch-m2">Éclairage, volets, climatisation et scénarios sur bus KNX, sur toute la surface</span></div>
     </fieldset>
     <p class="ch-hon-info" id="ch-hon-info" aria-live="polite"></p>
   </form>
