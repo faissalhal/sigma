@@ -556,3 +556,11 @@ mark.a-completer { background: #fff1b8; color: #6b4f00; padding: 0 4px; border-r
 @media (max-width: 760px) { .whatsapp { width: 52px; padding: 0; justify-content: center; } .whatsapp span { display: none; } }
 [dir="rtl"] .whatsapp { left: auto; right: 18px; }
 @media print { .whatsapp { display: none; } }
+/* référencement : H1 de l'accueil dans le bandeau, textes d'expertise */
+.slide h1.sur { display: inline-block; margin: 0; font-size: 1rem; line-height: 1.4; }
+.texte-seo { margin-top: 28px; }
+.texte-seo h2 { margin-top: 1.6em; }
+.texte-seo a { color: inherit; text-decoration: underline; text-decoration-color: var(--calque); text-underline-offset: 3px; }
+.fond-carte .texte-seo { max-width: 900px; margin: 48px auto 0; }
+.liste-seo { padding-left: 1.1em; }
+.liste-seo li { margin: .4em 0; }
