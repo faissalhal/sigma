@@ -78,11 +78,14 @@ Maximum 3 liens internes par article.
 sont libres ; ne pas mettre de guillemets triples """ dans le texte.
 
 ## Images par lot (choisir dans la liste, varier)
-- structure : images/services/1.jpg, images/services/2.jpg, images/services/3.jpg, images/projects/project1.jpg … project6.jpg, images/projects/villa1.jpg, images/projects/villa2.jpg
-- electricite : images/services/cfo1.jpg si présente, sinon images/projects/project2.jpg, images/projects/magasin1.png, images/projects/magasin2.jpg, images/projects/magasin3.jpg, images/villa-technique.jpg
-- plomberie / cvc : images/services/cvc1.jpg, images/services/cvc2.jpg si présente, images/projects/pompage1.jpeg, pompage2.jpeg, pompage3.jpeg, images/projects/riad1.jpg … riad4.jpg
-- autres : images/projects/*.jpg, images/villa-finie.jpg, images/villa-technique.jpg
-(Vérifier l'existence avec `ls /home/user/sigma/images/services /home/user/sigma/images/projects`.)
+- structure : images/services/maison-beton.jpg, images/services/beton-poutre.jpg, images/services/1.jpg, images/services/3.jpg, images/projects/project1.jpg … project6.jpg, images/projects/villa1.jpg, images/projects/villa2.jpg
+- electricite : images/services/elec-tableau.jpg, images/services/elec-disjoncteurs.jpg, images/services/elec-prises.jpg, images/services/ele1.jpg, images/services/ele2.jpg, images/projects/magasin2.jpg, images/villa-technique.jpg
+- plomberie : images/services/plombier.jpg, images/services/cvc1.jpg, images/projects/pompage1.jpeg, pompage2.jpeg, pompage3.jpeg, images/projects/riad1.jpg … riad4.jpg
+- cvc : images/services/clim-exterieur.jpg, images/services/ventilation.jpg, images/services/cvc1.jpg, images/projects/riad2.jpg, images/projects/magasin3.jpg
+- vrd : images/services/vrd3.jpg, vrd4.jpg, vrd5.jpg, images/service_img1.jpg
+- incendie : images/services/incendie-alarme.jpg, images/services/cssi1.jpg, images/services/cssi2.jpg, images/services/ventilation.jpg
+- thermique : images/services/ener.jpg, images/villa-finie.jpg, images/projects/villa1.jpg, images/projects/villa2.jpg
+- achat / reglementation : images/projects/*.jpg, images/projects/riad1.jpg … riad4.jpg, images/villa-finie.jpg, images/villa-technique.jpg, images/services/BIM1.jpg (BIM)
 
 ## Validation avant de rendre la main
 `cd /home/user/sigma && python3 -c "import importlib.util,sys;s=importlib.util.spec_from_file_location('m','tools/articles/<lot>.py');m=importlib.util.module_from_spec(s);s.loader.exec_module(m);print(len(m.ARTICLES))"`

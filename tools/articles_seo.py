@@ -520,6 +520,41 @@ ARTICLES = [
 ]
 
 
+# Lots (familles d'articles) : ordre d'affichage sur la page Conseils et dans la FAQ
+LOTS = [("electricite", "Électricité"), ("structure", "Structure et béton armé"), ("plomberie", "Plomberie et sanitaire"),
+        ("cvc", "Climatisation et ventilation"), ("thermique", "Thermique et énergie"), ("incendie", "Sécurité incendie"),
+        ("vrd", "VRD et réseaux"), ("achat", "Achat et expertise"), ("reglementation", "Démarches, prix et chantier")]
+LOT_NOM = dict(LOTS)
+# catégorie des articles écrits avant les lots (y compris ceux faits à la main, hors de ce script)
+CAT = {"conseil-permis-de-construire-maroc-rokhas": "reglementation", "conseil-etude-de-sol-maroc-prix": "structure",
+       "conseil-prix-bureau-etudes-techniques-maroc": "reglementation", "conseil-reglement-parasismique-rps-2011-maroc": "structure",
+       "conseil-prix-construction-m2-maroc": "reglementation", "conseil-dosage-beton-fondation-dalle": "structure",
+       "conseil-prix-piscine-maroc": "structure", "conseil-fissures-maison-causes-gravite": "structure",
+       "conseil-surelevation-ajouter-etage-maroc": "structure", "conseil-etancheite-toiture-terrasse-maroc": "structure",
+       "conseil-climatisation-puissance-btu-m2": "cvc", "conseil-isolation-thermique-rtcm-maroc": "thermique",
+       "conseil-prix-construction-villa-marrakech": "reglementation", "conseil-role-bureau-etudes-techniques": "reglementation",
+       "conseil-norme-electrique-nf-c-15-100-maroc": "electricite"}
+for _a in ARTICLES:
+    _a.setdefault("cat", CAT.get(_a["slug"], "reglementation"))
+
+
+def charger_lots():
+    """Ajoute les articles des fichiers tools/articles/<lot>.py (une liste ARTICLES par fichier)."""
+    import glob, importlib.util
+    vus = {a["slug"] for a in ARTICLES}
+    for f in sorted(glob.glob(os.path.join(ROOT, "tools", "articles", "*.py"))):
+        spec = importlib.util.spec_from_file_location(os.path.basename(f)[:-3], f)
+        m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+        for a in m.ARTICLES:
+            if a["slug"] in vus:
+                continue
+            assert a["cat"] in LOT_NOM, (f, a["slug"], a["cat"])
+            assert len(a["faq"]) >= 1 and os.path.exists(os.path.join(ROOT, a["img"])), (f, a["slug"])
+            vus.add(a["slug"]); ARTICLES.append(a); CAT[a["slug"]] = a["cat"]
+    for a in ARTICLES:
+        CAT[a["slug"]] = a["cat"]
+
+
 def esc(s):
     return html.escape(s, quote=True)
 
@@ -560,14 +595,7 @@ def build():
                    + a["body"] + faq + "\n  " + cta + "\n  " + src + "\n</article>")
         h = re.sub(r'<article class="contenu article">.*?</article>', lambda m: content, h, count=1, flags=re.S)
         open(os.path.join(ROOT, a["slug"] + ".html"), "w", encoding="utf-8").write(h)
-    # page Conseils : nouvelles cartes en tête de liste
-    cp = os.path.join(ROOT, "conseils.html"); c = open(cp, encoding="utf-8").read()
-    cards = "".join(
-        f'<a class="service" href="{a["slug"]}.html"><img src="{a["img"]}" alt="" loading="lazy" width="750" height="600">\n'
-        f'  <div><span class="code">{DATE_TXT} · {a["min"]} min</span><h3>{esc(a["title"])}</h3><p>{esc(a["lead"])}</p><span class="lire">Lire l\'article →</span></div></a>'
-        for a in ARTICLES if a["slug"] + ".html" not in c)
-    c = c.replace('<div class="grille-services">', '<div class="grille-services">' + cards, 1)
-    open(cp, "w", encoding="utf-8").write(c)
+    page_conseils()
     # plan du site
     sp = os.path.join(ROOT, "sitemap.xml"); s = open(sp, encoding="utf-8").read()
     add = "".join(f"  <url><loc>{DOMAIN}/{a['slug']}.html</loc><lastmod>{DATE}</lastmod><priority>0.7</priority></url>\n" for a in ARTICLES if a["slug"] not in s)
@@ -575,6 +603,84 @@ def build():
     s = re.sub(r"(<url><loc>https://sigma-icc.ma/conseils.html</loc><lastmod>)[^<]*", r"\g<1>" + DATE, s)
     open(sp, "w", encoding="utf-8").write(s)
     print(len(ARTICLES), "articles")
+
+
+def cartes_conseils():
+    """{slug: carte HTML} pour tous les articles : ceux du script, plus les articles faits à la main déjà présents sur conseils.html."""
+    c = open(os.path.join(ROOT, "conseils.html"), encoding="utf-8").read()
+    cartes = {m.group(1): m.group(0) for m in re.finditer(r'<a class="service" href="(conseil-[^"]+)\.html">.*?</a>', c, re.S)}
+    for a in ARTICLES:
+        cartes[a["slug"]] = (f'<a class="service" href="{a["slug"]}.html"><img src="{a["img"]}" alt="" loading="lazy" width="750" height="600">\n'
+                             f'  <div><span class="code">{esc(LOT_NOM[a["cat"]])} · {a["min"]} min</span><h3>{esc(a["title"])}</h3><p>{esc(a["lead"])}</p><span class="lire">Lire l\'article →</span></div></a>')
+    return cartes
+
+
+def page_conseils():
+    cp = os.path.join(ROOT, "conseils.html"); c = open(cp, encoding="utf-8").read()
+    cartes = cartes_conseils()
+    ordre = [a["slug"] for a in ARTICLES] + [k for k in cartes if k not in {a["slug"] for a in ARTICLES}]
+    nav, blocs = [], []
+    for k, nom in LOTS:
+        lot = [cartes[x] for x in ordre if x in cartes and CAT.get(x, "reglementation") == k]
+        if not lot:
+            continue
+        nav.append(f'<a href="#lot-{k}">{esc(nom)} <span>{len(lot)}</span></a>')
+        blocs.append(f'<div class="lot-conseils" id="lot-{k}"><h2>{esc(nom)}</h2><div class="grille-services">' + "".join(lot) + "</div></div>")
+    bloc = ('<section><div class="conteneur"><!--lots-->'
+            f'<nav class="lots-nav" aria-label="Thèmes">{"".join(nav)}</nav>' + "".join(blocs) + "<!--/lots--></div></section>\n")
+    if "<!--lots-->" in c:
+        c = re.sub(r'<section><div class="conteneur"><!--lots-->.*?<!--/lots--></div></section>\n', lambda m: bloc, c, count=1, flags=re.S)
+    else:
+        c, n = re.subn(r'<section><div class="conteneur"><div class="grille-services">.*?</div></div></section>\n(?=</main>)', lambda m: bloc, c, count=1, flags=re.S)
+        assert n == 1
+    open(cp, "w", encoding="utf-8").write(c)
+
+
+def page_faq():
+    """FAQ par lot : une question (et sa réponse) de chaque article, regroupées par thème, avec le lien vers l'article."""
+    fp = os.path.join(ROOT, "faq.html"); h = open(fp, encoding="utf-8").read()
+    parts, nav, qs = [], [], []
+    for k, nom in LOTS:
+        arts = [a for a in ARTICLES if a["cat"] == k]
+        if not arts:
+            continue
+        items = "".join(f'<details><summary>{esc(a["faq"][0][0])}</summary><p>{esc(a["faq"][0][1])} <a href="{a["slug"]}.html">Lire l\'article : {esc(a["crumb"])} →</a></p></details>' for a in arts)
+        qs += [a["faq"][0] for a in arts]
+        nav.append(f'<a href="#faq-{k}">{esc(nom)}</a>')
+        parts.append(f'<h2 class="faq-lot" id="faq-{k}">{esc(nom)}</h2><div class="faq">{items}</div>')
+    bloc = ('<!--faq-lots--><h2 class="faq-lot" id="faq-general">Questions générales</h2>'
+            f'<nav class="lots-nav" aria-label="Thèmes de la FAQ">{"".join(nav)}</nav><!--/faq-lots-->')
+    suite = "<!--faq-lots-suite-->" + "".join(parts) + "<!--/faq-lots-suite-->"
+    h = re.sub(r"<!--faq-lots-->.*?<!--/faq-lots-->", "", h, flags=re.S)
+    h = re.sub(r"<!--faq-lots-suite-->.*?<!--/faq-lots-suite-->", "", h, flags=re.S)
+    h = h.replace('<div class="faq-principal"><div class="faq">', '<div class="faq-principal">' + bloc + '<div class="faq">', 1)
+    i = h.index('<div class="encadre" style="margin-top:32px;max-width:860px">')
+    h = h[:i] + suite + h[i:]
+    # données structurées : questions générales d'origine + questions par lot
+    m = re.search(r'<script type="application/ld\+json">(.*?)</script>', h, re.S)
+    ld = json.loads(m.group(1))
+    base = [q for q in ld["mainEntity"] if not q.get("_lot")]
+    ld["mainEntity"] = [q for q in base if q["name"] not in {x for x, _ in qs}] + [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": r}} for q, r in qs]
+    h = h[:m.start(1)] + json.dumps(ld, ensure_ascii=False) + h[m.end(1):]
+    open(fp, "w", encoding="utf-8").write(h)
+
+
+SERVICE_LOTS = {"STRUCTURE": ["structure"], "CFA": ["electricite"], "FD": ["plomberie", "cvc"], "CSSI": ["incendie"],
+                "VRD": ["vrd"], "EGT": ["thermique"], "BIM": []}
+
+
+def liens_services():
+    """Sur chaque page service (FR) : les conseils du même lot, juste avant l'encadré « Intéressé par ce service ? »."""
+    for k, lots in SERVICE_LOTS.items():
+        p = os.path.join(ROOT, f"service-{k}.html"); h = open(p, encoding="utf-8").read()
+        h = re.sub(r"<!--conseils-lies-->.*?<!--/conseils-lies-->", "", h, flags=re.S)
+        arts = [a for a in ARTICLES if a["cat"] in lots] + ([a for a in ARTICLES if a["slug"] == "conseil-bim-avantages-projet"] if k == "BIM" else [])
+        if arts:
+            li = "".join(f'<li><a href="{a["slug"]}.html">{esc(a["title"])}</a></li>' for a in arts[:12])
+            bloc = f'<!--conseils-lies--><div class="conseils-lies"><h2>Nos conseils sur ce sujet</h2><ul>{li}</ul><a class="lien-fleche" href="conseils.html#lot-{lots[0] if lots else "reglementation"}">Tous les conseils →</a></div><!--/conseils-lies-->'
+            i = h.index('<div class="encadre"><h3>Intéressé par ce service ?</h3>')
+            h = h[:i] + bloc + h[i:]
+        open(p, "w", encoding="utf-8").write(h)
 
 
 def apply_layout():
@@ -598,7 +704,10 @@ def apply_layout():
         art = re.sub(r"<h2>(.*?)</h2>", anchor, h[start:end])
         titres = re.findall(r'<h2 id="(partie-\d+)">(.*?)</h2>', art)
         sommaire = "".join(f'<li><a href="#{i}">{t}</a></li>' for i, t in titres)
-        autres = "".join(f'<li><a href="{u}">{t}</a></li>' for u, t in [c for c in cards if c[0] != name][:6]) + '<li class="tous"><a href="conseils.html">Tous les conseils →</a></li>'
+        moi = CAT.get(name[:-5], "reglementation")
+        cands = [c for c in cards if c[0] != name]
+        cands = [c for c in cands if CAT.get(c[0][:-5]) == moi] + [c for c in cands if CAT.get(c[0][:-5]) != moi]
+        autres = "".join(f'<li><a href="{u}">{t}</a></li>' for u, t in cands[:6]) + '<li class="tous"><a href="conseils.html">Tous les conseils →</a></li>'
         aside = (f'<aside class="article-cote">'
                  f'<div class="cote-carte"><h3>Sommaire</h3><ol class="sommaire">{sommaire}</ol></div>'
                  f'<div class="cote-carte"><h3>Autres conseils</h3><ul class="autres">{autres}</ul></div>'
@@ -614,5 +723,8 @@ def apply_layout():
 
 
 if __name__ == "__main__":
+    charger_lots()
     build()
     apply_layout()
+    page_faq()
+    liens_services()

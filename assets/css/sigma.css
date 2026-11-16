@@ -611,3 +611,18 @@ mark.a-completer { background: #fff1b8; color: #6b4f00; padding: 0 4px; border-r
 .service-cote .cote-contact h3 { font-size: 1.1rem; }
 .service-cote .cote-contact .btn { padding-block: 9px; }
 @media (max-height: 700px) { .service-cote-colle { position: static; } }
+
+/* Conseils et FAQ regroupés par lot */
+.lots-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 30px; }
+.lots-nav a { font: 600 .95rem var(--f-titre); padding: 7px 14px; border-radius: 99px; border: 1px solid var(--trait); background: var(--carte); color: var(--encre); text-decoration: none; }
+.lots-nav a:hover { border-color: var(--calque-texte); color: var(--calque-texte); }
+.lots-nav a span { color: var(--gris); font-weight: 500; margin-left: 4px; }
+.lot-conseils { scroll-margin-top: 96px; margin-bottom: 46px; }
+.lot-conseils h2 { margin-bottom: 18px; }
+.faq-lot { scroll-margin-top: 96px; margin: 34px 0 14px; font-size: 1.5rem; }
+.faq-lot:first-child { margin-top: 0; }
+.faq details p a { font-weight: 600; white-space: nowrap; }
+.conseils-lies { background: var(--carte); border: 1px solid var(--trait); border-radius: var(--rayon); padding: 22px 24px; display: grid; gap: 12px; }
+.conseils-lies h2 { margin: 0; font-size: 1.35rem; }
+.conseils-lies ul { columns: 2 280px; column-gap: 28px; display: block; }
+.conseils-lies li { break-inside: avoid; margin-bottom: 8px; }
