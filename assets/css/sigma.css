@@ -682,3 +682,28 @@ mark.a-completer { background: #fff1b8; color: #6b4f00; padding: 0 4px; border-r
   section { padding: 44px 0; }
   .entete-page + section { padding-top: 24px; }
 }
+
+/* Accès rapide sous le diaporama (téléphone) */
+.acces-rapide { display: none; }
+@media (max-width: 760px) {
+  .acces-rapide { display: block; background: var(--carte); border-bottom: 1px solid var(--trait); padding: 12px 0; }
+  .acces-rapide .conteneur { display: grid; grid-template-columns: 1fr 1.3fr 1fr; gap: 8px; }
+  .acces-rapide a { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 46px; padding: 6px 8px; border: 1px solid var(--trait); border-radius: var(--rayon); font: 600 .95rem var(--f-titre); color: var(--encre); text-decoration: none; text-align: center; line-height: 1.15; }
+  .acces-rapide a.principal { background: var(--calque); border-color: var(--calque); color: var(--sur-jaune); }
+}
+
+/* Encadré « En bref » en tête des pages service */
+.en-bref { background: var(--carte); border: 1px solid var(--trait); border-left: 4px solid var(--calque); border-radius: var(--rayon); padding: 22px 24px; display: grid; gap: 14px; }
+[dir="rtl"] .en-bref { border-left-width: 1px; border-right: 4px solid var(--calque); }
+.en-bref h2 { margin: 0; font-size: 1.4rem; }
+.en-bref ul { list-style: none; padding: 0; display: grid; gap: 10px; }
+.en-bref li { color: var(--gris); }
+.en-bref li b { color: var(--encre); }
+
+/* « Obtenir un devis » visible aussi sur ordinateur : menu un peu plus compact pour que tout tienne */
+@media (min-width: 961px) and (max-width: 1440px) {
+  .nav a.secondaire-nav { display: inline-block; }
+  .nav { gap: 2px; }
+  .nav a { padding-left: 9px; padding-right: 9px; }
+}
+@media (min-width: 961px) and (max-width: 1199px) { [dir="rtl"] .nav a.secondaire-nav { display: none; } [dir="rtl"] .nav a { padding-left: 7px; padding-right: 7px; } }
