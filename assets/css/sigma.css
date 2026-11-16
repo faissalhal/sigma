@@ -626,3 +626,13 @@ mark.a-completer { background: #fff1b8; color: #6b4f00; padding: 0 4px; border-r
 .conseils-lies h2 { margin: 0; font-size: 1.35rem; }
 .conseils-lies ul { columns: 2 280px; column-gap: 28px; display: block; }
 .conseils-lies li { break-inside: avoid; margin-bottom: 8px; }
+/* Téléphone et tablette : une seule colonne sur les pages service (cette règle doit rester après celle de l'ordinateur) */
+@media (max-width: 860px) {
+  .page-service { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .service-cote-colle { position: static; }
+  .service-cote .sommaire { display: flex; flex-wrap: wrap; gap: 6px; border-left: 0; border-right: 0; }
+  .service-cote .sommaire .repere { flex-basis: 100%; margin: 0 0 4px !important; }
+  .service-cote .sommaire a { margin: 0; padding: 6px 12px; border: 1px solid var(--trait); border-radius: 99px; background: var(--carte); font-size: .9rem; }
+  .service-cote .sommaire a[aria-current="page"] { border-color: var(--calque-texte); }
+  .conseils-lies ul { columns: 1; }
+}
