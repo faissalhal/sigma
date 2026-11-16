@@ -584,3 +584,10 @@ mark.a-completer { background: #fff1b8; color: #6b4f00; padding: 0 4px; border-r
   .article-cote .cote-contact { position: static; }
 }
 .autres .tous { list-style: none; margin-top: 4px; font-weight: 700; }
+
+/* Galeries des pages service : grande photo en tête, vignettes qui remplissent toujours la ligne */
+.contenu .visuels.galerie { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0 30px; }
+.contenu .visuels.galerie img { flex: 1 1 180px; min-width: 0; aspect-ratio: 4/3; box-shadow: 0 6px 18px rgba(0,0,0,.08); transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .3s; }
+.contenu .visuels.galerie img:first-child { flex-basis: 100%; aspect-ratio: 16/8; }
+.contenu .visuels.galerie img:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0,0,0,.16); }
+@media (max-width: 600px) { .contenu .visuels.galerie img { flex-basis: 40%; } .contenu .visuels.galerie img:first-child { flex-basis: 100%; aspect-ratio: 4/3; } }
