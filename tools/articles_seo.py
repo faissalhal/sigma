@@ -617,7 +617,7 @@ def build():
             {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": r}} for q, r in a["faq"]]}]}
         h = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + "</script>", h, count=1, flags=re.S)
         # fil d'Ariane, titre, chapeau
-        h = re.sub(r'(<div class="fil"><a href="index.html">Accueil</a> / <a href="conseils.html">Conseils</a> / )[^<]*(</div>)', lambda m: m.group(1) + esc(a["crumb"]) + m.group(2), h, count=1)
+        h = re.sub(r'(<div class="fil"><a href="index.html">Accueil</a> / <a href="conseils.html">Conseils</a> / )[^<]*(</div>)', lambda m: m.group(1) + f'<a href="conseils-{a["cat"]}.html">{esc(LOT_NOM[a["cat"]])}</a> / ' + esc(a["crumb"]) + m.group(2), h, count=1)
         h = re.sub(r"<h1>.*?</h1><p>.*?</p>", lambda m: f"<h1>{esc(a['title'])}</h1><p>{esc(a['lead'])}</p>", h, count=1, flags=re.S)
         # contenu de l'article
         faq = '<h2>Questions fréquentes</h2><div class="faq">' + "".join(f'<details><summary>{esc(q)}</summary><p>{esc(r)}</p></details>' for q, r in a["faq"]) + "</div>"
@@ -641,32 +641,108 @@ def build():
 def cartes_conseils():
     """{slug: carte HTML} pour tous les articles : ceux du script, plus les articles faits à la main déjà présents sur conseils.html."""
     c = open(os.path.join(ROOT, "conseils.html"), encoding="utf-8").read()
-    cartes = {m.group(1): m.group(0) for m in re.finditer(r'<a class="service" href="(conseil-[^"]+)\.html">.*?</a>', c, re.S)}
+    cartes = {m.group(1): m.group(0).replace(' en-plus"', '"', 1) for m in re.finditer(r'<a class="service(?: en-plus)?" href="(conseil-[^"]+)\.html">.*?</a>', c, re.S)}
     for a in ARTICLES:
         cartes[a["slug"]] = (f'<a class="service" href="{a["slug"]}.html"><img src="{a["img"]}" alt="" loading="lazy" width="750" height="600">\n'
                              f'  <div><span class="code">{esc(LOT_NOM[a["cat"]])} · {a["min"]} min</span><h3>{esc(a["title"])}</h3><p>{esc(a["lead"])}</p><span class="lire">Lire l\'article →</span></div></a>')
     return cartes
 
 
-def page_conseils():
-    cp = os.path.join(ROOT, "conseils.html"); c = open(cp, encoding="utf-8").read()
+# présentation de chaque thème (pages conseils-<lot>.html) et service lié
+LOT_INFO = {
+ "electricite": ("Normes NF C 15-100 et NM 06.1.100, tableau électrique, différentiels, prises, mise à la terre, photovoltaïque : les règles d'une installation électrique sûre au Maroc.", "service-CFA.html"),
+ "structure": ("Fondations, poteaux, poutres, planchers, béton et acier, règlement parasismique : comprendre la structure de votre maison avant et pendant le chantier.", "service-STRUCTURE.html"),
+ "plomberie": ("Diamètres, évacuations, chauffe-eau solaire, pression, fuites, assainissement : bien concevoir la plomberie d'une villa ou d'un riad.", "service-FD.html"),
+ "cvc": ("Climatisation, ventilation, chauffage et humidité : choisir et dimensionner les bons équipements pour le climat de Marrakech.", "service-FD.html"),
+ "thermique": ("Isolation, vitrages, orientation, protections solaires et facture d'électricité : construire une maison confortable en été comme en hiver.", "service-EGT.html"),
+ "incendie": ("Établissements recevant du public, hôtels, riads, parkings : détection, désenfumage, issues de secours et équipements de sécurité incendie.", "service-CSSI.html"),
+ "vrd": ("Lotissements, assainissement, branchements, voirie et eaux pluviales : les réseaux qui desservent un terrain ou un projet.", "service-VRD.html"),
+ "achat": ("Avant d'acheter une maison, un riad, un appartement neuf ou un terrain : ce qu'il faut vérifier, lot par lot, et ce que coûte une expertise.", "contact.html#formulaire"),
+ "reglementation": ("Permis de construire, bureau de contrôle, garanties, réception des travaux, contrats et prix : les démarches d'un projet de construction au Maroc.", "contact.html#formulaire"),
+}
+# parcours « Par où commencer ? » : (situation, phrase, article)
+PARCOURS = [("Je construis", "Budget, études et étapes d'une villa", "conseil-prix-construction-m2-maroc"),
+            ("J'achète", "La checklist avant de signer", "conseil-expertise-avant-achat-maison-checklist"),
+            ("Je rénove", "Par où commencer une rénovation", "conseil-renovation-maison-ancienne-par-ou-commencer"),
+            ("Mon électricité", "Les règles clés de la NF C 15-100", "conseil-norme-electrique-nf-c-15-100-maroc")]
+PAR_LOT = 6  # articles montrés par thème sur la page Conseils
+
+
+def _ordre_cartes():
     cartes = cartes_conseils()
     ordre = [a["slug"] for a in ARTICLES] + [k for k in cartes if k not in {a["slug"] for a in ARTICLES}]
-    nav, blocs = [], []
+    par_lot = {k: [x for x in ordre if x in cartes and CAT.get(x, "reglementation") == k] for k, _ in LOTS}
+    return cartes, par_lot
+
+
+def page_conseils():
+    cp = os.path.join(ROOT, "conseils.html"); c = open(cp, encoding="utf-8").read()
+    cartes, par_lot = _ordre_cartes()
+    total = sum(len(v) for v in par_lot.values())
+    titres = {a["slug"]: a["title"] for a in ARTICLES}
+    parcours = "".join(f'<a class="parcours" href="{slug}.html"><span>{esc(sit)}</span><b>{esc(txt)}</b></a>'
+                       for sit, txt, slug in PARCOURS if os.path.exists(os.path.join(ROOT, slug + ".html")))
+    nav = "".join(f'<a href="conseils-{k}.html" data-lot="{k}">{esc(nom)} <span>{len(par_lot[k])}</span></a>' for k, nom in LOTS if par_lot[k])
+    blocs = []
     for k, nom in LOTS:
-        lot = [cartes[x] for x in ordre if x in cartes and CAT.get(x, "reglementation") == k]
+        lot = par_lot[k]
         if not lot:
             continue
-        nav.append(f'<a href="#lot-{k}">{esc(nom)} <span>{len(lot)}</span></a>')
-        blocs.append(f'<div class="lot-conseils" id="lot-{k}"><h2>{esc(nom)}</h2><div class="grille-services">' + "".join(lot) + "</div></div>")
+        cards = "".join(cartes[x].replace('<a class="service"', '<a class="service en-plus"', 1) if i >= PAR_LOT else cartes[x] for i, x in enumerate(lot))
+        plus = f'<a class="voir-lot" href="conseils-{k}.html">Voir les {len(lot)} articles « {esc(nom)} » →</a>' if len(lot) > PAR_LOT else ""
+        blocs.append(f'<div class="lot-conseils" id="lot-{k}"><div class="lot-tete"><h2>{esc(nom)}</h2><a href="conseils-{k}.html">Tout le thème →</a></div>'
+                     f'<div class="grille-services">{cards}</div>{plus}</div>')
     bloc = ('<section><div class="conteneur"><!--lots-->'
-            f'<nav class="lots-nav" aria-label="Thèmes">{"".join(nav)}</nav>' + "".join(blocs) + "<!--/lots--></div></section>\n")
+            f'<div class="recherche-conseils"><label for="q-conseils">Rechercher parmi les {total} conseils</label>'
+            '<input id="q-conseils" type="search" placeholder="Ex. : prises, fondation, climatisation, achat riad…" autocomplete="off" data-recherche="#lots-conseils .service">'
+            '<p class="recherche-vide" hidden>Aucun article ne correspond. Essayez un autre mot, ou <a href="contact.html#formulaire">posez-nous la question</a>.</p></div>'
+            f'<h2 class="titre-parcours">Par où commencer ?</h2><div class="parcours-grille">{parcours}</div>'
+            f'<nav class="lots-nav" aria-label="Thèmes">{nav}</nav>'
+            f'<div id="lots-conseils">{"".join(blocs)}</div><!--/lots--></div></section>\n')
     if "<!--lots-->" in c:
         c = re.sub(r'<section><div class="conteneur"><!--lots-->.*?<!--/lots--></div></section>\n', lambda m: bloc, c, count=1, flags=re.S)
     else:
         c, n = re.subn(r'<section><div class="conteneur"><div class="grille-services">.*?</div></div></section>\n(?=</main>)', lambda m: bloc, c, count=1, flags=re.S)
         assert n == 1
     open(cp, "w", encoding="utf-8").write(c)
+    pages_themes(c, cartes, par_lot)
+
+
+def pages_themes(base, cartes, par_lot):
+    """Une page par thème (conseils-<lot>.html), construite sur le modèle de conseils.html."""
+    sp = os.path.join(ROOT, "sitemap.xml"); smap = open(sp, encoding="utf-8").read()
+    for k, nom in LOTS:
+        lot = par_lot[k]
+        if not lot:
+            continue
+        intro, service = LOT_INFO[k]
+        url = f"{DOMAIN}/conseils-{k}.html"
+        titre = f"Conseils {nom} : {len(lot)} guides pour votre projet au Maroc"
+        h = base
+        h = re.sub(r"<title>.*?</title>", f"<title>{esc(titre)} | SIGMA ICC</title>", h, count=1)
+        for prop in ("og:title",):
+            h = re.sub(rf'<meta property="{prop}" content="[^"]*">', f'<meta property="{prop}" content="{esc(titre)} | SIGMA ICC">', h, count=1)
+        h = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{esc(intro)}">', h, count=1)
+        h = re.sub(r'<meta property="og:description" content="[^"]*">', f'<meta property="og:description" content="{esc(intro)}">', h, count=1)
+        h = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{url}">', h, count=1)
+        h = re.sub(r'<meta property="og:url" content="[^"]*">', f'<meta property="og:url" content="{url}">', h, count=1)
+        h = re.sub(r'<div class="fil">.*?</div>', f'<div class="fil"><a href="index.html">Accueil</a> / <a href="conseils.html">Conseils</a> / {esc(nom)}</div>', h, count=1, flags=re.S)
+        h = re.sub(r"<h1>.*?</h1><p>.*?</p>", lambda m: f"<h1>{esc(nom)}</h1><p>{esc(intro)}</p>", h, count=1, flags=re.S)
+        nav = "".join(f'<a href="conseils-{x}.html"{" aria-current=\"page\"" if x == k else ""}>{esc(n)} <span>{len(par_lot[x])}</span></a>' for x, n in LOTS if par_lot[x])
+        lien_service = (f'<div class="encadre"><h3>Besoin d\'une étude pour votre projet ?</h3><p>SIGMA ICC réalise les études et le suivi de chantier, à Marrakech et partout au Maroc.</p>'
+                        f'<div class="actions"><a class="btn" href="contact.html#formulaire">Demander un devis</a><a class="btn secondaire" href="{service}">Voir le service</a></div></div>')
+        bloc = ('<section><div class="conteneur"><!--lots-->'
+                f'<div class="recherche-conseils"><label for="q-conseils">Rechercher dans « {esc(nom)} »</label>'
+                '<input id="q-conseils" type="search" placeholder="Tapez un mot-clé…" autocomplete="off" data-recherche="#lots-conseils .service">'
+                '<p class="recherche-vide" hidden>Aucun article ne correspond. <a href="conseils.html">Voir tous les thèmes</a>.</p></div>'
+                f'<nav class="lots-nav" aria-label="Thèmes">{nav}</nav>'
+                f'<div id="lots-conseils"><div class="lot-conseils"><div class="grille-services">{"".join(cartes[x] for x in lot)}</div></div></div>'
+                f'{lien_service}<!--/lots--></div></section>\n')
+        h = re.sub(r'<section><div class="conteneur"><!--lots-->.*?<!--/lots--></div></section>\n', lambda m: bloc, h, count=1, flags=re.S)
+        open(os.path.join(ROOT, f"conseils-{k}.html"), "w", encoding="utf-8").write(h)
+        if f"/conseils-{k}.html" not in smap:
+            smap = smap.replace(f"  <url><loc>{DOMAIN}/conseils.html</loc>", f"  <url><loc>{url}</loc><lastmod>{DATE}</lastmod><priority>0.8</priority></url>\n  <url><loc>{DOMAIN}/conseils.html</loc>", 1)
+    open(sp, "w", encoding="utf-8").write(smap)
 
 
 def page_faq():
@@ -681,7 +757,10 @@ def page_faq():
         qs += [a["faq"][0] for a in arts]
         nav.append(f'<a href="#faq-{k}">{esc(nom)}</a>')
         parts.append(f'<h2 class="faq-lot" id="faq-{k}">{esc(nom)}</h2><div class="faq">{items}</div>')
-    bloc = ('<!--faq-lots--><h2 class="faq-lot" id="faq-general">Questions générales</h2>'
+    bloc = ('<!--faq-lots--><div class="recherche-conseils"><label for="q-faq">Rechercher une question</label>'
+            '<input id="q-faq" type="search" placeholder="Ex. : différentiel, fosse septique, permis…" autocomplete="off" data-recherche=".faq-principal details">'
+            '<p class="recherche-vide" hidden>Aucune question ne correspond. <a href="contact.html#formulaire">Posez-nous la vôtre</a>.</p></div>'
+            '<h2 class="faq-lot" id="faq-general">Questions générales</h2>'
             f'<nav class="lots-nav" aria-label="Thèmes de la FAQ">{"".join(nav)}</nav><!--/faq-lots-->')
     suite = "<!--faq-lots-suite-->" + "".join(parts) + "<!--/faq-lots-suite-->"
     h = re.sub(r"<!--faq-lots-->.*?<!--/faq-lots-->", "", h, flags=re.S)
@@ -710,7 +789,7 @@ def liens_services():
         arts = [a for a in ARTICLES if a["cat"] in lots] + ([a for a in ARTICLES if a["slug"] == "conseil-bim-avantages-projet"] if k == "BIM" else [])
         if arts:
             li = "".join(f'<li><a href="{a["slug"]}.html">{esc(a["title"])}</a></li>' for a in arts[:12])
-            bloc = f'<!--conseils-lies--><div class="conseils-lies"><h2>Nos conseils sur ce sujet</h2><ul>{li}</ul><a class="lien-fleche" href="conseils.html#lot-{lots[0] if lots else "reglementation"}">Tous les conseils →</a></div><!--/conseils-lies-->'
+            bloc = f'<!--conseils-lies--><div class="conseils-lies"><h2>Nos conseils sur ce sujet</h2><ul>{li}</ul><a class="lien-fleche" href="conseils-{lots[0] if lots else "reglementation"}.html">Tous les conseils du thème →</a></div><!--/conseils-lies-->'
             i = h.index('<div class="encadre"><h3>Intéressé par ce service ?</h3>')
             h = h[:i] + bloc + h[i:]
         open(p, "w", encoding="utf-8").write(h)
@@ -721,7 +800,7 @@ def apply_layout():
     (sommaire, contact, autres articles). Sur téléphone, la colonne passe sous l'article. S'applique à tous les articles
     « Conseils », anciens et nouveaux ; la colonne est reconstruite à chaque passage (liste des articles à jour)."""
     import glob
-    cards = re.findall(r'<a class="service" href="(conseil-[^"]+)">.*?<h3>(.*?)</h3>', open(os.path.join(ROOT, "conseils.html"), encoding="utf-8").read(), re.S)
+    cards = re.findall(r'<a class="service(?: en-plus)?" href="(conseil-[^"]+)">.*?<h3>(.*?)</h3>', open(os.path.join(ROOT, "conseils.html"), encoding="utf-8").read(), re.S)
     for f in sorted(glob.glob(os.path.join(ROOT, "conseil-*.html"))):
         h = open(f, encoding="utf-8").read()
         # page déjà mise en page : on retire l'ancienne colonne pour la reconstruire (liste des articles à jour)
@@ -740,7 +819,7 @@ def apply_layout():
         moi = CAT.get(name[:-5], "reglementation")
         cands = [c for c in cards if c[0] != name]
         cands = [c for c in cands if CAT.get(c[0][:-5]) == moi] + [c for c in cands if CAT.get(c[0][:-5]) != moi]
-        autres = "".join(f'<li><a href="{u}">{t}</a></li>' for u, t in cands[:6]) + '<li class="tous"><a href="conseils.html">Tous les conseils →</a></li>'
+        autres = "".join(f'<li><a href="{u}">{t}</a></li>' for u, t in cands[:6]) + f'<li class="tous"><a href="conseils-{moi}.html">Tous les conseils « {esc(LOT_NOM[moi])} » →</a></li>'
         aside = (f'<aside class="article-cote">'
                  f'<div class="cote-carte"><h3>Sommaire</h3><ol class="sommaire">{sommaire}</ol></div>'
                  f'<div class="cote-carte"><h3>Autres conseils</h3><ul class="autres">{autres}</ul></div>'

@@ -160,4 +160,28 @@
         });
     });
   });
+
+  // Recherche instantanée (page Conseils, pages par thème, FAQ) : champ <input data-recherche="sélecteur des éléments">
+  document.querySelectorAll("input[data-recherche]").forEach(function (champ) {
+    var items = Array.prototype.slice.call(document.querySelectorAll(champ.getAttribute("data-recherche")));
+    var vide = champ.parentElement.querySelector(".recherche-vide");
+    var norme = function (t) { return (t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); };
+    var textes = items.map(function (el) { return norme(el.textContent); });
+    champ.addEventListener("input", function () {
+      var mots = norme(champ.value).split(/\s+/).filter(Boolean), n = 0;
+      document.body.classList.toggle("recherche-active", mots.length > 0);
+      items.forEach(function (el, i) {
+        var ok = mots.every(function (m) { return textes[i].indexOf(m) >= 0; });
+        el.hidden = !ok; if (ok) { n++; el.classList.remove("rv-cache"); }
+      });
+      // groupes vides masqués (thèmes de la page Conseils, parties de la FAQ)
+      document.querySelectorAll(".lot-conseils, .faq-principal .faq").forEach(function (g) {
+        var reste = g.querySelector(".service:not([hidden]), details:not([hidden])");
+        g.hidden = mots.length > 0 && !reste;
+        var titre = g.previousElementSibling;
+        if (titre && titre.classList.contains("faq-lot")) titre.hidden = g.hidden;
+      });
+      if (vide) vide.hidden = !(mots.length && n === 0);
+    });
+  });
 })();
