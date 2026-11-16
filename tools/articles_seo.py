@@ -760,8 +760,8 @@ def page_faq():
     bloc = ('<!--faq-lots--><div class="recherche-conseils"><label for="q-faq">Rechercher une question</label>'
             '<input id="q-faq" type="search" placeholder="Ex. : différentiel, fosse septique, permis…" autocomplete="off" data-recherche=".faq-principal details">'
             '<p class="recherche-vide" hidden>Aucune question ne correspond. <a href="contact.html#formulaire">Posez-nous la vôtre</a>.</p></div>'
-            '<h2 class="faq-lot" id="faq-general">Questions générales</h2>'
-            f'<nav class="lots-nav" aria-label="Thèmes de la FAQ">{"".join(nav)}</nav><!--/faq-lots-->')
+            f'<nav class="lots-nav" aria-label="Thèmes de la FAQ"><a href="#faq-general">Questions générales</a>{"".join(nav)}</nav>'
+            '<h2 class="faq-lot" id="faq-general">Questions générales</h2><!--/faq-lots-->')
     suite = "<!--faq-lots-suite-->" + "".join(parts) + "<!--/faq-lots-suite-->"
     h = re.sub(r"<!--faq-lots-->.*?<!--/faq-lots-->", "", h, flags=re.S)
     h = re.sub(r"<!--faq-lots-suite-->.*?<!--/faq-lots-suite-->", "", h, flags=re.S)

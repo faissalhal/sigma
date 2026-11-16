@@ -184,4 +184,17 @@
       if (vide) vide.hidden = !(mots.length && n === 0);
     });
   });
+
+  // Boutons flottants : cachés pendant le défilement vers le bas, visibles en remontant ou à l'arrêt
+  (function () {
+    var dernier = window.scrollY, minuterie;
+    window.addEventListener("scroll", function () {
+      var y = window.scrollY;
+      if (y > dernier + 6 && y > 200) document.body.classList.add("flottants-caches");
+      else if (y < dernier - 6) document.body.classList.remove("flottants-caches");
+      dernier = y;
+      clearTimeout(minuterie);
+      minuterie = setTimeout(function () { document.body.classList.remove("flottants-caches"); }, 1400);
+    }, { passive: true });
+  })();
 })();
