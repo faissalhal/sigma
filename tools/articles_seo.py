@@ -538,6 +538,17 @@ for _a in ARTICLES:
     _a.setdefault("cat", CAT.get(_a["slug"], "reglementation"))
 
 
+# photos du site réservées à un seul article (les autres articles ont leur image dans images/conseils/)
+IMG_CHOISIE = {"conseil-prix-piscine-maroc": "images/projects/villa2.jpg",
+               "conseil-controle-ferraillage-avant-coulage": "images/service_img3.jpg",
+               "conseil-poutre-portee-retombee": "images/services/beton-poutre.jpg",
+               "conseil-surelevation-ajouter-etage-maroc": "images/projects/riad4.jpg",
+               "conseil-delai-decoffrage-dalle-poteaux": "images/services/maison-beton.jpg",
+               "conseil-prix-construction-m2-maroc": "images/villa-finie.jpg"}
+# lots dont chaque article a déjà son image unique (contrôlé à chaque génération)
+LOTS_IMAGES_UNIQUES = {"structure"}
+
+
 def charger_lots():
     """Ajoute les articles des fichiers tools/articles/<lot>.py (une liste ARTICLES par fichier)."""
     import glob, importlib.util
@@ -553,6 +564,28 @@ def charger_lots():
             vus.add(a["slug"]); ARTICLES.append(a); CAT[a["slug"]] = a["cat"]
     for a in ARTICLES:
         CAT[a["slug"]] = a["cat"]
+        # une image propre à chaque article : images/conseils/<slug>.jpg, sinon une photo du site choisie pour lui
+        propre = f"images/conseils/{a['slug']}.jpg"
+        if os.path.exists(os.path.join(ROOT, propre)):
+            a["img"] = propre
+        elif a["slug"] in IMG_CHOISIE:
+            a["img"] = IMG_CHOISIE[a["slug"]]
+    import collections
+    # les images réservées aux lots déjà traités ne doivent apparaître nulle part ailleurs : les autres articles
+    # (lots pas encore illustrés un par un) prennent provisoirement une photo générique non réservée
+    reservees = {a["img"] for a in ARTICLES if a["cat"] in LOTS_IMAGES_UNIQUES}
+    secours = [x for x in ["images/projects/project1.jpg", "images/projects/project2.jpg", "images/projects/project3.jpg",
+               "images/projects/project4.jpg", "images/projects/project5.jpg", "images/projects/project6.jpg",
+               "images/projects/villa1.jpg", "images/projects/riad1.jpg", "images/projects/riad2.jpg", "images/projects/riad3.jpg",
+               "images/villa-technique.jpg", "images/villa-finie.jpg"] if x not in reservees]
+    k = 0
+    for a in ARTICLES:
+        if a["cat"] not in LOTS_IMAGES_UNIQUES and a["img"] in reservees:
+            a["img"] = secours[k % len(secours)]; k += 1
+    usage = collections.Counter(a["img"] for a in ARTICLES)
+    for a in ARTICLES:
+        if a["cat"] in LOTS_IMAGES_UNIQUES and usage[a["img"]] > 1:
+            raise SystemExit(f"image en double : {a['img']} ({[b['slug'] for b in ARTICLES if b['img'] == a['img']]})")
 
 
 def esc(s):
