@@ -6,7 +6,7 @@ ARTICLES = [
  "cat": "vrd",
  "title": "VRD d'un lotissement au Maroc : les étapes, des études à la réception",
  "crumb": "VRD d'un lotissement",
- "desc": "VRD d'un lotissement au Maroc : autorisation de lotir (loi 25-90, modifiée par la loi 34-21), études, ordre des travaux, réception provisoire sous 45 jours puis définitive.",
+ "desc": "VRD d'un lotissement au Maroc : autorisation de lotir (loi 25-90 et loi 34-21), études, ordre des travaux, réception provisoire puis définitive.",
  "lead": "Voirie, assainissement, eau, électricité, éclairage, télécoms : l'ordre logique des études et des travaux d'un lotissement, et ce qui conditionne la vente des lots.",
  "img": "images/services/vrd3.jpg",
  "min": 6,
@@ -55,7 +55,7 @@ ARTICLES = [
  "cat": "vrd",
  "title": "Assainissement unitaire ou séparatif : différences et choix au Maroc",
  "crumb": "Unitaire ou séparatif",
- "desc": "Réseau unitaire ou séparatif : principe, avantages, cas de Marrakech (réseau majoritairement unitaire), diamètres et vitesses d'autocurage (0,6 à 0,75 m/s) et raccordement.",
+ "desc": "Réseau unitaire ou séparatif : principe, avantages, cas de Marrakech (réseau surtout unitaire), diamètres et vitesse d'autocurage de 0,6 à 0,75 m/s.",
  "lead": "Un tuyau pour tout ou deux réseaux distincts : ce que change le choix entre assainissement unitaire et séparatif, pour un lotissement comme pour une villa.",
  "img": "images/services/vrd4.jpg",
  "min": 5,
@@ -95,14 +95,13 @@ ARTICLES = [
  "cat": "vrd",
  "title": "Branchement eau et électricité à Marrakech : de la Radeema à la SRM",
  "crumb": "Branchements eau et électricité",
- "desc": "Branchement eau et électricité d'une construction à Marrakech : la SRM Marrakech-Safi a remplacé la Radeema en 2024. Pièces, étapes, devis, délais et points à préparer.",
+ "desc": "Branchement eau et électricité à Marrakech : la SRM Marrakech-Safi a remplacé la Radeema fin 2024. Étapes, pièces, devis et erreurs à éviter.",
  "lead": "Qui contacter, quelles pièces préparer et quelles erreurs éviter pour obtenir les branchements d'eau potable, d'assainissement et d'électricité d'une villa ou d'un immeuble.",
  "img": "images/services/vrd5.jpg",
  "min": 5,
  "body": """
 <p>À Marrakech, les branchements d'eau, d'électricité et d'assainissement se demandent aujourd'hui à la <b>Société régionale multiservices (SRM) Marrakech-Safi</b>. Lancée en novembre 2024 dans le cadre de la loi 83-21, elle a repris les activités de la Radeema à Marrakech, de la Radees à Safi et de l'ONEE (distribution) dans la région. Le principe reste le même qu'avant : une demande appuyée sur l'autorisation de construire, une étude du distributeur, un devis à régler, puis les travaux de branchement et la pose des compteurs.</p>
-<h2>Qui est votre distributeur ?</h2>
-<p>Le distributeur dépend de la ville. La réforme des SRM s'étend progressivement : plusieurs régions disposaient déjà de leur société régionale fin 2025. Ailleurs, vous pouvez encore avoir affaire à l'ONEE ou à un délégataire. Vérifiez auprès de la commune ou sur votre facture de voisinage avant de constituer le dossier.</p>
+<p><b>Qui est votre distributeur ?</b> Le distributeur dépend de la ville. La réforme des SRM s'étend progressivement : plusieurs régions disposaient déjà de leur société régionale fin 2025. Ailleurs, vous pouvez encore avoir affaire à l'ONEE ou à un délégataire. Vérifiez auprès de la commune ou sur votre facture de voisinage avant de constituer le dossier.</p>
 <h2>Les étapes d'un branchement</h2>
 <ol>
 <li><b>Dépôt de la demande</b> à l'agence commerciale, avec les pièces du dossier.</li>
@@ -147,7 +146,7 @@ ARTICLES = [
  "cat": "vrd",
  "title": "Station de relevage des eaux usées : quand en installer une et comment",
  "crumb": "Station de relevage",
- "desc": "Station ou poste de relevage : quand il est indispensable (sous-sol, terrain plus bas que l'égout), composition, refoulement DN 80 avec WC, clapet, alarme, entretien et erreurs.",
+ "desc": "Station de relevage : quand elle est indispensable (sous-sol, terrain sous l'égout), pompe, refoulement de 80 mm avec WC, clapet, alarme et entretien.",
  "lead": "Quand l'égout public est plus haut que vos évacuations, la gravité ne suffit plus : voici comment fonctionne une station de relevage et comment bien la concevoir.",
  "img": "images/service_img1.jpg",
  "min": 5,
@@ -192,7 +191,7 @@ ARTICLES = [
  "cat": "vrd",
  "title": "Structure de chaussée : couches, épaisseurs et erreurs à éviter",
  "crumb": "Structure de chaussée",
- "desc": "Structure d'une chaussée de lotissement : plateforme, couche de forme, fondation, base, roulement. Ordres de grandeur d'épaisseur, compactage, pentes de 2 % et contrôles.",
+ "desc": "Structure de chaussée de lotissement : couche de forme, fondation, base et roulement, ordres de grandeur d'épaisseur, compactage, pente de 2 %, contrôles.",
  "lead": "Une voirie qui se déforme au bout de deux hivers a presque toujours un défaut sous l'enrobé. Voici comment est construite une chaussée et ce qu'il faut contrôler.",
  "img": "images/services/vrd4.jpg",
  "min": 5,
@@ -235,7 +234,7 @@ ARTICLES = [
  "cat": "vrd",
  "title": "Éclairage public d'un lotissement : niveaux, mâts, LED et réseau",
  "crumb": "Éclairage public",
- "desc": "Éclairage public de lotissement : classes de la norme EN 13201 (P1 15 lux à P6 2 lux), choix des luminaires LED, mâts, réseau enterré, armoire de commande et réception.",
+ "desc": "Éclairage public de lotissement : classes EN 13201 (de 2 lux en P6 à 15 lux en P1), luminaires LED, mâts, réseau enterré, armoire et réception.",
  "lead": "Combien de lux dans une rue résidentielle, quels candélabres, comment alimenter le réseau : les repères pour concevoir l'éclairage public d'un lotissement.",
  "img": "images/services/vrd5.jpg",
  "min": 5,
@@ -256,6 +255,7 @@ ARTICLES = [
 <li><b>Implantation</b> : unilatérale pour une voie étroite, en quinconce ou bilatérale pour une voie plus large ; attention aux arbres qui masqueront les luminaires en grandissant.</li>
 <li><b>Uniformité</b> : un bon projet évite l'alternance de zones très éclairées et de zones sombres, plus gênante qu'un niveau moyen un peu plus faible.</li>
 </ul>
+<p>Un exemple : pour une rue résidentielle de lotissement, le calcul photométrique compare plusieurs combinaisons de hauteur de mât, de puissance et d'espacement, puis retient celle qui atteint le niveau requis avec le moins de points lumineux. Quelques mètres gagnés sur l'interdistance, répétés sur tout un lotissement, représentent des dizaines de mâts, de massifs et de luminaires en moins, et autant de maintenance économisée.</p>
 <h2>Le réseau électrique d'éclairage</h2>
 <ol>
 <li>Une <b>armoire de commande</b> raccordée au réseau du distributeur, avec comptage, protections et horloge astronomique ou cellule.</li>
@@ -264,7 +264,7 @@ ARTICLES = [
 <li>Des <b>massifs béton</b> adaptés à la hauteur du mât et au vent.</li>
 </ol>
 <h2>Réception et exploitation</h2>
-<p>À la réception du lotissement, la commune ou son gestionnaire vérifie les niveaux d'éclairement, le bon fonctionnement de l'armoire, les essais d'isolement et les plans de récolement. Un réseau livré sans plans précis devient vite un casse-tête de maintenance.</p>
+<p>À la réception du lotissement, la commune ou son gestionnaire vérifie les niveaux d'éclairement, le bon fonctionnement de l'armoire, les essais d'isolement et les plans de récolement. Un réseau livré sans plans précis devient vite un casse-tête de maintenance. Demandez aussi les fiches techniques des luminaires et les garanties : elles serviront lors des remplacements.</p>
 <h2>Le rôle du bureau d'études</h2>
 <p>Le bureau d'études réalise le calcul photométrique, choisit les luminaires, dimensionne les câbles et les protections, positionne les mâts en cohérence avec la <a href="conseil-voirie-chaussee-structure.html">voirie</a> et les plantations, et prépare le dossier soumis au gestionnaire du réseau.</p>
 """,
@@ -279,7 +279,7 @@ ARTICLES = [
  "cat": "vrd",
  "title": "Drainage d'un terrain et eaux pluviales : solutions pour votre maison",
  "crumb": "Drainage et eaux pluviales",
- "desc": "Drainage et eaux pluviales d'une maison au Maroc : pentes du terrain, drain périphérique de 100 mm, pente 0,3 à 1 %, regards, infiltration et rétention face aux orages.",
+ "desc": "Eaux pluviales et drainage d'une maison au Maroc : pentes, drain de 100 mm posé à 0,3 à 1 %, regards, infiltration et rétention face aux orages.",
  "lead": "À Marrakech, il pleut peu mais fort : quelques orages suffisent à inonder un sous-sol ou une piscine. Voici comment gérer l'eau de pluie sur une parcelle.",
  "img": "images/service_img1.jpg",
  "min": 5,
@@ -321,7 +321,7 @@ ARTICLES = [
  "cat": "vrd",
  "title": "Tranchées et réseaux enterrés : profondeurs, grillages et distances",
  "crumb": "Tranchées et réseaux",
- "desc": "Réseaux enterrés : profondeurs indicatives (eau 0,80 à 1 m, électricité 0,60 à 0,85 m), lit de sable, grillage avertisseur à 20-30 cm, couleurs, blindage au-delà de 1,30 m.",
+ "desc": "Réseaux enterrés : profondeurs indicatives (eau 0,80 à 1 m, électricité 0,60 à 0,85 m), grillage à 20-30 cm, couleurs, blindage au-delà de 1,30 m.",
  "lead": "À quelle profondeur poser l'eau, l'électricité, les télécoms et l'assainissement, comment les signaler et comment éviter qu'une tranchée devienne dangereuse.",
  "img": "images/services/vrd3.jpg",
  "min": 5,
@@ -364,7 +364,7 @@ ARTICLES = [
  "cat": "incendie",
  "title": "Sécurité incendie des ERP au Maroc : ce qu'impose le décret 2-14-499",
  "crumb": "Sécurité incendie des ERP",
- "desc": "Sécurité incendie au Maroc : le décret 2-14-499 du 15 octobre 2014, classement des bâtiments, IGH (28 m, 50 m en habitation), validation par BET agréé et démarches.",
+ "desc": "Sécurité incendie au Maroc : décret 2-14-499 du 15 octobre 2014, classement, IGH au-delà de 28 m (50 m en habitation), validation par un BET agréé.",
  "lead": "Restaurant, clinique, école, hôtel, commerce : comment le règlement marocain de sécurité incendie s'applique à votre projet et à quel moment il faut s'en occuper.",
  "img": "images/services/cssi1.jpg",
  "min": 6,
@@ -410,7 +410,7 @@ ARTICLES = [
  "cat": "incendie",
  "title": "Détection incendie d'un hôtel, riad ou maison d'hôtes : le guide",
  "crumb": "Détection hôtel et riad",
- "desc": "Détection incendie d'un hôtel, riad ou maison d'hôtes au Maroc : décrets 2-14-499 et 2-22-867, détecteurs, déclencheurs manuels, alarme, BAEH et points sensibles d'un riad.",
+ "desc": "Détection incendie d'un hôtel, riad ou maison d'hôtes : décrets 2-14-499 et 2-22-867, détecteurs, déclencheurs, alarme et points faibles d'un riad.",
  "lead": "Des personnes qui dorment, souvent dans un bâtiment ancien aux escaliers étroits : l'hébergement touristique est le cas où la détection précoce sauve le plus de vies.",
  "img": "images/services/incendie-alarme.jpg",
  "min": 6,
@@ -457,7 +457,7 @@ ARTICLES = [
  "cat": "incendie",
  "title": "Extincteurs : combien en installer, quel type choisir, quel entretien",
  "crumb": "Extincteurs",
- "desc": "Extincteurs : repère d'un appareil à eau pulvérisée de 6 L pour 200 m² et un par niveau, 15 m maximum à parcourir, CO2 près des tableaux, classe F en cuisine, entretien annuel.",
+ "desc": "Extincteurs : un appareil à eau de 6 L pour 200 m² et au moins un par niveau, 15 m maximum à parcourir, CO2 près des tableaux, entretien annuel.",
  "lead": "Le bon nombre, le bon type au bon endroit et une vérification chaque année : les règles simples pour équiper une maison, un commerce ou un hôtel.",
  "img": "images/services/cssi2.jpg",
  "min": 5,
@@ -477,6 +477,7 @@ ARTICLES = [
 <li><b>Un appareil adapté à proximité de chaque risque particulier</b> : tableau électrique, cuisine, groupe électrogène, local de stockage.</li>
 <li><b>Protégés</b> du soleil direct et de la chaleur extrême, notamment sur les terrasses à Marrakech.</li>
 </ul>
+<p>Évitez les erreurs classiques : extincteur posé au sol derrière une porte, appareil à eau placé comme seul moyen près d'un tableau électrique, petit extincteur de voiture pour toute une cuisine de restaurant, ou appareils regroupés dans un local fermé à clé. Un extincteur doit pouvoir être saisi en quelques secondes par la première personne qui voit le feu.</p>
 <h2>Exemple</h2>
 <p>Pour un riad de 3 niveaux de 150 m² chacun transformé en maison d'hôtes, on prévoira au minimum un extincteur à eau pulvérisée par niveau, un CO2 près du tableau électrique, un appareil adapté en cuisine et, si un groupe électrogène ou une citerne de gaz existe, un appareil à poudre à proximité. Le nombre final dépend aussi des distances à parcourir et de la configuration des lieux.</p>
 <h2>L'entretien</h2>
@@ -502,7 +503,7 @@ ARTICLES = [
  "cat": "incendie",
  "title": "Désenfumage naturel ou mécanique : principe, choix et entretien",
  "crumb": "Désenfumage",
- "desc": "Désenfumage naturel ou mécanique : pourquoi la fumée tue, exutoires et amenées d'air (repère 1/200 de la surface en ERP), ventilateurs, commandes, choix et maintenance.",
+ "desc": "Désenfumage naturel ou mécanique : principe, exutoires et amenées d'air (repère 1/200 de la surface en ERP), ventilateurs, commandes et entretien.",
  "lead": "Dans un incendie, c'est la fumée qui tue le plus. Le désenfumage garde les escaliers et les couloirs praticables le temps de l'évacuation.",
  "img": "images/services/ventilation.jpg",
  "min": 5,
@@ -545,9 +546,9 @@ ARTICLES = [
 {
  "slug": "conseil-issues-de-secours-degagements",
  "cat": "incendie",
- "title": "Issues de secours et dégagements : nombre, largeur et unités de passage",
+ "title": "Issues de secours et dégagements : nombre, largeur, unités de passage",
  "crumb": "Issues de secours",
- "desc": "Issues de secours : unité de passage de 0,60 m, largeurs de 0,90 m et 1,40 m, nombre de sorties selon l'effectif (19, 50, 100, 200 personnes), portes et balisage. Repères.",
+ "desc": "Issues de secours : unité de passage de 0,60 m, largeurs de 0,90 m et 1,40 m, nombre de sorties selon l'effectif (19, 50, 100, 200 personnes).",
  "lead": "Combien de sorties, de quelle largeur, et où les placer : la logique de calcul des dégagements d'un restaurant, d'un commerce ou d'un hôtel.",
  "img": "images/services/cssi1.jpg",
  "min": 5,
@@ -593,9 +594,9 @@ ARTICLES = [
 {
  "slug": "conseil-ria-colonne-seche-sprinkler",
  "cat": "incendie",
- "title": "RIA, colonne sèche, sprinkler : quelles différences et quand en prévoir ?",
+ "title": "RIA, colonne sèche, sprinkler : différences et cas d'usage",
  "crumb": "RIA, colonne sèche, sprinkler",
- "desc": "RIA (DN 25 ou 33, tuyau de 20 ou 30 m), colonne sèche pour les pompiers, sprinkler qui s'ouvre vers 68 °C : rôle de chacun, cas d'usage, alimentation en eau et entretien.",
+ "desc": "RIA (DN 25 ou 33, tuyau de 20 ou 30 m), colonne sèche réservée aux pompiers, sprinkler qui s'ouvre à 68 °C : rôle, cas d'usage, réserve d'eau, entretien.",
  "lead": "Trois équipements à eau souvent confondus : l'un pour le personnel, l'autre pour les pompiers, le troisième qui agit tout seul.",
  "img": "images/services/cssi2.jpg",
  "min": 5,
@@ -617,8 +618,7 @@ ARTICLES = [
 <p>Elle comprend un raccord d'alimentation en façade, accessible aux engins, une canalisation verticale vide et des prises à chaque étage, généralement dans les escaliers protégés. Vide en temps normal, elle ne gèle pas et ne fuit pas, mais elle doit être éprouvée périodiquement. Les seuils de hauteur à partir desquels elle est exigée diffèrent selon les règlements : retenez ceux du texte marocain pour votre projet.</p>
 <h2>Le sprinkler</h2>
 <p>Chaque tête est fermée par une ampoule de verre remplie de liquide ; sous l'effet de la chaleur, le liquide se dilate et l'ampoule éclate. La couleur indique la température de déclenchement : orange 57 °C, <b>rouge 68 °C</b> (la plus courante), jaune 79 °C, vert 93 °C. Seules les têtes proches du foyer s'ouvrent : le reste du bâtiment n'est pas inondé, contrairement à une idée répandue. La conception suit des référentiels comme la norme EN 12845 ou la règle APSAD R1.</p>
-<h2>L'eau, nerf de la guerre</h2>
-<p>À Marrakech comme ailleurs, la pression et le débit du réseau public ne suffisent pas toujours, et les coupures existent. Une réserve d'eau incendie et un groupe de pompage, avec une alimentation électrique secourue, sont souvent nécessaires. Le volume et le débit se calculent dans l'étude.</p>
+<p><b>L'eau, nerf de la guerre.</b> À Marrakech comme ailleurs, la pression et le débit du réseau public ne suffisent pas toujours, et les coupures existent. Une réserve d'eau incendie et un groupe de pompage, avec une alimentation électrique secourue, sont souvent nécessaires. Le volume et le débit se calculent dans l'étude.</p>
 <h2>Le rôle du bureau d'études</h2>
 <p>Le bureau d'études détermine les moyens d'extinction exigés, dimensionne les réseaux, la réserve et les pompes, coordonne avec la plomberie et la structure (poids des bâches, passages) et rédige les cahiers des charges. Voir aussi les <a href="conseil-extincteurs-nombre-type-entretien.html">extincteurs</a> et les <a href="conseil-reservoir-eau-citerne-maison.html">réservoirs d'eau</a>.</p>
 """,
@@ -634,7 +634,7 @@ ARTICLES = [
  "cat": "incendie",
  "title": "Éclairage de sécurité et BAES : règles d'implantation et d'entretien",
  "crumb": "Éclairage de sécurité",
- "desc": "Éclairage de sécurité : BAES d'évacuation de 45 lumens et 1 h d'autonomie tous les 15 m, ambiance 5 lm/m², BAEH pour les chambres, blocs SATI autotestables et entretien.",
+ "desc": "Éclairage de sécurité : BAES de 45 lumens et 1 h d'autonomie tous les 15 m, ambiance 5 lm/m², BAEH pour les chambres, blocs SATI, entretien.",
  "lead": "Quand le courant coupe en plein incendie, les blocs de secours sont la seule chose qui guide les occupants vers la sortie. Voici comment les implanter.",
  "img": "images/services/incendie-alarme.jpg",
  "min": 5,
@@ -654,6 +654,7 @@ ARTICLES = [
 <li>Des blocs alimentés par le <b>même circuit</b> que l'éclairage normal du local, pour qu'ils s'allument quand cet éclairage tombe en panne.</li>
 <li>Dans un riad, des blocs encastrés ou des modèles discrets existent ; la discrétion ne doit jamais l'emporter sur la visibilité.</li>
 </ul>
+<p>Dans les escaliers, il est d'usage de baliser chaque palier ; dans les grandes salles, les blocs d'ambiance sont répartis pour éclairer le sol de façon homogène et éviter les zones d'ombre. Les pictogrammes suivent un modèle normalisé (personnage courant vers une porte, flèche de direction) et doivent rester lisibles à distance, sans être masqués par une enseigne, un rideau ou une décoration.</p>
 <h2>Choisir des blocs autotestables</h2>
 <p>Les blocs <b>SATI</b> (système automatique de test intégré) testent eux-mêmes leur lampe et leur batterie et signalent un défaut par un voyant. Ils facilitent fortement l'entretien et sont aujourd'hui le choix standard. Dans les grands bâtiments, des systèmes adressables remontent les défauts sur un poste central.</p>
 <h2>L'entretien</h2>
@@ -675,9 +676,9 @@ ARTICLES = [
 {
  "slug": "conseil-ssi-categorie-a-b-c",
  "cat": "incendie",
- "title": "SSI catégorie A, B, C, D ou E : comprendre le système de sécurité incendie",
+ "title": "SSI catégorie A, B, C, D ou E : comprendre le système incendie",
  "crumb": "Catégories de SSI",
- "desc": "Système de sécurité incendie (SSI) : catégories A à E, détection automatique, CMSI, équipements d'alarme de type 1 à 4, normes NF S 61-931 et 61-970, choix et maintenance.",
+ "desc": "Système de sécurité incendie (SSI) : catégories A à E, détection automatique, CMSI, équipements d'alarme de type 1 à 4, choix et maintenance.",
  "lead": "Le SSI est le cerveau de la sécurité incendie d'un bâtiment. Sa catégorie, de A à E, fixe ce qu'il détecte, ce qu'il déclenche et comment il alerte.",
  "img": "images/services/cssi1.jpg",
  "min": 5,
