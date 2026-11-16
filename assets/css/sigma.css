@@ -564,3 +564,23 @@ mark.a-completer { background: #fff1b8; color: #6b4f00; padding: 0 4px; border-r
 .fond-carte .texte-seo { max-width: 900px; margin: 48px auto 0; }
 .liste-seo { padding-left: 1.1em; }
 .liste-seo li { margin: .4em 0; }
+
+/* Articles « Conseils » : article + colonne latérale qui reste visible (sommaire, contact, autres articles) */
+.article-grille { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 48px; align-items: stretch; }
+.article-grille .contenu { max-width: none; }
+.article-cote { display: flex; flex-direction: column; gap: 18px; }
+.article-cote .cote-contact { position: sticky; top: 96px; }
+.cote-carte { background: var(--carte); border: 1px solid var(--trait); border-radius: var(--rayon); padding: 20px 22px; display: grid; gap: 10px; }
+.cote-carte h3 { font: 600 1.2rem var(--f-titre); margin: 0; }
+.cote-carte p { color: var(--gris); margin: 0; font-size: .95rem; }
+.sommaire, .autres { margin: 0; padding-inline-start: 1.2em; display: grid; gap: 8px; font-size: .95rem; }
+.sommaire a, .autres a { color: inherit; text-decoration: none; }
+.sommaire a:hover, .autres a:hover { text-decoration: underline; }
+.cote-contact { background: var(--calque-fond); border-color: transparent; }
+.cote-contact .btn { justify-content: center; text-align: center; }
+.cote-tel { font-weight: 700; text-align: center; color: inherit; }
+@media (max-width: 980px) {
+  .article-grille { grid-template-columns: 1fr; }
+  .article-cote .cote-contact { position: static; }
+}
+.autres .tous { list-style: none; margin-top: 4px; font-weight: 700; }

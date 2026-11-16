@@ -261,6 +261,262 @@ ARTICLES = [
          ("Quel dosage pour une dalle en béton armé ?", "Une dalle en béton armé est généralement dosée à 350 kg de ciment par m³, selon la classe de béton fixée par le bureau d'études.")],
  "sources": [],
 },
+{
+ "slug": "conseil-prix-piscine-maroc",
+ "title": "Prix d'une piscine en béton au Maroc en 2026",
+ "crumb": "Prix d'une piscine",
+ "desc": "Combien coûte une piscine en béton au Maroc en 2026 : prix au m² de bassin, exemples 6×4 et 8×4 m, postes souvent oubliés (filtration, local technique, plages) et étude structure du bassin.",
+ "lead": "Prix au m² de bassin, exemples chiffrés, ce que les devis n'incluent pas toujours et pourquoi un bassin en béton armé se calcule comme une structure.",
+ "img": "images/projects/villa1.jpg", "min": 6,
+ "body": """
+<p>La piscine est devenue un standard des villas autour de Marrakech. Son prix varie pourtant du simple au triple selon la taille, le revêtement et surtout ce que comprend le devis. Voici les ordres de grandeur du marché et les points à vérifier avant de signer.</p>
+<h2>Les prix constatés</h2>
+<div class="tableau"><table>
+<thead><tr><th>Projet</th><th>Prix indicatif</th></tr></thead>
+<tbody>
+<tr><td>Bassin en béton, finition standard, au m² de plan d'eau</td><td>environ 4 000 à 9 500 DH</td></tr>
+<tr><td>Finition haut de gamme (carrelage, pierre, débordement), au m²</td><td>10 000 à 15 000 DH et plus</td></tr>
+<tr><td>Piscine 6 × 4 m (24 m²)</td><td>à partir d'environ 85 000 à 135 000 DH</td></tr>
+<tr><td>Piscine 8 × 4 m (32 m²) avec carrelage</td><td>environ 120 000 à 220 000 DH</td></tr>
+</tbody></table></div>
+<p>Ces fourchettes, relevées auprès de pisciniers marocains, sont très larges : c'est le contenu du devis qui explique l'écart.</p>
+<h2>Les postes souvent oubliés</h2>
+<ul>
+<li><b>La filtration</b> : pompe, filtre, skimmers, refoulements, et le local technique qui les abrite.</li>
+<li><b>Le revêtement</b> : enduit, liner, mosaïque ou carrelage, qui fait varier fortement le prix au m².</li>
+<li><b>Les plages et margelles</b> autour du bassin.</li>
+<li><b>Le terrassement et l'évacuation des terres</b>, plus coûteux sur un terrain rocheux.</li>
+<li><b>Les options</b> : chauffage, éclairage, électrolyse au sel, couverture de sécurité.</li>
+</ul>
+<h2>Un bassin est une structure</h2>
+<p>Une piscine enterrée subit la poussée des terres quand elle est vide et la poussée de l'eau quand elle est pleine. Ses parois et son radier en béton armé doivent donc être calculés et ferraillés comme n'importe quel ouvrage : épaisseurs, armatures, joints et étanchéité. Un bassin mal calculé fissure, fuit, et se répare difficilement.</p>
+<p>Le bureau d'études dimensionne le radier et les voiles, vérifie le sol (une piscine posée sur un remblai mal compacté peut tasser) et coordonne les réservations pour les canalisations et l'éclairage.</p>
+<h2>Les étapes d'un projet de piscine</h2>
+<ol>
+<li>Implantation et vérification du sol.</li>
+<li>Plans et calcul de la structure du bassin.</li>
+<li>Terrassement, béton de propreté, radier puis voiles.</li>
+<li>Pose des réseaux hydrauliques et test d'étanchéité.</li>
+<li>Revêtement, plages, mise en eau et réglages de la filtration.</li>
+</ol>
+""",
+ "faq": [("Combien coûte une piscine 8 × 4 au Maroc ?", "Une piscine en béton de 8 × 4 m avec carrelage coûte en ordre de grandeur 120 000 à 220 000 DH, selon les finitions et ce qu'inclut le devis."),
+         ("Quel est le prix au m² d'une piscine en béton ?", "Comptez environ 4 000 à 9 500 DH par m² de bassin en finition standard, et 10 000 à 15 000 DH et plus en haut de gamme."),
+         ("Faut-il un bureau d'études pour une piscine ?", "C'est recommandé : le radier et les parois en béton armé doivent être calculés pour résister à la poussée des terres et de l'eau, et adaptés au sol.")],
+ "sources": [("https://piscinenordmaroc.com/prix-construction-piscine-maroc-devis/", "Piscine Nord Maroc, prix construction piscine 2025"),
+             ("https://lepisciniste.ma/shop/piscine-enterree-en-beton/travaux-de-construction-piscine-24-m2/", "Le Pisciniste, piscine béton 6×4"),
+             ("https://www.full-piscine.com/prix-construction-piscine-maroc/", "Full Piscine, prix construction piscine au Maroc")],
+},
+{
+ "slug": "conseil-fissures-maison-causes-gravite",
+ "title": "Fissures dans une maison : causes, gravité et quand s'inquiéter",
+ "crumb": "Fissures dans une maison",
+ "desc": "Fissure fine, en escalier, à 45° ou traversante : comment reconnaître une fissure grave dans une maison au Maroc, ses causes (tassement, retrait, structure) et que faire avant de reboucher.",
+ "lead": "Comment lire une fissure (largeur, tracé, évolution), distinguer le superficiel du structurel, et les bons réflexes avant de reboucher.",
+ "img": "images/projects/riad2.jpg", "min": 6,
+ "body": """
+<p>Presque toutes les maisons finissent par présenter des fissures. La plupart sont sans gravité ; quelques-unes signalent un problème de fondations ou de structure qu'il faut traiter vite. La largeur compte, mais le tracé, l'élément touché et surtout l'évolution dans le temps comptent tout autant.</p>
+<h2>Les repères de largeur</h2>
+<div class="tableau"><table>
+<thead><tr><th>Largeur</th><th>Ce que c'est en général</th></tr></thead>
+<tbody>
+<tr><td>Moins de 0,2 mm (« faïençage », microfissure)</td><td>Le plus souvent superficielle : retrait de l'enduit ou de la peinture</td></tr>
+<tr><td>De 0,2 à 2 mm</td><td>À surveiller : retrait, dilatation, léger tassement</td></tr>
+<tr><td>Plus de 2 mm (lézarde)</td><td>À faire examiner, surtout si elle traverse le mur ou s'élargit</td></tr>
+</tbody></table></div>
+<p>Ces seuils sont des repères, pas une règle : une fissure fine peut être active, une plus large peut être ancienne et stabilisée.</p>
+<h2>Ce que révèle le tracé</h2>
+<ul>
+<li><b>En escalier</b>, le long des joints de briques ou de parpaings : signe typique d'un tassement différentiel des fondations.</li>
+<li><b>À 45° partant d'un angle de porte ou de fenêtre</b> : mouvement du mur ou linteau insuffisant.</li>
+<li><b>Horizontale sous une dalle ou en haut de mur</b> : dilatation de la toiture-terrasse, fréquente sous le soleil marocain.</li>
+<li><b>Sur un poteau ou une poutre</b>, avec des traces de rouille : armatures qui corrodent, à traiter rapidement.</li>
+<li><b>Traversante</b>, visible des deux côtés du mur : toujours à faire diagnostiquer.</li>
+</ul>
+<h2>Les causes les plus fréquentes au Maroc</h2>
+<ul>
+<li>Des fondations posées sans étude de sol, sur un remblai ou un sol hétérogène.</li>
+<li>Des fuites d'eau (canalisations, terrasse) qui détrempent le sol sous les fondations.</li>
+<li>L'absence de chaînages ou de longrines, que le règlement parasismique impose pourtant.</li>
+<li>Un béton trop arrosé, mal vibré, ou une cure négligée par forte chaleur.</li>
+<li>Les écarts de température sur les terrasses non isolées.</li>
+</ul>
+<h2>Les bons réflexes</h2>
+<ol>
+<li><b>Ne pas reboucher tout de suite</b> : un enduit masque le problème sans le régler.</li>
+<li><b>Photographier et dater</b>, mesurer la largeur, et poser un témoin (repère) pour voir si la fissure évolue.</li>
+<li><b>Chercher une fuite</b> si la fissure apparaît près d'une salle d'eau ou d'une terrasse.</li>
+<li><b>Faire appel à un bureau d'études</b> si la fissure dépasse 2 mm, traverse le mur, touche un élément porteur ou s'élargit : il en recherche la cause et définit la réparation (reprise en sous-œuvre, agrafage, renforcement).</li>
+</ol>
+""",
+ "faq": [("Quand faut-il s'inquiéter d'une fissure dans une maison ?", "Quand elle dépasse environ 2 mm, traverse le mur, touche un poteau ou une poutre, suit les joints en escalier ou s'élargit avec le temps."),
+         ("Une fissure en escalier est-elle grave ?", "Elle est souvent le signe d'un tassement différentiel des fondations : il faut la faire examiner et en rechercher la cause."),
+         ("Faut-il reboucher une fissure tout de suite ?", "Non : il faut d'abord comprendre sa cause et vérifier qu'elle est stabilisée, sinon elle réapparaîtra.")],
+ "sources": [("https://reaconsult.ma/tendances-et-conseils-en-immobilier/fissures-batiment-maroc-diagnostic-gravite-expertise", "Reaconsult, fissures et diagnostic au Maroc"),
+             ("https://www.habitatpresto.com/mag/maconnerie/fissure-horizontale-maison", "Habitatpresto, fissures horizontales"),
+             ("https://www.construires.fr/expertise-batiment/expertise-fissures/", "Construires, savoir si une fissure est grave")],
+},
+{
+ "slug": "conseil-surelevation-ajouter-etage-maroc",
+ "title": "Ajouter un étage à sa maison au Maroc : faisabilité et démarches",
+ "crumb": "Ajouter un étage",
+ "desc": "Surélévation au Maroc : vérifier que le plan d'aménagement l'autorise, faire étudier la structure existante (fondations, poteaux), obtenir le permis et les solutions de renforcement.",
+ "lead": "Avant d'ajouter un étage : ce qu'autorise l'urbanisme, ce que la structure existante peut porter, le permis, et les renforcements possibles.",
+ "img": "images/projects/project6.jpg", "min": 6,
+ "body": """
+<p>Ajouter un étage est souvent moins cher qu'acheter un nouveau terrain. Mais une maison n'a pas été calculée pour porter un niveau de plus : avant tout projet, il faut vérifier deux choses, ce que l'urbanisme autorise et ce que la structure peut supporter.</p>
+<h2>1. Ce que l'urbanisme autorise</h2>
+<p>Le plan d'aménagement fixe, pour chaque zone, la hauteur et le nombre de niveaux autorisés. Une note de renseignements urbanistiques indique ce qui est permis sur votre parcelle. En copropriété, l'accord des copropriétaires est aussi nécessaire. Une surélévation demande, comme une construction neuve, une <b>autorisation de construire</b> déposée avec des plans d'architecte et des études techniques.</p>
+<h2>2. Ce que la structure peut porter</h2>
+<p>C'est la question décisive, et elle ne se règle pas « à l'œil » : des armatures en attente qui dépassent du toit ne prouvent pas qu'un étage est possible. Le bureau d'études vérifie :</p>
+<ul>
+<li><b>Les fondations</b> : leurs dimensions et la capacité du sol, parfois avec une étude de sol et des sondages au pied des semelles.</li>
+<li><b>Les poteaux et les poutres</b> : sections, ferraillage, état du béton (une carotte ou un relevé d'armatures peut être nécessaire).</li>
+<li><b>La dalle de toiture</b>, qui deviendra un plancher et devra porter de nouvelles charges.</li>
+<li><b>Le comportement parasismique</b> de l'ensemble, car un niveau de plus augmente les efforts en cas de séisme.</li>
+</ul>
+<h2>3. Les solutions si la structure ne suffit pas</h2>
+<ul>
+<li>Renforcer les poteaux (chemisage en béton armé ou en matériaux composites).</li>
+<li>Reprendre ou élargir les fondations (reprise en sous-œuvre).</li>
+<li>Alléger le nouvel étage : structure métallique ou bois, cloisons légères.</li>
+</ul>
+<p>Le diagnostic du bureau d'études chiffre ces options et permet de décider si la surélévation reste intéressante.</p>
+<h2>Les étapes</h2>
+<ol>
+<li>Note de renseignements et esquisse de l'architecte.</li>
+<li>Diagnostic de la structure existante par le bureau d'études.</li>
+<li>Études de renforcement et du nouvel étage, puis dépôt du permis.</li>
+<li>Travaux de renforcement, puis construction de l'étage, avec contrôle des ferraillages.</li>
+</ol>
+""",
+ "faq": [("Faut-il un permis pour ajouter un étage au Maroc ?", "Oui : une surélévation nécessite une autorisation de construire, avec des plans d'architecte et des études techniques, et elle doit respecter le plan d'aménagement."),
+         ("Ma maison peut-elle supporter un étage de plus ?", "Seul un diagnostic de la structure par un bureau d'études permet de le dire : fondations, poteaux, poutres et dalle doivent être vérifiés."),
+         ("Que faire si la structure ne suffit pas ?", "On peut renforcer les poteaux et les fondations, ou alléger le nouvel étage (structure métallique, cloisons légères), selon le diagnostic.")],
+ "sources": [("https://bati.ma/guide/surelevation-maison-maroc", "Bati.ma, surélévation de maison au Maroc"),
+             ("https://guatbimmo.ma/surelever-son-appartement-au-maroc-autorisations-et-budget-a/", "Guatbi Immo, surélever au Maroc"),
+             ("https://francobat.ma/permis-de-construire-au-maroc/", "Francobat, permis de construire au Maroc")],
+},
+{
+ "slug": "conseil-etancheite-toiture-terrasse-maroc",
+ "title": "Étanchéité d'une toiture-terrasse au Maroc : solutions et prix au m²",
+ "crumb": "Étanchéité de terrasse",
+ "desc": "Étanchéité de toiture-terrasse au Maroc : bitume monocouche ou bicouche, étanchéité liquide, PVC, prix au m² (de 45 à 350 DH), forme de pente, relevés et erreurs à l'origine des infiltrations.",
+ "lead": "Bitume, liquide ou membrane PVC : comparer les solutions d'étanchéité, leurs prix au m², et les détails qui évitent les infiltrations.",
+ "img": "images/projects/riad3.jpg", "min": 6,
+ "body": """
+<p>Au Maroc, la plupart des maisons sont couvertes d'une toiture-terrasse. Quand l'étanchéité est mal faite, l'eau finit par passer : taches au plafond, peinture qui cloque, et à terme des armatures qui rouillent dans la dalle. Le choix du système compte, mais les détails d'exécution comptent encore plus.</p>
+<h2>Les solutions et leurs prix</h2>
+<div class="tableau"><table>
+<thead><tr><th>Système</th><th>Prix indicatif fourni-posé</th></tr></thead>
+<tbody>
+<tr><td>Bitume monocouche ou feutre soudé (une couche)</td><td>environ 45 à 90 DH/m²</td></tr>
+<tr><td>Membrane bitumineuse bicouche (SBS)</td><td>environ 100 à 160 DH/m²</td></tr>
+<tr><td>Bicouche avec protection (dallage, gravillons)</td><td>environ 120 à 250 DH/m²</td></tr>
+<tr><td>Étanchéité liquide (résine)</td><td>environ 120 à 250 DH/m²</td></tr>
+<tr><td>Membrane PVC, TPO ou EPDM</td><td>environ 160 à 350 DH/m²</td></tr>
+</tbody></table></div>
+<p>Ces fourchettes ne comprennent pas toujours la dépose de l'ancienne étanchéité ni la reprise de la forme de pente : vérifiez-le sur le devis.</p>
+<h2>Les détails qui font la différence</h2>
+<ul>
+<li><b>La forme de pente</b> : l'eau doit s'écouler vers les évacuations, sans flaques stagnantes.</li>
+<li><b>Les relevés</b> sur les acrotères, d'une hauteur suffisante et bien protégés en tête.</li>
+<li><b>Les points singuliers</b> : évacuations, sorties de gaines, pieds de garde-corps, joints de dilatation.</li>
+<li><b>Une protection</b> contre le soleil et le passage : sur une terrasse accessible, une membrane nue s'abîme vite.</li>
+<li><b>L'isolation thermique</b> : la poser avec l'étanchéité améliore le confort d'été et limite les fissures dues aux écarts de température.</li>
+</ul>
+<h2>Accessible ou non ?</h2>
+<p>Une terrasse accessible (on y marche, on y installe du mobilier) demande une étanchéité protégée par un revêtement. Une terrasse non accessible peut recevoir une membrane autoprotégée. Ce choix se fait dès la conception, car il change les charges que la dalle doit porter.</p>
+<h2>Le rôle du bureau d'études</h2>
+<p>Le BET intègre la terrasse dans le calcul de la dalle (poids des formes de pente, de l'isolant et de la protection), prévoit les joints de dilatation et les évacuations, et décrit le système d'étanchéité dans le dossier de consultation des entreprises.</p>
+""",
+ "faq": [("Quel est le prix de l'étanchéité d'une terrasse au m² au Maroc ?", "De 45 à 90 DH/m² pour un bitume monocouche, 100 à 160 DH/m² pour une bicouche SBS, et jusqu'à 250 à 350 DH/m² pour une étanchéité protégée ou une membrane PVC/EPDM."),
+         ("Quelle est la meilleure étanchéité pour une terrasse ?", "Pour une terrasse accessible, une membrane bicouche protégée par un revêtement est une solution éprouvée ; le bon choix dépend de l'usage et du support."),
+         ("Pourquoi ma terrasse fuit-elle malgré l'étanchéité ?", "Le plus souvent à cause d'un détail : relevé trop bas, évacuation mal raccordée, pente insuffisante ou membrane abîmée par le soleil.")],
+ "sources": [("https://lechantier.ma/en/blog/etancheite-terrasse-maroc", "Le Chantier, étanchéité de terrasse au Maroc"),
+             ("https://enginloc.ma/blog/materiaux-etancheite-maroc-sika", "Enginloc, matériaux d'étanchéité au Maroc"),
+             ("https://tachrone.ma/blog/entreprise-etancheite-maroc-prix-m2-choisir/", "Tachrone, entreprise d'étanchéité : prix au m²")],
+},
+{
+ "slug": "conseil-climatisation-puissance-btu-m2",
+ "title": "Climatisation : quelle puissance (BTU) selon la surface de la pièce ?",
+ "crumb": "Puissance de climatisation",
+ "desc": "Quelle puissance de climatiseur choisir : tableau BTU par m² (9 000, 12 000, 18 000, 24 000 BTU), facteurs qui changent le calcul à Marrakech, et quand faire un bilan thermique par un bureau d'études.",
+ "lead": "Le tableau des puissances selon la surface, les facteurs qui changent tout sous le climat de Marrakech, et quand un vrai calcul devient indispensable.",
+ "img": "images/services/cvc1.jpg", "min": 5,
+ "body": """
+<p>Un climatiseur trop faible tourne en permanence sans jamais rafraîchir ; un appareil trop puissant fait des cycles courts, déshumidifie mal et coûte plus cher. Pour une pièce courante, une règle simple donne un bon point de départ ; pour une villa entière, un bilan thermique s'impose.</p>
+<h2>Le tableau de départ</h2>
+<div class="tableau"><table>
+<thead><tr><th>Puissance du climatiseur</th><th>Puissance froid approximative</th><th>Surface indicative</th></tr></thead>
+<tbody>
+<tr><td>9 000 BTU</td><td>environ 2,6 kW</td><td>jusqu'à 20 à 25 m²</td></tr>
+<tr><td>12 000 BTU</td><td>environ 3,5 kW</td><td>25 à 35 m²</td></tr>
+<tr><td>18 000 BTU</td><td>environ 5,3 kW</td><td>35 à 50 m²</td></tr>
+<tr><td>24 000 BTU</td><td>environ 7 kW</td><td>50 à 70 m²</td></tr>
+</tbody></table></div>
+<p>Ces surfaces correspondent à une pièce de hauteur courante (environ 2,7 m), correctement isolée. Repère de conversion : 1 kW vaut environ 3 412 BTU/h.</p>
+<h2>Ce qui fait monter le besoin</h2>
+<ul>
+<li><b>Le climat</b> : à Marrakech, les étés dépassent souvent 40 °C ; prévoyez une marge par rapport aux tableaux établis pour des climats tempérés.</li>
+<li><b>Le dernier étage</b> sous une terrasse non isolée, qui chauffe toute la journée.</li>
+<li><b>Les grandes baies vitrées</b> exposées au sud ou à l'ouest.</li>
+<li><b>La hauteur sous plafond</b> : un séjour en double hauteur ou un riad avec patio couvert.</li>
+<li><b>L'occupation et les équipements</b> : cuisine ouverte, nombreux occupants, matériel informatique.</li>
+</ul>
+<h2>Split, gainable ou VRV ?</h2>
+<ul>
+<li><b>Split mural</b> : simple et économique pour quelques pièces.</li>
+<li><b>Gainable</b> : un appareil caché dans un faux plafond qui distribue l'air par des bouches, plus discret pour une villa.</li>
+<li><b>VRV / DRV</b> : un groupe extérieur et plusieurs unités intérieures réglées séparément, adapté aux grandes villas, hôtels et bureaux.</li>
+</ul>
+<h2>Quand faire un bilan thermique</h2>
+<p>Pour une villa, un riad, un hôtel ou un commerce, le bureau d'études calcule les apports de chaleur pièce par pièce (murs, vitrages, toiture, occupants, équipements). Il choisit le système, dimensionne les réseaux et les alimentations électriques, et évite d'acheter des appareils surdimensionnés. Bien isoler la toiture et protéger les vitrages du soleil réduit souvent la puissance nécessaire davantage que n'importe quel appareil.</p>
+""",
+ "faq": [("Quelle puissance de climatiseur pour 20 m² ?", "Un appareil de 9 000 BTU (environ 2,6 kW) convient en général à une pièce de 20 m² bien isolée ; prévoyez plus sous une terrasse ou avec de grandes baies au soleil."),
+         ("Combien de BTU pour 30 m² ?", "Pour 30 m², on part en général sur 12 000 BTU (environ 3,5 kW), à ajuster selon l'isolation et l'exposition."),
+         ("Faut-il un bilan thermique pour climatiser une villa ?", "C'est recommandé : un calcul pièce par pièce évite les appareils sous- ou surdimensionnés et permet de choisir entre split, gainable et VRV.")],
+ "sources": [],
+},
+{
+ "slug": "conseil-isolation-thermique-rtcm-maroc",
+ "title": "Isolation thermique d'une maison au Maroc : ce que demande le RTCM",
+ "crumb": "Isolation et RTCM",
+ "desc": "Isolation thermique au Maroc : le règlement thermique de construction (RTCM), les 6 zones climatiques (Marrakech en zone 5), isolation de la toiture, des murs et des dalles sur sol, vitrages et confort d'été.",
+ "lead": "Le règlement thermique marocain expliqué simplement : zones climatiques, parois à isoler en priorité, et ce que cela change pour le confort et la facture de climatisation.",
+ "img": "images/villa-finie.jpg", "min": 6,
+ "body": """
+<p>Une maison bien isolée reste fraîche plus longtemps l'été et consomme beaucoup moins en climatisation. Au Maroc, ces performances sont encadrées par le <b>règlement thermique de construction (RTCM)</b>, approuvé par le décret n° 2-13-874 du 15 octobre 2014, qui fixe des exigences minimales pour les bâtiments neufs.</p>
+<h2>Six zones climatiques</h2>
+<p>Le RTCM découpe le Maroc en six zones climatiques. Les exigences dépendent de la zone : plus le climat est chaud ou froid, plus l'enveloppe doit être performante. <b>Marrakech est classée en zone 5</b>, l'une des zones les plus exigeantes pour le confort d'été.</p>
+<h2>Ce que le règlement vise</h2>
+<ul>
+<li><b>La toiture</b> : c'est la paroi la plus exposée au soleil, et la première à isoler. Sous une terrasse non isolée, le dernier étage devient une étuve.</li>
+<li><b>Les murs extérieurs</b> : double cloison avec isolant, ou blocs isolants, selon le niveau de performance visé.</li>
+<li><b>Les dalles sur sol</b> : dans les zones 5 et 6, le RTCM demande d'isoler les dalles au sol des espaces climatisés ou chauffés.</li>
+<li><b>Les vitrages</b> : leur surface, leur orientation et leurs protections solaires (casquettes, brise-soleil, volets).</li>
+</ul>
+<p>Le règlement propose deux façons de s'y conformer : respecter des valeurs minimales d'isolation paroi par paroi, ou démontrer par le calcul que le bâtiment ne dépasse pas des besoins de chauffage et de climatisation maximaux.</p>
+<h2>À qui il s'applique</h2>
+<p>Le RTCM vise les bâtiments neufs résidentiels et tertiaires (hôtels, bureaux, écoles, hôpitaux), hors habitat individuel rural. Même quand il n'est pas imposé, l'appliquer à une villa reste l'un des meilleurs investissements de confort.</p>
+<h2>Les bons choix pour une villa à Marrakech</h2>
+<ol>
+<li>Isoler en priorité la toiture-terrasse, avec l'étanchéité.</li>
+<li>Protéger les vitrages au sud et à l'ouest du soleil d'été.</li>
+<li>Isoler les murs les plus exposés et traiter les ponts thermiques (poteaux, abouts de dalles).</li>
+<li>Dimensionner ensuite la climatisation sur la maison isolée : la puissance nécessaire baisse sensiblement.</li>
+</ol>
+<h2>Le rôle du bureau d'études</h2>
+<p>Le BET conseille l'architecte dans le choix des matériaux et des épaisseurs pour atteindre les performances du RTCM, vérifie la conformité par le calcul quand c'est nécessaire, puis dimensionne la climatisation en conséquence.</p>
+""",
+ "faq": [("Dans quelle zone thermique se trouve Marrakech ?", "Marrakech est classée en zone climatique 5 du règlement thermique de construction marocain (RTCM), l'une des plus exigeantes pour le confort d'été."),
+         ("Le RTCM s'applique-t-il à ma villa ?", "Il vise les bâtiments neufs résidentiels et tertiaires, hors habitat individuel rural ; même quand il n'est pas imposé, l'appliquer améliore nettement le confort."),
+         ("Quelle partie de la maison isoler en priorité ?", "La toiture-terrasse, la paroi la plus exposée au soleil, puis les vitrages et les murs les plus exposés.")],
+ "sources": [("https://energetique.uae.ma/textes_energ/decret_%202_13_874%20_construction.pdf", "Décret n° 2-13-874 (RTCM)"),
+             ("https://ordrearchicentre.org/wp-content/uploads/2020/05/R%C3%A8glement-thermique-de-construction-au-Maroc-.pdf", "RTCM, version simplifiée"),
+             ("https://cnoa.ma/s/a/library/2025-01-28/61a97566-1453-4d87-b737-56da14a67f7d.pdf", "Conseil national de l'Ordre des architectes, RTCM")],
+},
+
 ]
 
 
@@ -270,6 +526,8 @@ def esc(s):
 
 def build():
     tpl = open(os.path.join(ROOT, TEMPLATE), encoding="utf-8").read()
+    # le modèle a peut-être déjà sa colonne latérale : on la retire, apply_layout() la recrée pour chaque article
+    tpl = re.sub(r'<aside class="article-cote">.*?</aside>', "", tpl, flags=re.S).replace('<div class="conteneur article-grille">', '<div class="conteneur">')
     head_end = tpl.index("</head>")
     for a in ARTICLES:
         url = f"{DOMAIN}/{a['slug']}.html"
@@ -319,5 +577,42 @@ def build():
     print(len(ARTICLES), "articles")
 
 
+def apply_layout():
+    """Mise en page en deux colonnes sur ordinateur : l'article (largeur lisible) et une colonne latérale qui reste visible
+    (sommaire, contact, autres articles). Sur téléphone, la colonne passe sous l'article. S'applique à tous les articles
+    « Conseils », anciens et nouveaux ; la colonne est reconstruite à chaque passage (liste des articles à jour)."""
+    import glob
+    cards = re.findall(r'<a class="service" href="(conseil-[^"]+)">.*?<h3>(.*?)</h3>', open(os.path.join(ROOT, "conseils.html"), encoding="utf-8").read(), re.S)
+    for f in sorted(glob.glob(os.path.join(ROOT, "conseil-*.html"))):
+        h = open(f, encoding="utf-8").read()
+        # page déjà mise en page : on retire l'ancienne colonne pour la reconstruire (liste des articles à jour)
+        h = re.sub(r'<aside class="article-cote">.*?</aside>', "", h, flags=re.S).replace('<div class="conteneur article-grille">', '<div class="conteneur">')
+        h = re.sub(r'<h2 id="partie-\d+">', "<h2>", h)
+        name = os.path.basename(f)
+        # ancres sur les intertitres pour le sommaire
+        n = [0]
+        def anchor(m):
+            n[0] += 1
+            return f'<h2 id="partie-{n[0]}">{m.group(1)}</h2>'
+        start, end = h.index('<article class="contenu article">'), h.index("</article>")
+        art = re.sub(r"<h2>(.*?)</h2>", anchor, h[start:end])
+        titres = re.findall(r'<h2 id="(partie-\d+)">(.*?)</h2>', art)
+        sommaire = "".join(f'<li><a href="#{i}">{t}</a></li>' for i, t in titres)
+        autres = "".join(f'<li><a href="{u}">{t}</a></li>' for u, t in [c for c in cards if c[0] != name][:6]) + '<li class="tous"><a href="conseils.html">Tous les conseils →</a></li>'
+        aside = (f'<aside class="article-cote">'
+                 f'<div class="cote-carte"><h3>Sommaire</h3><ol class="sommaire">{sommaire}</ol></div>'
+                 f'<div class="cote-carte"><h3>Autres conseils</h3><ul class="autres">{autres}</ul></div>'
+                                  '<div class="cote-carte cote-contact"><h3>Besoin d\'un bureau d\'études ?</h3><p>Études béton armé, électricité, plomberie et CVC, suivi de chantier à Marrakech et partout au Maroc.</p>'
+                 '<a class="btn" href="contact.html#formulaire">Demander une étude</a>'
+                 '<a class="btn secondaire" href="https://wa.me/212620897660" rel="noopener">Écrire sur WhatsApp</a>'
+                 '<a class="cote-tel" href="tel:+212661057455" dir="ltr">+212 6 61 05 74 55</a></div>'
+"</aside>")
+        h = h[:start] + art + h[end:]
+        h = h.replace('<section><div class="conteneur"><article class="contenu article">', '<section><div class="conteneur article-grille"><article class="contenu article">', 1)
+        h = h.replace("</article></div></section>", "</article>" + aside + "</div></section>", 1)
+        open(f, "w", encoding="utf-8").write(h)
+
+
 if __name__ == "__main__":
     build()
+    apply_layout()
