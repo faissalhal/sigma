@@ -521,7 +521,7 @@ ARTICLES = [
 
 
 # Lots (familles d'articles) : ordre d'affichage sur la page Conseils et dans la FAQ
-LOTS = [("electricite", "Électricité"), ("structure", "Structure et béton armé"), ("plomberie", "Plomberie et sanitaire"),
+LOTS = [("structure", "Structure et béton armé"), ("electricite", "Électricité"), ("plomberie", "Plomberie et sanitaire"),
         ("cvc", "Climatisation et ventilation"), ("thermique", "Thermique et énergie"), ("incendie", "Sécurité incendie"),
         ("vrd", "VRD et réseaux"), ("achat", "Achat et expertise"), ("reglementation", "Démarches, prix et chantier")]
 LOT_NOM = dict(LOTS)
