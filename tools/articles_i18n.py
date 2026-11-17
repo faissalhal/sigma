@@ -37,7 +37,7 @@ TX = {
   "locale": "en_US",
   "lots": {"structure": "Structure and reinforced concrete", "electricite": "Electrical", "plomberie": "Plumbing and sanitation",
            "cvc": "Air conditioning and ventilation", "thermique": "Thermal and energy", "incendie": "Fire safety",
-           "vrd": "Roads and utilities (VRD)", "achat": "Buying and inspection", "reglementation": "Procedures, prices and site work"},
+           "vrd": "Roads and utilities (VRD)", "achat": "Buying a property", "expertise": "Pre-purchase inspection", "reglementation": "Procedures, prices and site work"},
   "intros": {
    "structure": "Foundations, columns, beams, floors, concrete and steel, seismic code: understand the structure of your house before and during construction.",
    "electricite": "NF C 15-100 and NM 06.1.100 standards, distribution board, RCDs, sockets, earthing, solar PV: the rules of a safe electrical installation in Morocco.",
@@ -46,7 +46,8 @@ TX = {
    "thermique": "Insulation, glazing, orientation, solar shading and electricity bills: building a comfortable house in summer and winter.",
    "incendie": "Buildings open to the public, hotels, riads, car parks: detection, smoke control, emergency exits and fire safety equipment.",
    "vrd": "Housing estates, sewerage, utility connections, roads and stormwater: the networks that serve a plot or a project.",
-   "achat": "Before buying a house, a riad, a new apartment or a plot: what to check, system by system, and what an inspection costs.",
+   "achat": "Buying a house, a riad, a new apartment or a plot in Morocco: the pitfalls to avoid, the papers to check and the renovation budget.",
+   "expertise": "Having a property inspected before you sign: structure, cracks, damp, electrics, plumbing, and what an engineering inspection costs.",
    "reglementation": "Building permits, inspection bodies, warranties, handover, contracts and prices: the procedures of a construction project in Morocco."},
  },
  "ar": {
@@ -69,7 +70,7 @@ TX = {
   "locale": "ar_MA",
   "lots": {"structure": "الهيكل والخرسانة المسلحة", "electricite": "الكهرباء", "plomberie": "الترصيص الصحي",
            "cvc": "التكييف والتهوية", "thermique": "العزل الحراري والطاقة", "incendie": "السلامة من الحريق",
-           "vrd": "الطرق والشبكات (VRD)", "achat": "الشراء والخبرة التقنية", "reglementation": "الإجراءات والأسعار والأوراش"},
+           "vrd": "الطرق والشبكات (VRD)", "achat": "شراء عقار", "expertise": "الخبرة التقنية قبل الشراء", "reglementation": "الإجراءات والأسعار والأوراش"},
   "intros": {
    "structure": "الأساسات والأعمدة والعوارض والأسقف والخرسانة والحديد وضابط البناء المضاد للزلازل: افهم هيكل منزلك قبل الورش وخلاله.",
    "electricite": "معايير NF C 15-100 وNM 06.1.100، ولوحة التوزيع، والقواطع التفاضلية، والمآخذ، والتأريض، والطاقة الشمسية: قواعد تركيب كهربائي آمن في المغرب.",
@@ -78,7 +79,8 @@ TX = {
    "thermique": "العزل، والزجاج، والتوجيه، والحماية من الشمس، وفاتورة الكهرباء: بناء منزل مريح صيفا وشتاء.",
    "incendie": "المؤسسات المستقبلة للعموم، والفنادق، والرياضات، والمرائب: الكشف، وسحب الدخان، ومخارج الطوارئ، وتجهيزات السلامة من الحريق.",
    "vrd": "التجزئات، والتطهير، والربط بالشبكات، والطرق، ومياه الأمطار: الشبكات التي تخدم قطعة أرضية أو مشروعا.",
-   "achat": "قبل شراء منزل أو رياض أو شقة جديدة أو قطعة أرضية: ما يجب فحصه، جزءا بجزء، وتكلفة الخبرة التقنية.",
+   "achat": "شراء منزل أو رياض أو شقة جديدة أو قطعة أرضية في المغرب: الأخطاء التي يجب تجنبها، والوثائق التي يجب التحقق منها، وميزانية الأشغال.",
+   "expertise": "فحص العقار قبل التوقيع: الهيكل، والتشققات، والرطوبة، والكهرباء، والترصيص، وتكلفة خبرة مكتب الدراسات.",
    "reglementation": "رخصة البناء، ومكتب المراقبة، والضمانات، وتسلم الأشغال، والعقود والأسعار: إجراءات مشروع بناء في المغرب."},
  },
 }

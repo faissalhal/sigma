@@ -158,6 +158,7 @@
   <url><loc>https://sigma-icc.ma/conseils-vrd.html</loc><lastmod>2026-11-16</lastmod><priority>0.8</priority></url>
   <url><loc>https://sigma-icc.ma/conseils-achat.html</loc><lastmod>2026-11-16</lastmod><priority>0.8</priority></url>
   <url><loc>https://sigma-icc.ma/conseils-reglementation.html</loc><lastmod>2026-11-16</lastmod><priority>0.8</priority></url>
+  <url><loc>https://sigma-icc.ma/conseils-expertise.html</loc><lastmod>2026-11-16</lastmod><priority>0.8</priority></url>
   <url><loc>https://sigma-icc.ma/conseils.html</loc><lastmod>2026-11-16</lastmod><priority>0.7</priority></url>
   <url><loc>https://sigma-icc.ma/en/</loc><lastmod>2026-11-10</lastmod><priority>1.0</priority></url>
   <url><loc>https://sigma-icc.ma/en/services.html</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
@@ -188,6 +189,8 @@
   <url><loc>https://sigma-icc.ma/ar/contact.html</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
   <url><loc>https://sigma-icc.ma/ar/mentions-legales.html</loc><lastmod>2026-11-10</lastmod><priority>0.7</priority></url>
   <url><loc>https://sigma-icc.ma/en/conseils.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
+  <url><loc>https://sigma-icc.ma/en/conseils-achat.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
+  <url><loc>https://sigma-icc.ma/en/conseils-expertise.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/en/conseils-structure.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/en/conseils-electricite.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/en/conseils-plomberie.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
@@ -195,7 +198,6 @@
   <url><loc>https://sigma-icc.ma/en/conseils-thermique.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/en/conseils-incendie.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/en/conseils-vrd.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
-  <url><loc>https://sigma-icc.ma/en/conseils-achat.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/en/conseils-reglementation.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/en/conseil-permis-de-construire-maroc-rokhas.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/en/conseil-etude-de-sol-maroc-prix.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
@@ -332,6 +334,8 @@
   <url><loc>https://sigma-icc.ma/en/conseil-prix-construction-villa-marrakech.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/en/conseil-norme-electrique-nf-c-15-100-maroc.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/ar/conseils.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
+  <url><loc>https://sigma-icc.ma/ar/conseils-achat.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
+  <url><loc>https://sigma-icc.ma/ar/conseils-expertise.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/ar/conseils-structure.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/ar/conseils-electricite.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/ar/conseils-plomberie.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
@@ -339,7 +343,6 @@
   <url><loc>https://sigma-icc.ma/ar/conseils-thermique.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/ar/conseils-incendie.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/ar/conseils-vrd.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
-  <url><loc>https://sigma-icc.ma/ar/conseils-achat.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/ar/conseils-reglementation.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/ar/conseil-permis-de-construire-maroc-rokhas.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>
   <url><loc>https://sigma-icc.ma/ar/conseil-etude-de-sol-maroc-prix.html</loc><lastmod>2026-11-16</lastmod><priority>0.6</priority></url>

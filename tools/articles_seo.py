@@ -521,9 +521,10 @@ ARTICLES = [
 
 
 # Lots (familles d'articles) : ordre d'affichage sur la page Conseils et dans la FAQ
-LOTS = [("structure", "Structure et béton armé"), ("electricite", "Électricité"), ("plomberie", "Plomberie et sanitaire"),
+LOTS = [("achat", "Acheter un bien"), ("expertise", "Expertise avant achat"),
+        ("structure", "Structure et béton armé"), ("electricite", "Électricité"), ("plomberie", "Plomberie et sanitaire"),
         ("cvc", "Climatisation et ventilation"), ("thermique", "Thermique et énergie"), ("incendie", "Sécurité incendie"),
-        ("vrd", "VRD et réseaux"), ("achat", "Achat et expertise"), ("reglementation", "Démarches, prix et chantier")]
+        ("vrd", "VRD et réseaux"), ("reglementation", "Démarches, prix et chantier")]
 LOT_NOM = dict(LOTS)
 # catégorie des articles écrits avant les lots (y compris ceux faits à la main, hors de ce script)
 CAT = {"conseil-permis-de-construire-maroc-rokhas": "reglementation", "conseil-etude-de-sol-maroc-prix": "structure",
@@ -555,6 +556,12 @@ IMG_CHOISIE = {"conseil-prix-piscine-maroc": "images/projects/villa2.jpg",
 LOTS_IMAGES_UNIQUES = {"structure", "electricite"}
 
 
+# articles du fichier achat.py qui forment le thème « Expertise avant achat »
+EXPERTISE = {"conseil-expertise-avant-achat-maison-checklist", "conseil-verifier-structure-maison-avant-achat",
+             "conseil-verifier-electricite-maison-ancienne", "conseil-verifier-plomberie-humidite-avant-achat",
+             "conseil-prix-expertise-batiment-maroc"}
+
+
 def charger_lots():
     """Ajoute les articles des fichiers tools/articles/<lot>.py (une liste ARTICLES par fichier)."""
     import glob, importlib.util
@@ -565,6 +572,8 @@ def charger_lots():
         for a in m.ARTICLES:
             if a["slug"] in vus:
                 continue
+            if a["slug"] in EXPERTISE:
+                a["cat"] = "expertise"
             assert a["cat"] in LOT_NOM, (f, a["slug"], a["cat"])
             assert len(a["faq"]) >= 1 and os.path.exists(os.path.join(ROOT, a["img"])), (f, a["slug"])
             vus.add(a["slug"]); ARTICLES.append(a); CAT[a["slug"]] = a["cat"]
@@ -666,7 +675,8 @@ LOT_INFO = {
  "thermique": ("Isolation, vitrages, orientation, protections solaires et facture d'électricité : construire une maison confortable en été comme en hiver.", "service-EGT.html"),
  "incendie": ("Établissements recevant du public, hôtels, riads, parkings : détection, désenfumage, issues de secours et équipements de sécurité incendie.", "service-CSSI.html"),
  "vrd": ("Lotissements, assainissement, branchements, voirie et eaux pluviales : les réseaux qui desservent un terrain ou un projet.", "service-VRD.html"),
- "achat": ("Avant d'acheter une maison, un riad, un appartement neuf ou un terrain : ce qu'il faut vérifier, lot par lot, et ce que coûte une expertise.", "contact.html#formulaire"),
+ "achat": ("Acheter une maison, un riad, un appartement neuf ou un terrain au Maroc : les pièges à éviter, les papiers à vérifier et le budget des travaux.", "contact.html#formulaire"),
+ "expertise": ("Faire inspecter un bien avant de signer : structure, fissures, humidité, électricité, plomberie, et ce que coûte une expertise par un bureau d'études.", "contact.html#formulaire"),
  "reglementation": ("Permis de construire, bureau de contrôle, garanties, réception des travaux, contrats et prix : les démarches d'un projet de construction au Maroc.", "contact.html#formulaire"),
 }
 # parcours « Par où commencer ? » : (situation, phrase, article)
