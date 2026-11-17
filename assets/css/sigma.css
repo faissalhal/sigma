@@ -707,3 +707,5 @@ mark.a-completer { background: #fff1b8; color: #6b4f00; padding: 0 4px; border-r
   .nav a { padding-left: 9px; padding-right: 9px; }
 }
 @media (min-width: 961px) and (max-width: 1199px) { [dir="rtl"] .nav a.secondaire-nav { display: none; } [dir="rtl"] .nav a { padding-left: 7px; padding-right: 7px; } }
+[dir="rtl"] .contenu bdi[dir="ltr"] { white-space: nowrap; }
+@media (max-width: 420px) { [dir="rtl"] .contenu bdi[dir="ltr"] { white-space: normal; } }
