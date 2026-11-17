@@ -122,7 +122,7 @@ T = {
  "conseil-puissance-compteur-bilan-electrique-villa": {
    "title": "Villa power assessment: what meter capacity to request",
    "crumb": "Power assessment",
-   "desc": "Villa power assessment: inventory, diversity factors and a worked example where 31.6 kW of installed load comes down to about 20 kVA to request from the utility.",
+   "desc": "Villa power assessment: inventory, diversity factors and a worked example where 31.6 kW of installed load comes down to about 20 kVA to request from the grid.",
    "lead": "Adding up the power of every appliance gives a figure that is too high: they never all run at the same time. The power assessment is used to request the right connection, neither too small nor oversized.",
    "body": """
 <p>The power to request from the distributor is calculated through a <b>power assessment</b>: you list all the equipment, apply to each item a factor reflecting the fact that they do not all run at full power at the same time, then add them up. For an air-conditioned villa of 250 to 350 m² with a pool, the result is often between 15 and 25 kVA, while the raw sum of the appliances easily exceeds 30 kW. Each project remains a special case.</p>
@@ -500,7 +500,7 @@ T = {
  },
  "conseil-groupe-electrogene-inverseur-villa": {
    "title": "Generator for a villa: power, changeover switch and price",
-   "crumb": "Generator",
+   "crumb": "Backup generator",
    "desc": "Villa generator: partial or full backup, 5 to 15 kVA depending on needs, mandatory changeover switch, earthing, plant room and indicative prices in DH.",
    "lead": "For an isolated villa, a site at the end of the line or a guesthouse that cannot afford a power cut, a generator is an insurance policy. Badly connected, it becomes dangerous for you and for grid workers.",
    "body": """

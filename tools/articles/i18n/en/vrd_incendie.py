@@ -460,4 +460,152 @@ T = {
            ("What opening area for natural smoke control?", "It is proportional to the room's area; for ERP, French regulations often use about 1/200 of the floor area, to be checked against the applicable Moroccan regulation."),
            ("Why switch off the air conditioning in a fire?", "Because the comfort ventilation would spread the smoke throughout the building; the fire control panel stops it automatically during the safety actions.")],
  },
+ "conseil-issues-de-secours-degagements": {
+   "title": "Emergency exits and escape routes: number, width, exit units",
+   "crumb": "Emergency exits",
+   "desc": "Emergency exits: 0.60 m exit unit, widths of 0.90 m and 1.40 m, number of exits according to occupancy (19, 50, 100, 200 people) and the rules that apply.",
+   "lead": "How many exits, how wide, and where to place them: the calculation logic for the escape routes of a restaurant, a shop or a hotel.",
+   "body": """
+<p>The number and width of emergency exits depend on the <b>occupancy</b> the space can receive. Width is counted in <b>exit units (UP)</b> of 0.60 m, with a rounding rule: a one-unit exit actually measures 0.90 m and a two-unit exit 1.40 m. These rules, taken from French ERP regulations, are the most widespread calculation reference; in Morocco, the values to apply are those of the fire safety regulation (Decree 2-14-499), to be checked for each project.</p>
+<h2>Benchmarks by occupancy</h2>
+<div class="tableau"><table><thead><tr><th>Occupancy of the space</th><th>Escape routes (French regulation benchmarks)</th></tr></thead><tbody>
+<tr><td>1 to 19 people</td><td>1 escape route of 0.90 m</td></tr>
+<tr><td>20 to 50 people</td><td>2 escape routes: one of 0.90 m and a second of 0.60 m (or an ancillary escape route)</td></tr>
+<tr><td>51 to 100 people</td><td>2 escape routes of 0.90 m, or 1 of 1.40 m and 1 of 0.60 m</td></tr>
+<tr><td>101 to 200 people</td><td>1 escape route of 1.40 m and 1 of 0.90 m</td></tr>
+<tr><td>Above that</td><td>1 additional UP per 100 people, and more exits</td></tr>
+</tbody></table></div>
+<p>Not all guides present these cases in exactly the same way: use this table to understand the logic and have the calculation validated against the applicable text.</p>
+<h2>How occupancy is calculated</h2>
+<p>Occupancy is determined by activity: number of seats in a restaurant, density of people per m² of public area in a shop, number of beds in a hotel, plus the staff. It is the first figure to set: an error at this stage skews everything else.</p>
+<h2>The rules that go with the width</h2>
+<ul>
+<li><b>Exits far apart</b> from one another, so that a single fire does not block them all.</li>
+<li><b>Limited travel distances</b> to an exit or a protected staircase, and reduced dead-end length.</li>
+<li><b>Doors</b> opening in the direction of escape above a certain occupancy, operable without a key from the inside, with a panic bar where required.</li>
+<li><b>Staircases</b> sized like the escape routes, often protected and with smoke control.</li>
+<li><b>Signage</b> with illuminated emergency luminaires: see our article on <a href="conseil-eclairage-securite-baes.html">emergency lighting</a>.</li>
+<li><b>No obstacles</b>: no storage, no goods, no locked door during operation.</li>
+</ul>
+<h2>Common pitfalls in Marrakech</h2>
+<ol>
+<li>The riad converted into a restaurant or guesthouse with a single staircase and a single door onto the derb.</li>
+<li>The roof terrace fitted out as a bar, accessible only by the main staircase.</li>
+<li>The shop whose secondary exit leads into a locked storeroom.</li>
+<li>Fixed security grilles on windows that could serve as an exit.</li>
+</ol>
+<h2>The role of the engineering firm</h2>
+<p>The engineering firm calculates the occupancy, sizes and positions the escape routes from the sketch stage and proposes solutions when the existing building does not allow the rule to be applied to the letter (limiting occupancy, an additional staircase, compensatory measures). See also <a href="conseil-securite-incendie-erp-maroc-decret.html">fire safety for public buildings in Morocco</a>.</p>
+""",
+   "faq": [("What is the minimum width of an emergency exit?", "A one-unit exit measures 0.90 m and a two-unit exit 1.40 m, following the logic of French ERP regulations, widely used as a reference."),
+           ("How many exits for 50 people?", "According to French regulation benchmarks, two escape routes, one of 0.90 m and a second of 0.60 m or an ancillary escape route; to be checked against the applicable Moroccan text."),
+           ("What is an exit unit?", "It is the width needed for one file of people to pass, i.e. 0.60 m; the total width of the escape routes is calculated as a number of exit units according to occupancy.")],
+ },
+ "conseil-ria-colonne-seche-sprinkler": {
+   "title": "Fire hose reel, dry riser, sprinkler: differences and use cases",
+   "crumb": "Hose reel, dry riser, sprinkler",
+   "desc": "Fire hose reel (DN 25 or 33, 20 or 30 m hose), dry riser for firefighters only, sprinkler opening at 68 °C: role, use cases, water reserve and maintenance.",
+   "lead": "Three water-based systems that are often confused: one for staff, another for firefighters, the third that acts on its own.",
+   "body": """
+<p>The <b>RIA</b> (fire hose reel) is a semi-rigid hose kept permanently under pressure, usable by staff in the first minutes. The <b>dry riser</b> is an empty pipe that firefighters connect to their appliance to get water on the upper floors. The <b>sprinkler</b> system is a network of ceiling heads that open automatically under the effect of heat. Whether they are required depends on the building's height, use and risks: it is the fire safety regulation (Decree 2-14-499) and the project study that impose them.</p>
+<h2>Comparison</h2>
+<div class="tableau"><table><thead><tr><th>System</th><th>Used by</th><th>Supply</th><th>Typical cases</th></tr></thead><tbody>
+<tr><td>Fire hose reel</td><td>Staff, trained occupants</td><td>Water network under permanent pressure</td><td>Large ERP, hotels, warehouses, car parks, workshops</td></tr>
+<tr><td>Dry riser</td><td>Firefighters</td><td>Fire appliance via an inlet on the facade</td><td>Buildings whose upper floors are too high to run hoses from the street</td></tr>
+<tr><td>Sprinkler</td><td>Automatic</td><td>Dedicated water reserve and pumps, or a sufficient public network</td><td>Large volumes, warehouses, shopping centres, high-rise buildings, some car parks</td></tr>
+</tbody></table></div>
+<h2>The fire hose reel</h2>
+<ul>
+<li>Common diameters <b>DN 25</b> or <b>DN 33</b>, with a hose of <b>20 or 30 m</b> (European standard EN 671-1).</li>
+<li>Minimum operating pressure of around 3 to 3.5 bar according to manufacturers' data sheets: a dedicated booster is often required.</li>
+<li>Layout such that every point of the space is reached by at least one jet, near accesses and staircases.</li>
+</ul>
+<h2>The dry riser</h2>
+<p>It comprises an inlet connection on the facade, accessible to fire appliances, an empty vertical pipe and outlets on each floor, generally in the protected staircases. Being empty in normal times, it does not freeze or leak, but it must be pressure-tested periodically. The height thresholds above which it is required differ between regulations: use those of the Moroccan text for your project.</p>
+<h2>The sprinkler</h2>
+<p>Each head is closed by a glass bulb filled with liquid; under the effect of heat, the liquid expands and the bulb bursts. The colour indicates the activation temperature: orange 57 °C, <b>red 68 °C</b> (the most common), yellow 79 °C, green 93 °C. Only the heads close to the fire open: the rest of the building is not flooded, contrary to a widespread belief. The design follows references such as standard EN 12845 or the APSAD R1 rule.</p>
+<p><b>Water is the key.</b> In Marrakech as elsewhere, the pressure and flow of the public network are not always sufficient, and supply cuts do occur. A fire water reserve and a pumping set, with a backed-up power supply, are often necessary. The volume and flow are calculated in the study.</p>
+<h2>The role of the engineering firm</h2>
+<p>The engineering firm determines the required extinguishing systems, sizes the networks, the reserve and the pumps, coordinates with plumbing and structure (weight of tanks, penetrations) and writes the specifications. See also <a href="conseil-extincteurs-nombre-type-entretien.html">fire extinguishers</a> and <a href="conseil-reservoir-eau-citerne-maison.html">water tanks</a>.</p>
+""",
+   "faq": [("What is the difference between a fire hose reel and a dry riser?", "The fire hose reel is a pressurised hose usable by staff; the dry riser is an empty pipe that firefighters supply with their appliance to get water on the upper floors."),
+           ("At what temperature does a sprinkler activate?", "The most common head, with a red bulb, activates at 68 °C; there are also heads at 57, 79 or 93 °C depending on the room's ambient conditions."),
+           ("Does a sprinkler flood the whole building?", "No: only the heads heated by the fire open, the others remain closed.")],
+ },
+ "conseil-eclairage-securite-baes": {
+   "title": "Emergency lighting and BAES units: layout and maintenance rules",
+   "crumb": "Emergency lighting",
+   "desc": "Emergency lighting: 45-lumen BAES with 1 h autonomy every 15 m, 5 lm/m² anti-panic lighting, BAEH for bedrooms, SATI self-test units and maintenance.",
+   "lead": "When the power goes out in the middle of a fire, emergency units are the only thing guiding occupants to the exit. Here is how to position them.",
+   "body": """
+<p>A BAES (self-contained emergency lighting unit) switches on automatically when normal lighting fails. For <b>evacuation</b>, the usual benchmark is a <b>45-lumen</b> unit with <b>1 hour</b> of autonomy, placed at each exit, at each change of direction and at least every <b>15 m</b> in corridors. These rules come from French standards (NF C 71-800 for the units) and ERP regulations; in Morocco, the project requirements stem from the fire safety regulation (Decree 2-14-499).</p>
+<h2>The three functions</h2>
+<div class="tableau"><table><thead><tr><th>Function</th><th>Benchmark</th><th>Where</th></tr></thead><tbody>
+<tr><td>Evacuation (way-marking)</td><td>45 lm unit, 1 h autonomy, green pictogram</td><td>Exits, changes of direction, obstacles, staircases, every 15 m maximum</td></tr>
+<tr><td>Ambient (anti-panic)</td><td>At least 5 lumens per m² of room area for 1 h</td><td>Large rooms open to the public: restaurant, meeting room, shop</td></tr>
+<tr><td>Residential (BAEH)</td><td>Low-output unit (8 lm) with long autonomy (5 h)</td><td>Sleeping areas and their corridors: hotels, riads, clinics</td></tr>
+</tbody></table></div>
+<h2>Positioning the units properly</h2>
+<ul>
+<li>A unit above or immediately next to <b>each exit door</b> and each emergency exit.</li>
+<li>Units at <b>each change of direction</b> and in front of each obstacle or change of level (steps).</li>
+<li>A unit visible from every point of the corridor: the next one must always be in sight.</li>
+<li>Units supplied by the <b>same circuit</b> as the room's normal lighting, so that they come on when that lighting fails.</li>
+<li>In a riad, recessed or discreet models exist; discretion must never take precedence over visibility.</li>
+</ul>
+<p>In staircases, it is customary to mark each landing; in large rooms, ambient units are distributed to light the floor evenly and avoid shadowy areas. Pictograms follow a standardised design (figure running towards a door, direction arrow) and must remain legible from a distance, without being hidden by a sign, a curtain or decoration.</p>
+<h2>Choosing self-testing units</h2>
+<p><b>SATI</b> units (integrated automatic test system) test their own lamp and battery and signal a fault with an indicator light. They make maintenance much easier and are now the standard choice. In large buildings, addressable systems report faults to a central station.</p>
+<h2>Maintenance</h2>
+<ol>
+<li>Regularly check the units' indicator lights.</li>
+<li>Have the actual autonomy checked every year by a qualified company and record the result in the safety logbook.</li>
+<li>Replace batteries at the end of their life: the heat of Marrakech summers speeds up their ageing, particularly in roof spaces and non-air-conditioned rooms.</li>
+</ol>
+<h2>The role of the engineering firm</h2>
+<p>The engineering firm draws up the emergency lighting plan within the electrical package, consistent with the <a href="conseil-issues-de-secours-degagements.html">escape routes</a> and the <a href="conseil-ssi-categorie-a-b-c.html">fire safety system</a>, chooses the type of units and checks the supply circuits.</p>
+""",
+   "faq": [("What distance between two emergency units?", "A maximum of 15 m in corridors, plus a unit at each exit, at each change of direction and in front of each obstacle."),
+           ("What autonomy for a BAES?", "An evacuation unit provides 45 lumens for 1 hour; residential units (BAEH) for sleeping areas offer a lower output for about 5 hours."),
+           ("What is a SATI unit?", "A unit with an integrated automatic test system, which checks its own lamp and battery and signals any fault with an indicator light.")],
+ },
+ "conseil-ssi-categorie-a-b-c": {
+   "title": "Fire safety system (SSI) category A to E: understanding the system",
+   "crumb": "SSI categories",
+   "desc": "Fire safety system (SSI): categories A to E, automatic detection, CMSI control unit, type 1 to 4 alarm equipment, how to choose the category and maintenance.",
+   "lead": "The SSI is the brain of a building's fire safety. Its category, from A to E, sets what it detects, what it triggers and how it raises the alarm.",
+   "body": """
+<p>An SSI (fire safety system) combines fire <b>detection</b> and the building's <b>safety actions</b>: alarm, closing of fire doors, smoke control, shutdown of ventilation, unlocking of exits. It is classified into five categories, from <b>A</b> (the most comprehensive, with automatic detection) to <b>E</b> (the simplest). This classification comes from French standards (NF S 61-931 and following), which serve as a technical reference in Moroccan projects; the required category results from the type of establishment, its occupancy and the fire safety regulation (Decree 2-14-499).</p>
+<h2>The five categories</h2>
+<div class="tableau"><table><thead><tr><th>Category</th><th>Detection</th><th>Associated alarm equipment (usual)</th><th>Examples</th></tr></thead><tbody>
+<tr><td>A</td><td>Automatic (detectors) and manual</td><td>Type 1, with safety control unit (CMSI)</td><td>Large hotels, clinics, department stores, high-rise buildings</td></tr>
+<tr><td>B</td><td>Manual (call points)</td><td>Type 2a, with CMSI</td><td>Medium-sized ERP with smoke control or interlocked doors</td></tr>
+<tr><td>C</td><td>Manual</td><td>Type 2b, simplified controls</td><td>Medium-sized establishments</td></tr>
+<tr><td>D</td><td>Manual</td><td>Type 3, manual safety actions</td><td>Small establishments</td></tr>
+<tr><td>E</td><td>Manual or none</td><td>Type 4 (simple alarm, sometimes battery-powered)</td><td>Small premises, small shops</td></tr>
+</tbody></table></div>
+<p>This correspondence is the most common, but not all sources present it in the same way, and the regulation may require a particular combination for a given type of establishment.</p>
+<h2>The components of a category A SSI</h2>
+<ul>
+<li><b>The SDI</b> (fire detection system): automatic detectors, manual call points and ECS (control and indicating equipment).</li>
+<li><b>The CMSI</b> (centralised fire safety control unit): it controls the actuated safety devices.</li>
+<li><b>The DAS</b> (actuated safety devices): self-closing fire doors, fire dampers, smoke control dampers and fans, unlocking of exits.</li>
+<li><b>Audible and visual alarm devices</b>.</li>
+</ul>
+<h2>How to choose the right category</h2>
+<ol>
+<li>Classify the establishment (type of activity, occupancy) according to the Moroccan regulation.</li>
+<li>List the safety functions needed: smoke control, compartmentation, ventilation shutdown, lifts.</li>
+<li>Deduce the minimum category, then check whether a higher category is justified (sleeping areas, old building, value of assets, insurer's requirement).</li>
+</ol>
+<p>A hotel or riad with bedrooms almost always justifies automatic detection: see our article on <a href="conseil-detection-incendie-hotel-riad.html">fire detection for hotels and riads</a>.</p>
+<h2>Installation and maintenance</h2>
+<p>Installation follows the design and installation rules of the NF S 61-9xx series of standards (in particular NF S 61-970 for detection). It ends with acceptance tests, function by function. After that, a maintenance contract with periodic inspections, a safety logbook and staff trained to read the control panel are essential: a poorly maintained SSI generates false alarms and ends up being disabled.</p>
+<h2>The role of the engineering firm</h2>
+<p>The engineering firm determines the SSI category, draws up the functional analysis (which zone triggers which device), sizes the equipment, writes the specifications and attends the acceptance tests, in coordination with the <a href="conseil-desenfumage-naturel-mecanique.html">smoke control</a> study.</p>
+""",
+   "faq": [("What is the difference between a category A and B SSI?", "Category A includes automatic detection by detectors in addition to manual call points; category B relies on manual call points, with a safety control unit."),
+           ("What is a CMSI?", "The centralised fire safety control unit, which automatically or manually controls the safety devices: fire doors, smoke control, ventilation shutdown, unlocking of exits."),
+           ("Who determines a building's SSI category?", "It results from the classification of the establishment under the fire safety regulation; the engineering firm proposes it and has it validated during the project review.")],
+ },
 }

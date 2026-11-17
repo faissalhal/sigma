@@ -449,4 +449,161 @@ T = {
      ("Which technical standards apply to a guest house?", "In particular fire safety (decree 2-14-499), compliant electrics, sufficient hot water production and a verified structure, according to the grid for the target rating."),
    ],
  },
+ "conseil-bim-avantages-projet": {
+   "title": "BIM for a construction project: the practical benefits",
+   "crumb": "BIM",
+   "desc": "BIM in Morocco: digital model, clash detection between structure and building services, reliable quantities, digital DOE. Which projects should adopt it.",
+   "lead": "BIM is not just another 3D software package: it is a way of designing the entire building in a single model, so that problems are solved before the works start.",
+   "body": """<p><b>BIM</b> (Building Information Modeling) consists of building the project in a shared <b>3D digital model</b>, in which each element (column, duct, pipe, cable) carries its information: dimensions, material, quantity. Its main advantage is simple: you discover on screen the clashes that would otherwise appear on site. In Morocco, it is not required by general regulations, but it is gaining ground on large projects.</p>
+<h2>The practical benefits</h2>
+<div class="tableau"><table><thead><tr><th>Benefit</th><th>Example</th></tr></thead><tbody>
+<tr><td>Clash detection</td><td>Air conditioning duct passing through a beam, drain pipe crossing a column</td></tr>
+<tr><td>Reliable quantities</td><td>Concrete volumes, cable and pipe lengths extracted from the model</td></tr>
+<tr><td>Coordination</td><td>Architect, structural, building services and electrical engineers work on the same model</td></tr>
+<tr><td>Communication</td><td>The client visualises the project and approves it more quickly</td></tr>
+<tr><td>Operation</td><td>The model becomes a digital as-built works file</td></tr>
+</tbody></table></div>
+<h2>For which projects?</h2>
+<ul>
+<li><b>Strongly recommended</b>: hotels, apartment buildings, clinics, shopping centres, where technical networks are dense and false ceilings crowded.</li>
+<li><b>Useful</b>: high-end villas with ducted air conditioning, home automation, a swimming pool and a basement.</li>
+<li><b>Less cost-effective</b>: small, simple buildings, where well-coordinated 2D drawings are sufficient.</li>
+</ul>
+<h2>The limitations to be aware of</h2>
+<ol>
+<li><b>Initial cost</b>: modelling requires more design time; the investment pays off mainly on complex projects.</li>
+<li><b>All parties must play along</b>: a model in which only one trade is modelled loses much of its value.</li>
+<li><b>The model must be kept alive</b>: if changes made on site are not recorded, it no longer serves as a reference.</li>
+</ol>
+<p>Published studies on BIM in Morocco cite lack of training, cost and the absence of a regulatory framework as obstacles; adoption is being driven by major clients.</p>
+<h2>How to integrate it into your project</h2>
+<p>Specify in the design contract, from the outset, the expected level of detail, the trades to be modelled and the delivery format (for example IFC, an open format). Plan a coordination meeting at which the clashes detected are resolved before the construction drawings are issued.</p>
+<p><b>Levels of use.</b> People often speak of 3D BIM for geometry, 4D for scheduling and 5D for costs. For a client, the essentials are coordinated 3D and quantity take-off; the rest is mainly justified on large projects. What matters is to state clearly in the design contract what is expected, rather than demanding “BIM” without a definition. Also specify who owns the model at the end of the project and in what format it will be handed over to you.</p>
+<h2>The role of the engineering consultancy</h2>
+<p>SIGMA ICC models the structure and technical networks in BIM, coordinates them with the architect's model and extracts the quantities for the <a href="conseil-cahier-des-charges-cps-construction.html">CPS</a>. At the end of the works, the updated model feeds the <a href="conseil-plans-de-recolement-dos.html">as-built drawings</a>.</p>
+""",
+   "faq": [
+     ("Is BIM mandatory in Morocco?", "No, there is currently no general obligation to use BIM in Morocco; it is required case by case on certain large projects."),
+     ("What is the main advantage of BIM?", "Detecting clashes between structure and networks before the works start, which avoids costly remedial work, as well as more reliable quantities."),
+     ("Is BIM worth it for a villa?", "For a high-end villa with many networks (ducted air conditioning, home automation, basement), yes; for a simple building, well-coordinated 2D drawings are often sufficient."),
+   ],
+ },
+ "conseil-pont-thermique-solutions": {
+   "title": "Thermal bridges: where they occur and how to treat them",
+   "crumb": "Thermal bridges",
+   "desc": "Thermal bridges in a house in Morocco: columns, slab edges, lintels, roller shutter boxes. Their effects on heat and condensation, and the solutions.",
+   "lead": "Insulating the walls without treating the columns and slab edges means leaving concrete radiators in the building envelope. Where thermal bridges are and how to limit them.",
+   "body": """<p>A <b>thermal bridge</b> is an area of the building envelope where the insulation is interrupted or weakened, and through which heat passes much more easily. In a Moroccan building with a concrete frame and brick infill, they are found mainly at <b>columns, beams, slab edges and lintels</b>. They are treated by ensuring the continuity of the insulation, ideally from the outside.</p>
+<h2>Where are they?</h2>
+<div class="tableau"><table><thead><tr><th>Location</th><th>Why it is a thermal bridge</th></tr></thead><tbody>
+<tr><td>Columns and beams in the façade</td><td>Concrete conducts heat much better than brick or insulation</td></tr>
+<tr><td>Slab edges and balconies</td><td>The slab passes right through the wall</td></tr>
+<tr><td>Window lintels and sills</td><td>Solid concrete above and below the openings</td></tr>
+<tr><td>Roller shutter boxes</td><td>Poorly insulated, often hollow casing</td></tr>
+<tr><td>Junction between roof terrace and parapet</td><td>The terrace insulation stops before the wall</td></tr>
+<tr><td>Junction between wall and ground floor slab</td><td>Ground-bearing slab not insulated at its edge</td></tr>
+</tbody></table></div>
+<h2>Their effects in Marrakech</h2>
+<ul>
+<li><b>In summer</b>: concrete exposed to the sun stores heat and releases it indoors in the evening; the air conditioning runs longer.</li>
+<li><b>In winter</b>: nights are cool; the inner face of the columns cools down, which can cause condensation, black marks and mould in the corners.</li>
+<li><b>On overall performance</b>: a significant share of the heat losses of a well-insulated building can pass through these junctions.</li>
+</ul>
+<h2>The solutions</h2>
+<ol>
+<li><b>External wall insulation (EWI)</b>: continuous insulation covers walls, columns and slab edges. It is the most effective solution, in new builds as well as in renovation.</li>
+<li><b>Insulating edge blocks</b> at slab edges and <b>insulating cladding</b> of columns on the outside, before rendering.</li>
+<li><b>Thermal break elements</b> at slab-façade or balcony junctions, to be incorporated from the design stage with the structural engineer.</li>
+<li><b>Insulation returns</b> on the parapet and around the edge of the roof terrace.</li>
+<li><b>Insulated shutter boxes</b> or external shutters without a box.</li>
+</ol>
+<p>These measures are decided at the drawing stage: once the concrete is poured, only external insulation or partial corrections from the inside remain possible.</p>
+<h2>The link with the RTCM</h2>
+<p>The Moroccan thermal building regulation (decree 2-13-874) sets requirements for walls according to the climate zone; Marrakech is in zone 5. Achieving these performance levels means not letting the insulation be interrupted by the structure. See <a href="conseil-isolation-thermique-rtcm-maroc.html">thermal insulation and the RTCM</a> and <a href="conseil-brique-isolante-monomur-maroc.html">insulating brick and double walls</a>.</p>
+<p><b>How to spot them in an existing building.</b> A thermal camera, used early in the morning in winter or at the end of the day in summer, clearly shows the columns, beams and slab edges that stand out from the rest of the wall. Without a camera, the signs are black marks or mould in the upper corners of rooms, damp behind furniture placed against an exterior wall and horizontal cracks along the slabs. These observations guide the diagnosis before a solution is chosen.</p>
+<h2>The role of the engineering consultancy</h2>
+<p>The BET identifies the critical junctions, proposes construction details compatible with the seismic-resistant structure and checks by calculation the effect on air conditioning needs. SIGMA ICC incorporates these details into the construction drawings.</p>
+""",
+   "faq": [
+     ("What is a thermal bridge?", "An area of the building envelope where the insulation is interrupted, typically at concrete columns, beams, slab edges and lintels, through which heat passes more easily."),
+     ("Do thermal bridges cause mould?", "Yes: in winter, the inner face of the concrete cools down and water vapour can condense on it, especially in corners, which encourages mould."),
+     ("What is the best solution against thermal bridges?", "External wall insulation, which continuously covers walls, columns and slab edges; in new builds, insulating edge blocks and thermal breaks can also be specified."),
+   ],
+ },
+ "conseil-double-vitrage-chaleur-maroc": {
+   "title": "Double glazing against the heat in Morocco: what really matters",
+   "crumb": "Double glazing",
+   "desc": "Double glazing in Morocco: U-value (2.8 for clear glass, 1.1 to 1.6 for low-emissivity), solar factor g, and window frames with a thermal break.",
+   "lead": "Against the heat, ordinary double glazing is not enough: it is above all the solar factor and external shading that make the difference.",
+   "body": """<p>Yes, double glazing is useful in Morocco, but not for the reason you might think. It reduces heat exchange by conduction (<b>U</b>-value), which matters in winter and when the temperature difference is large. Against the summer sun, what matters is the <b>solar factor g</b>: the proportion of solar energy that passes through the glass. Clear double glazing still lets most of the radiation through; you need <b>solar control</b> glass or external shading.</p>
+<h2>The two figures to ask for</h2>
+<div class="tableau"><table><thead><tr><th>Type of glazing</th><th>U (W/m².K, order of magnitude)</th><th>Solar factor g (order of magnitude)</th></tr></thead><tbody>
+<tr><td>Clear single glazing</td><td>about 5.8</td><td>high (close to 0.85)</td></tr>
+<tr><td>Clear double glazing 4/16/4</td><td>about 2.8 to 3</td><td>about 0.75</td></tr>
+<tr><td>Low-emissivity double glazing, argon</td><td>about 1.1 to 1.6</td><td>about 0.4 to 0.6</td></tr>
+<tr><td>Solar control double glazing</td><td>about 1.1 to 1.6</td><td>about 0.25 to 0.45</td></tr>
+</tbody></table></div>
+<p>These values are indicative; ask the glass supplier for the technical data sheet of the exact product. The lower U is, the better the glazing insulates; the lower g is, the less solar heat it lets in. A g that is too low also darkens the rooms: a compromise is chosen according to the orientation.</p>
+<h2>Choosing according to orientation</h2>
+<ul>
+<li><b>West and south-west</b>: low solar factor and external shading, as these are the most demanding façades in summer.</li>
+<li><b>South</b>: a well-sized canopy or overhang is often enough; the summer sun is very high there.</li>
+<li><b>East</b>: movable shading for the morning sun.</li>
+<li><b>North</b>: clearer glazing is possible, as direct solar gain is low.</li>
+</ul>
+<h2>The frame matters as much as the glass</h2>
+<ol>
+<li><b>Aluminium with a thermal break</b>: a standard aluminium profile conducts heat and can cancel out part of the glazing's benefit.</li>
+<li><b>PVC</b>: a good insulator, to be chosen from a UV-resistant range.</li>
+<li><b>Airtightness</b>: careful seals and installation, otherwise hot air and dust get in.</li>
+</ol>
+<h2>What the RTCM says</h2>
+<p>In its prescriptive approach, the Moroccan thermal building regulation sets requirements for glazed openings (U and solar factor) that depend on the climate zone and the overall glazing ratio (TGBV), i.e. the ratio between the glazed area and the area of the exterior walls. The more glazed the façade, the stricter the requirements. Marrakech is in zone 5.</p>
+<p><b>What about noise?</b> Double glazing also improves sound insulation, which is useful in town or near a road. For a real improvement, choose asymmetric glazing (two panes of different thicknesses) or acoustic laminated glass, and above all an airtight frame: noise passes first through poorly fitted seals and shutter boxes. Laminated glass also provides security against break-ins and injuries if the glass breaks.</p>
+<h2>The role of the engineering consultancy</h2>
+<p>The BET calculates the TGBV, checks compliance with the RTCM and weighs high-performance glazing against solar shading, then sizes the air conditioning accordingly. See <a href="conseil-protection-solaire-brise-soleil.html">solar shading</a> and <a href="conseil-orientation-maison-climat-chaud.html">house orientation</a>.</p>
+""",
+   "faq": [
+     ("Does double glazing protect against the heat?", "Partially: clear double glazing reduces conduction but lets most solar radiation through; against the heat, you need solar control glass or external shading."),
+     ("What is the solar factor of glazing?", "It is the proportion of solar energy that passes through the glass, between 0 and 1; the lower it is, the less the room heats up in the sun."),
+     ("Which frame should be chosen with double glazing?", "An aluminium frame with a thermal break or a UV-resistant PVC frame, with airtight installation."),
+   ],
+ },
+ "conseil-orientation-maison-climat-chaud": {
+   "title": "Orienting your house in a hot climate: the rules for Marrakech",
+   "crumb": "House orientation",
+   "desc": "Orienting a house in Marrakech: shaded south-facing openings, little west glazing, buffer rooms, a patio and cross-ventilation at night. Rules that cost almost nothing.",
+   "lead": "Before any insulation or air conditioning, the way the house sits on its plot determines much of its summer comfort.",
+   "body": """<p>In a hot climate like Marrakech, good orientation means placing the <b>large openings to the south</b>, where they are easy to shade, <b>limiting glazing to the west</b>, the most demanding façade in summer, and organising the house to encourage <b>night-time ventilation</b>. These choices cost almost nothing if they are made at the sketch stage.</p>
+<h2>What the sun does in Marrakech</h2>
+<p>Marrakech lies at about 31.6° north latitude. At the summer solstice, the midday sun peaks at about 82° above the horizon: it mainly strikes the roof, and a simple canopy shades a south-facing opening. In the afternoon, on the other hand, it is low on the western horizon, at a time when the outdoor air often exceeds 40 °C: no horizontal canopy can block it.</p>
+<div class="tableau"><table><thead><tr><th>Façade</th><th>Summer exposure</th><th>Advice</th></tr></thead><tbody>
+<tr><td>Roof</td><td>Very high, all day long</td><td>Insulation as a priority, light-coloured terrace</td></tr>
+<tr><td>West</td><td>High, during the hottest hours</td><td>Few openings, vertical or movable shading</td></tr>
+<tr><td>East</td><td>Moderate, in the morning</td><td>Movable shading</td></tr>
+<tr><td>South</td><td>Low in summer, useful in winter</td><td>Main openings with a canopy</td></tr>
+<tr><td>North</td><td>Very low</td><td>Diffuse light, ventilation openings</td></tr>
+</tbody></table></div>
+<h2>Layout principles</h2>
+<ol>
+<li><b>Buffer rooms to the west</b>: garage, storage, laundry and staircase protect the living spaces.</li>
+<li><b>Living room and bedrooms</b> preferably to the south, east or north.</li>
+<li><b>Cross-ventilation</b>: openings on two opposite façades to expel heat at night, when the outdoor air cools down.</li>
+<li><b>Shaded patio</b>: the principle of riads, it creates a reservoir of cooler air and a chimney effect; vegetation and water enhance it.</li>
+<li><b>Thermal mass</b>: heavy walls well insulated on the outside dampen heat peaks.</li>
+</ol>
+<h2>When the plot dictates the orientation</h2>
+<p>On a narrow plot whose main façade faces west, compensate with strong external shading (vertical louvres, mashrabiya, shutters), glazing with a low solar factor and openings set back within the thickness of the wall. See <a href="conseil-protection-solaire-brise-soleil.html">solar shading</a>.</p>
+<h2>The link with the RTCM</h2>
+<p>The thermal regulation (decree 2-13-874) takes into account the proportion of glazing on the façades; good orientation makes compliance easier and reduces the air conditioning capacity to be installed. See <a href="conseil-climatisation-puissance-btu-m2.html">air conditioning capacity</a>.</p>
+<p><b>Colour and the roof.</b> A light-coloured façade and roof reflect a large share of solar radiation, whereas a dark colour absorbs it and heats up. This is the logic behind traditional whitewashed terraces. Combined with good roof terrace insulation, a light finish limits surface temperature and also protects the waterproofing. In dense urban areas, local regulations sometimes impose a colour (ochre in Marrakech): insulation and shading then have to do the work.</p>
+<h2>The role of the engineering consultancy</h2>
+<p>The BET can simulate the solar gains of each façade from the sketch stage and advise the architect on the position of openings, shading and insulation, before choices are fixed.</p>
+""",
+   "faq": [
+     ("What is the best orientation for a house in Marrakech?", "Large south-facing openings shaded by a canopy, few openings to the west, buffer rooms to the west and cross-ventilation to cool the house at night."),
+     ("Why is the west façade the hottest?", "It receives low sun in the afternoon, when the outdoor air is at its hottest, and horizontal shading does not block it."),
+     ("Is a canopy enough on the south side?", "Often yes: in Marrakech, the midday summer sun peaks at around 82°; a modest overhang effectively shades a south-facing opening."),
+   ],
+ },
 }

@@ -80,7 +80,7 @@ T = {
    ],
  },
  "conseil-pente-evacuation-eaux-usees": {
-   "title": "Wastewater drain slope: 1 cm per metre minimum, 2 to 3 advised",
+   "title": "Wastewater drain slope: a minimum of 1 cm per metre of pipe run",
    "crumb": "Drain slope",
    "desc": "Drain slopes: 1 cm/m minimum according to DTU 60.11, 2 to 3 cm/m recommended for wastewater and WCs. Common mistakes, back-falls and checks before closing up.",
    "lead": "A drain that clogs every six months almost always comes down to a badly set slope. The rules are simple, but they still need to be checked before the slab is poured.",
@@ -120,7 +120,7 @@ T = {
  "conseil-ventilation-primaire-colonne-chute": {
    "title": "Soil stack primary ventilation: why sewer smells come back up",
    "crumb": "Primary ventilation",
-   "desc": "Sewer smells, gurgling traps? The soil stack must rise through the roof at the same diameter, often 100 mm. The role of primary ventilation and air admission valves.",
+   "desc": "Sewer smells, gurgling traps? The soil stack must rise through the roof at the same diameter, often 100 mm. The role of primary ventilation and the air valve.",
    "lead": "Bad smells in the bathroom with no visible leak? The culprit is often a drain stack that cannot breathe.",
    "body": """
 <p>If sewer smells come up through the traps, it is usually because the primary ventilation is missing or badly done. Each soil stack (the vertical pipe that receives the WCs and other fixtures) must be extended up through the roof, at the same diameter, often 100 mm, and protected at its top. Without this air inlet, the water flowing down sucks out the water seal of the traps and lets the sewer gases through.</p>
@@ -157,7 +157,7 @@ T = {
  "conseil-chauffe-eau-solaire-maroc-dimensionnement": {
    "title": "Solar water heater in Morocco: what capacity should you choose?",
    "crumb": "Solar water heater",
-   "desc": "Solar water heater in Morocco: 50 litres per person, 200 L for 4 people, 300 L with 2 collectors. Thermosiphon, orientation, limescale and safety devices explained.",
+   "desc": "Solar water heater in Morocco: 50 litres per person, 200 L for 4 people, 300 L with 2 collectors. Thermosiphon, orientation, limescale and safety.",
    "lead": "With Morocco's sunshine, a solar water heater is almost always a good investment. It still needs to be sized and installed correctly.",
    "body": """
 <p>A solar water heater is sized on the basis of about 50 litres of hot water per person per day. In practice, a 150-litre tank suits 2 or 3 people, a 200-litre tank with one collector a family of 4, and a 300-litre tank with two collectors 5 or 6 people. A villa with several bathrooms or a guesthouse requires a more precise calculation.</p>
@@ -197,7 +197,7 @@ T = {
  "conseil-surpresseur-pression-eau-maison": {
    "title": "Booster pump and low water pressure: causes and solutions",
    "crumb": "Booster pump and pressure",
-   "desc": "Low water pressure upstairs? Aim for about 3 bar at the tap. Causes, booster pump fed from a tank, pressure reducer above 4 bar, and indicative prices in Morocco.",
+   "desc": "Low water pressure upstairs? Aim for about 3 bar at the tap. Causes, booster pump fed from a tank, pressure reducer above 4 bar, indicative prices.",
    "lead": "A shower with no flow upstairs, a water heater that barely runs: before buying a pump, you need to understand where the lack of pressure comes from.",
    "body": """
 <p>Comfortable pressure at the tap is around 3 bar. Below 1.5 to 2 bar, the shower becomes weak and some water heaters or mixer taps work poorly. The most reliable solution is a booster pump fed from a reservoir (ground tank or cistern), not a pump connected directly to the meter. But you first need to check that the problem really does come from the mains pressure.</p>
@@ -234,7 +234,7 @@ T = {
  "conseil-coup-de-belier-solution": {
    "title": "Water hammer in pipes: causes and solutions that actually work",
    "crumb": "Water hammer",
-   "desc": "Water hammer: a sharp bang when a tap closes. Causes (fast closing, pressure, velocity) and solutions: water hammer arrestor and a pressure reducer set at 3 bar.",
+   "desc": "Water hammer: a sharp bang when a tap closes. Causes (fast closing, pressure, velocity) and solutions: water hammer arrestor, reducer set at 3 bar.",
    "lead": "A \"bang\" in the walls when the washing machine stops or a mixer tap is closed: it is not just a noise, it is a pressure surge that strains the whole installation.",
    "body": """
 <p>Water hammer is a pressure surge wave that occurs when moving water is stopped abruptly: fast closing of a mixer tap, the solenoid valve of a washing machine or dishwasher, a quarter-turn tap. It is treated by reducing the pressure (to around 3 bar), slowing the water in the pipes and fitting a water hammer arrestor close to the appliance causing the shock.</p>
@@ -529,7 +529,7 @@ T = {
  "conseil-prix-plomberie-villa-maroc": {
    "title": "Villa plumbing cost in Morocco: budget items and what to expect",
    "crumb": "Plumbing cost",
-   "desc": "Villa plumbing cost in Morocco: about 60,000 DH for a basic installation over 3 levels, sanitary ware extra. The cost items and how to compare contractor quotes.",
+   "desc": "Villa plumbing cost in Morocco: about 60,000 DH for a basic installation over 3 levels, sanitary ware extra. Cost items and how to compare quotes.",
    "lead": "The plumbing and sanitary package weighs less than the structural work, but it concentrates a lot of poor workmanship. Here is how its price breaks down and how to compare quotes.",
    "body": """
 <p>For a villa with a basement, ground floor and upper floor, an article in La Vie Éco estimated basic plumbing at about 60,000 DH, excluding high-end fixtures (an old figure, to be updated with a quote); sanitary ware comes on top (at least 13,000 DH for four entry-level bathrooms, with WCs at 700 to 2,000 DH each). These figures are indicative: the real budget depends above all on the number of water outlets, the hot water production and the level of finish.</p>
