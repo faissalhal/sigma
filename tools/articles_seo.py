@@ -544,9 +544,15 @@ IMG_CHOISIE = {"conseil-prix-piscine-maroc": "images/projects/villa2.jpg",
                "conseil-poutre-portee-retombee": "images/services/beton-poutre.jpg",
                "conseil-surelevation-ajouter-etage-maroc": "images/projects/riad4.jpg",
                "conseil-delai-decoffrage-dalle-poteaux": "images/services/maison-beton.jpg",
-               "conseil-prix-construction-m2-maroc": "images/villa-finie.jpg"}
+               "conseil-prix-construction-m2-maroc": "images/villa-finie.jpg",
+               "conseil-tableau-electrique-gtl-maison": "images/services/elec-tableau.jpg",
+               "conseil-disjoncteur-ou-differentiel-difference": "images/services/elec-disjoncteurs.jpg",
+               "conseil-combien-prises-par-circuit": "images/services/elec-prises.jpg",
+               "conseil-electricite-piscine-securite": "images/services/ele1.jpg",
+               "conseil-section-cable-calibre-disjoncteur": "images/services/ele2.jpg",
+               "conseil-prix-installation-electrique-villa-maroc": "images/villa-technique.jpg"}
 # lots dont chaque article a déjà son image unique (contrôlé à chaque génération)
-LOTS_IMAGES_UNIQUES = {"structure"}
+LOTS_IMAGES_UNIQUES = {"structure", "electricite"}
 
 
 def charger_lots():
@@ -577,7 +583,7 @@ def charger_lots():
     secours = [x for x in ["images/projects/project1.jpg", "images/projects/project2.jpg", "images/projects/project3.jpg",
                "images/projects/project4.jpg", "images/projects/project5.jpg", "images/projects/project6.jpg",
                "images/projects/villa1.jpg", "images/projects/riad1.jpg", "images/projects/riad2.jpg", "images/projects/riad3.jpg",
-               "images/villa-technique.jpg", "images/villa-finie.jpg"] if x not in reservees]
+               "images/villa-finie.jpg"] if x not in reservees]
     k = 0
     for a in ARTICLES:
         if a["cat"] not in LOTS_IMAGES_UNIQUES and a["img"] in reservees:
