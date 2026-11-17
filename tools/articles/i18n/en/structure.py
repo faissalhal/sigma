@@ -517,4 +517,189 @@ T = {
     ("Why does a retaining wall tip over?", "Most often because of a footing that is too narrow, an unforeseen surcharge, or missing or blocked drainage that lets water push on the wall."),
    ],
  },
+ "conseil-remontees-capillaires-murs": {
+   "title": "Rising damp in walls: causes and how to treat it for good",
+   "crumb": "Rising damp",
+   "desc": "Saltpetre, plaster peeling at the base of walls: rising damp is treated with a damp-proof course, injection, drainage and lime-based plasters. How to proceed.",
+   "lead": "Damp at the base of walls, tide marks, saltpetre: rising damp is common in old houses and riads. How to recognise it and treat it for the long term.",
+   "body": """
+<p>Rising damp is moisture from the ground that rises up the walls through the pores of the materials, like a wick. It is treated by <b>cutting off the water's path</b>: a waterproof barrier at the base of the walls (damp-proof course or injection), reducing the water around the foundations (drainage, falls) and plasters that let the wall dry out. Painting or applying cement render over it only moves the problem elsewhere.</p>
+<h2>Recognising it</h2>
+<ul>
+<li><b>A damp band</b> at the bottom of the walls, often up to about one metre high, with an irregular edge.</li>
+<li><b>Saltpetre</b>: white, powdery deposits of salts crystallising on the surface.</li>
+<li><b>Plaster and paint that blister</b> and peel off, skirting boards that rot.</li>
+<li><b>The problem persists</b> in the dry season, unlike condensation or rain penetration.</li>
+</ul>
+<p>Before any treatment, other causes must be ruled out: pipe leaks, penetration through the façade or roof terrace, condensation. A diagnosis with moisture measurements avoids treating the wrong cause.</p>
+<h2>Why old houses are affected</h2>
+<p>Recent buildings normally include a <b>damp-proof course</b> (waterproof layer) above the foundations or tie beams. Old houses, riads in the medina and rammed-earth or stone walls do not have one. The problem gets worse when these walls are covered with impermeable cement render or tiles, or when the level of the street or patio has been raised over the years.</p>
+<h2>The solutions</h2>
+<div class="tableau"><table><thead><tr><th>Solution</th><th>Principle</th><th>Remarks</th></tr></thead><tbody>
+<tr><td>Water-repellent resin injection</td><td>Closely spaced holes drilled at the base of the wall, injection of a product that blocks the pores</td><td>Variable effectiveness depending on the wall; tricky in thick, heterogeneous walls</td></tr>
+<tr><td>Physical damp-proof course (mechanical cut)</td><td>Insertion of a waterproof barrier into the wall, section by section</td><td>Effective but heavy work; to be assessed on a load-bearing wall</td></tr>
+<tr><td>Perimeter drainage</td><td>Keep water away from the foundations</td><td>Useful if the soil is waterlogged or poorly drained</td></tr>
+<tr><td>Lime plasters</td><td>Let the wall dry and the salts come out</td><td>Essential complement, particularly on rammed earth and stone</td></tr>
+</tbody></table></div>
+<h2>Common mistakes</h2>
+<ul>
+<li>Applying cement render or impermeable paint: the damp rises higher.</li>
+<li>Treating without correcting the external cause (gutter, watering against the wall, patio floor sloping towards the wall).</li>
+<li>Redoing the plaster immediately after an injection: the wall needs time to dry, often several months depending on its thickness.</li>
+<li>Watering planters or plants directly at the foot of the façades, which keeps the soil damp.</li>
+</ul>
+<h2>The role of the engineering firm</h2>
+<p>The engineering firm makes the diagnosis and chooses a solution compatible with the structure: on a load-bearing wall or traditional masonry, a poorly executed damp-proof course can weaken the wall. In new construction, it provides the damp-proof course above the <a href="conseil-longrines-role-dimension.html">tie beams</a>. For a purchase, see also <a href="conseil-verifier-plomberie-humidite-avant-achat.html">checking for damp before buying</a>.</p>
+""",
+   "faq": [
+    ("How can you tell if it is rising damp?", "The damp forms a band at the bottom of the walls, often with saltpetre, and persists in the dry season. A diagnosis must rule out leaks, penetration and condensation."),
+    ("Is resin injection against damp effective?", "It can be on homogeneous walls, but its effectiveness varies in thick, heterogeneous walls; it must be combined with eliminating the external causes."),
+    ("What plaster for a damp riad wall?", "A breathable lime plaster, which lets the wall dry; cement renders and impermeable paints make rising damp worse."),
+   ],
+ },
+ "conseil-acier-ha-fe500-diametres": {
+   "title": "HA FeE500 rebar: diameters, cross-sections and weight per metre",
+   "crumb": "HA FeE500 rebar",
+   "desc": "HA rebar table: HA6 = 0.222 kg/m, HA8 = 0.395, HA10 = 0.617, HA12 = 0.888, HA14 = 1.21, HA16 = 1.58 kg/m. Cross-sections, uses and steel weight calculation.",
+   "lead": "To read a reinforcement drawing, estimate a steel order or check an invoice, you need to know the cross-section and weight per metre of each bar diameter.",
+   "body": """
+<p>HA FeE500 steel is the most widely used high-bond reinforcing steel in reinforced concrete in Morocco: "HA" refers to the ribs that improve the bond with the concrete, and "500" to its yield strength of 500 MPa. An HA10 weighs <b>0.617 kg per metre</b>, an HA12 <b>0.888 kg/m</b> and an HA14 <b>1.21 kg/m</b>.</p>
+<h2>Table of common diameters</h2>
+<div class="tableau"><table><thead><tr><th>Diameter</th><th>Cross-section (cm²)</th><th>Weight (kg/m)</th><th>Common uses</th></tr></thead><tbody>
+<tr><td>HA6</td><td>0.28</td><td>0.222</td><td>Light stirrups and links</td></tr>
+<tr><td>HA8</td><td>0.50</td><td>0.395</td><td>Column and beam stirrups, slabs</td></tr>
+<tr><td>HA10</td><td>0.79</td><td>0.617</td><td>Ring beams, slabs, joists</td></tr>
+<tr><td>HA12</td><td>1.13</td><td>0.888</td><td>Columns, beams, footings</td></tr>
+<tr><td>HA14</td><td>1.54</td><td>1.21</td><td>More heavily loaded columns and beams</td></tr>
+<tr><td>HA16</td><td>2.01</td><td>1.58</td><td>Long-span beams, rafts</td></tr>
+<tr><td>HA20</td><td>3.14</td><td>2.47</td><td>Heavy structures</td></tr>
+</tbody></table></div>
+<p>The weight can be found with the formula: weight (kg/m) ≈ 0.00617 × d², with d in millimetres, the density of steel being 7,850 kg/m³. The uses shown are trends; the diameter of each bar is set by calculation.</p>
+<h2>How to read a reinforcement drawing</h2>
+<p>A note such as "4 HA12" means four 12 mm bars, i.e. 4 × 1.13 = 4.52 cm² of steel. "Stirrups HA8 e = 15" means 8 mm stirrups spaced at 15 cm. For a slab, "HA10 e = 20" means 10 mm bars every 20 cm, i.e. about 3.9 cm² per metre of width. These cross-sections are the ones calculated by the engineer: replacing a diameter with a smaller one greatly reduces strength.</p>
+<h2>Calculating a steel weight</h2>
+<ul>
+<li><b>Column</b> 3 m high with 4 HA12: 4 × 3 m × 0.888 = 10.7 kg, plus laps and stirrups.</li>
+<li><b>HA8 stirrups</b> with a developed length of 1 m every 15 cm over 3 m: 20 stirrups × 0.395 = 7.9 kg.</li>
+<li>Add a margin for offcuts and laps, often from a few percent to more than 10% depending on how well the bending is optimised.</li>
+</ul>
+<h2>Quality and storage</h2>
+<p>Insist on certified steel, with the manufacturer's and grade markings, and check on the delivery note that it is indeed FeE500 and the diameters ordered. On site, store the steel off the ground; light surface rust is not a problem, but steel that flakes or loses material must be rejected. Soil, formwork release oil and dried cement impair bond.</p>
+<h2>The role of the engineering firm</h2>
+<p>The engineering firm calculates the steel cross-sections, translates them into diameters and spacings on the drawings, and can provide bar schedules that allow precise ordering. It then checks on site, during the <a href="conseil-controle-ferraillage-avant-coulage.html">reinforcement inspection</a>, that the diameters placed are indeed those on the drawings. For the associated concrete, see <a href="conseil-classe-beton-b25-c25-30.html">concrete classes</a>.</p>
+""",
+   "faq": [
+    ("How much does one metre of 12 mm rebar weigh?", "An HA12 bar weighs 0.888 kg per metre, i.e. about 10.7 kg for a 12 m bar. Its cross-section is 1.13 cm²."),
+    ("What does FeE500 mean?", "It is a high-bond steel with a guaranteed yield strength of 500 MPa; it is the most common grade for reinforced concrete."),
+    ("How do you calculate the weight of a steel bar?", "Weight (kg/m) ≈ 0.00617 × d², with d in millimetres: for an HA10, 0.00617 × 100 = 0.617 kg/m."),
+   ],
+ },
+ "conseil-classe-beton-b25-c25-30": {
+   "title": "Concrete classes B25, C25/30, C30/37: what do they mean?",
+   "crumb": "Concrete classes",
+   "desc": "C25/30 = 25 MPa on cylinder and 30 MPa on cube at 28 days; B25 (BAEL) = usually 25 MPa on cylinder. Which class for a villa and how to check it on site.",
+   "lead": "On drawings and in specifications, concrete is designated by a strength class. Knowing how to read it lets you order the right concrete and check what is delivered.",
+   "body": """
+<p>Class <b>C25/30</b> designates a concrete whose characteristic compressive strength at 28 days is <b>25 MPa measured on a cylinder</b> and <b>30 MPa measured on a cube</b>: these are two ways of measuring the same concrete quality. The older designation <b>B25</b>, still common in Moroccan specifications (CPS) drafted according to the BAEL, generally refers to a strength of 25 MPa at 28 days on a cylinder, close to a C25/30. Always ask for the reference standard to be stated.</p>
+<h2>Reading a concrete class</h2>
+<p>In the European designation (EN 206 standard, Eurocode 2), the letter C stands for "concrete"; the first number is the strength on a 15 × 30 cm cylinder, the second on a 15 cm cube, both in MPa at 28 days. The cube gives a higher value than the cylinder for the same concrete, hence the two figures. With the BAEL, the design strength is written fc28, measured on a cylinder. Note: in other systems of standards, a letter B followed by a number may designate a cube strength; if in doubt, ask for clarification in writing.</p>
+<div class="tableau"><table><thead><tr><th>Class</th><th>Cylinder (MPa)</th><th>Cube (MPa)</th><th>Typical use (indicative)</th></tr></thead><tbody>
+<tr><td>C20/25</td><td>20</td><td>25</td><td>Lightly stressed reinforced concrete, ground slabs</td></tr>
+<tr><td>C25/30</td><td>25</td><td>30</td><td>Typical structure of a villa or small building</td></tr>
+<tr><td>C30/37</td><td>30</td><td>37</td><td>More heavily stressed or exposed structures, swimming pools, car parks</td></tr>
+<tr><td>C35/45</td><td>35</td><td>45</td><td>Demanding structures, aggressive environments</td></tr>
+</tbody></table></div>
+<h2>Strength class and exposure class</h2>
+<p>Strength is not the only criterion. Durability depends on the environment: dry interior, exterior, contact with water, aggressive soils, marine environment. The EN 206 standard defines <b>exposure classes</b> (XC, XS, XD, XA…) which impose a minimum cement content, a maximum water/cement ratio and sometimes a minimum strength. A swimming pool, a tank or a foundation in aggressive soil may thus require a higher-performance concrete than the strength calculation alone would require. The choice of class and of <a href="conseil-enrobage-armatures-beton.html">cover</a> go hand in hand.</p>
+<h2>Actually getting the specified class</h2>
+<ul>
+<li><b>Ready-mixed concrete</b>: order the strength class, the exposure class and the consistency, and check the delivery note of each truck.</li>
+<li><b>Site-mixed concrete</b>: a well-executed mix with 350 kg of cement per m³ commonly achieves a class of around C25/30, but without any guarantee; the quality of the aggregates and the amount of water change everything (see <a href="conseil-dosage-beton-fondation-dalle.html">concrete mix proportions</a>).</li>
+<li><b>Test specimens</b>: take specimens during major pours and have them crushed by a laboratory at 7 and 28 days.</li>
+<li><b>No water added</b> on site: this is the leading cause of concrete falling below its class.</li>
+</ul>
+<h2>The role of the engineering firm</h2>
+<p>The engineering firm sets the strength class and exposure class of each element in its design calculations and the specifications. It can require tests and interpret the results: concrete that does not reach its class means the element must be recalculated, or even strengthened.</p>
+""",
+   "faq": [
+    ("What does C25/30 mean?", "It is a concrete whose characteristic strength at 28 days is 25 MPa on a cylinder and 30 MPa on a cube, according to the EN 206 standard."),
+    ("Are B25 and C25/30 the same thing?", "In a specification drafted according to the BAEL, B25 generally designates a concrete of 25 MPa on a cylinder at 28 days, close to a C25/30. Ask for the reference standard to be stated, as other systems measure on cubes."),
+    ("Which concrete class for a villa?", "A C25/30 class is common for the structure of a villa; the engineer may require more for swimming pools and buried or exposed structures."),
+   ],
+ },
+ "conseil-reprise-en-sous-oeuvre-fondations": {
+   "title": "Underpinning foundations: when is it needed and how is it done?",
+   "crumb": "Underpinning",
+   "desc": "Settlement, an added storey, a basement to dig: underpinning strengthens existing foundations using alternate-bay pads, micropiles or soil injection.",
+   "lead": "Strengthening or deepening the foundations of an existing building without demolishing it is possible. It is a delicate operation that must be carefully designed and supervised.",
+   "body": """
+<p>Underpinning means <b>strengthening, widening or deepening the foundations</b> of an existing building without demolishing it. It is used when the foundations are settling, when you want to add a storey or dig a basement, or when neighbouring works destabilise the soil. The main techniques are <b>concrete pads cast in alternate bays</b>, <b>micropiles</b> and soil <b>injection</b>.</p>
+<h2>Situations that require it</h2>
+<ul>
+<li><b>Differential settlement</b>: stepped or diagonal cracks, sticking doors, sloping floors.</li>
+<li><b>Vertical extension</b>: the original foundations are no longer enough to carry one or two more storeys (see <a href="conseil-surelevation-ajouter-etage-maroc.html">adding a storey</a>).</li>
+<li><b>Digging a basement</b> or a swimming pool close to existing walls.</li>
+<li><b>Foundations damaged</b> by water leaks, washed-out soil or neighbouring excavation.</li>
+</ul>
+<h2>The techniques</h2>
+<div class="tableau"><table><thead><tr><th>Technique</th><th>Principle</th><th>When to use</th></tr></thead><tbody>
+<tr><td>Alternate-bay pads</td><td>Digging under the foundation in short, non-adjacent sections and pouring concrete down to the good soil</td><td>Good soil accessible at shallow depth</td></tr>
+<tr><td>Micropiles</td><td>Small-diameter piles (generally less than 25 to 30 cm) drilled and reinforced, connected to the foundation by a beam or pile caps</td><td>Deep good soil, restricted access, heavy loads</td></tr>
+<tr><td>Soil injection</td><td>Grout or resin injected to consolidate the soil under the foundation</td><td>Loose or decompressed soils, depending on the diagnosis</td></tr>
+<tr><td>Footing widening</td><td>Existing footing widened and connected by grouted-in bars</td><td>Increased loads on reasonable soil</td></tr>
+</tbody></table></div>
+<h2>Why work in alternate bays</h2>
+<p>Digging under a whole wall at once would leave it unsupported. Work is therefore done in short sections, skipping one section in two or three: sections 1, 3 and 5 are underpinned first, then, once the concrete has hardened, sections 2, 4 and 6. The length of the sections and the sequence are set by the engineer according to the condition of the wall and the soil. Dry-packing, i.e. tightly filling the gap between the old foundation and the new concrete, is essential for the load to be genuinely transferred.</p>
+<h2>Essential precautions</h2>
+<ul>
+<li><b>Preliminary diagnosis</b>: soil investigation, trial pits at the foot of the existing foundations, crack survey.</li>
+<li><b>Propping</b> of floors if necessary and crack monitoring (tell-tales, levelling marks).</li>
+<li><b>Treating the cause</b>: repair the leak or the pipe that washed out the soil, otherwise the problem will come back.</li>
+<li><b>An experienced contractor</b>: this is not ordinary masonry work.</li>
+<li><b>Informing neighbours</b> where walls are shared: neighbouring foundations may be affected, and a record of the condition of their walls before work is a sensible precaution.</li>
+</ul>
+<h2>The role of the engineering firm</h2>
+<p>The engineering firm analyses the cause of the damage, chooses the technique with the geotechnical engineer, calculates the new supports and defines the sequencing. It then supervises the work to adapt the sequencing to the soil actually encountered. If cracks are worrying you, our article on <a href="conseil-fissures-maison-causes-gravite.html">cracks in a house</a> helps assess how serious they are.</p>
+""",
+   "faq": [
+    ("What is underpinning?", "It is the strengthening, widening or deepening of the foundations of an existing building, using concrete pads, micropiles or injection, without demolishing the structure."),
+    ("Why dig in alternate bays?", "So that a wall is never left unsupported: short, non-adjacent sections are underpinned first, then the intermediate sections once the concrete has hardened."),
+    ("When should micropiles be used?", "When the good soil is deep, access is restricted or the loads are heavy; they are small-diameter piles that are drilled and reinforced."),
+   ],
+ },
+ "conseil-sous-sol-cuvelage-infiltrations": {
+   "title": "Basements: tanking, waterproofing and water ingress",
+   "crumb": "Basement tanking",
+   "desc": "Watertight concrete structure, damp-proofing or waterproofing membrane (DTU 14.1): how to protect a basement from water ingress right from the design stage.",
+   "lead": "A basement that lets in water is one of the most expensive defects to put right. Protection is decided at the design stage, according to the water present in the ground.",
+   "body": """
+<p>To protect a basement, the solution depends on the water it will face: simple <b>drainage with a damp-proofing render</b> may be enough in dry, free-draining soil; where there is a water table or water under pressure, <b>tanking</b> is needed, i.e. a watertight envelope able to resist water pressure. The most widely used technical reference is the French DTU 14.1, revised in 2020.</p>
+<h2>Knowing the water on your site</h2>
+<p>Everything starts with the soil investigation: level of the water table and its variations, soil permeability, risk of surface runoff or leaking pipes. In Marrakech, the water table is often deep, but basements are exposed to garden irrigation water, neighbouring swimming pools, pipe leaks and violent storms. A villa basement next to a swimming pool or a heavily watered garden must be treated as exposed to water.</p>
+<h2>The three families of tanking</h2>
+<div class="tableau"><table><thead><tr><th>Type</th><th>Principle</th><th>Use</th></tr></thead><tbody>
+<tr><td>Watertight concrete structure</td><td>The reinforced concrete itself provides watertightness: controlled thickness, reinforcement and cracking, treated joints</td><td>Car parks, rooms that tolerate slight dampness</td></tr>
+<tr><td>Damp-proofing coating</td><td>Water-repellent render or mortar applied on the inside, bonded to the concrete</td><td>Plant rooms, cellars, refurbishment</td></tr>
+<tr><td>Waterproofing membrane</td><td>Continuous membrane, generally on the outside, protected</td><td>Habitable rooms requiring perfect watertightness</td></tr>
+</tbody></table></div>
+<p>The choice depends on how the room will be used: a car park tolerates a few traces of damp, a bedroom, a home cinema or an electrical plant room does not.</p>
+<h2>Weak points to take care of</h2>
+<ul>
+<li><b>Construction joints</b> between the raft and the walls, and between wall lifts: waterstops or water-bar strips.</li>
+<li><b>Penetrations</b> for pipes and cables: watertight sleeves provided before pouring.</li>
+<li><b>Formwork tie holes</b> and spacers, to be filled carefully.</li>
+<li><b>Cracking</b> of the concrete, limited by the reinforcement and proper <a href="conseil-cure-beton-chaleur-marrakech.html">curing</a>.</li>
+<li><b>Perimeter drainage</b> and discharge of rainwater away from the buried walls.</li>
+</ul>
+<h2>What to do in case of water ingress?</h2>
+<p>First identify the source: rising water table, runoff, pipe leak, local defect (construction joint, penetration) or condensation. Local leaks are often treated by injecting resin into the crack or joint. Widespread ingress requires internal tanking that resists water pressure, or external drainage if the ground is accessible. A simple waterproof render on a wall subject to water under pressure generally ends up peeling off. Also remember to ventilate the basement: part of the damp observed often comes from condensation on cold walls.</p>
+<h2>The role of the engineering firm</h2>
+<p>The engineering firm chooses the type of tanking with the architect according to the use, sizes the raft and walls for earth and water pressure, and details the joints and penetrations. Buried walls are also <a href="conseil-mur-de-soutenement-calcul.html">retaining walls</a>, and the raft is part of the <a href="conseil-type-fondation-semelle-radier.html">foundation</a> choice.</p>
+""",
+   "faq": [
+    ("What is tanking?", "It is a watertight envelope that protects a buried room against water, including water under pressure: watertight reinforced concrete, a damp-proofing coating or a waterproofing membrane."),
+    ("How do you stop water ingress in a basement?", "First find its source; a local leak is often treated by injection, widespread ingress by internal tanking or external drainage."),
+    ("Does a basement in Marrakech need tanking?", "Not always, as the water table is often deep, but water from irrigation, swimming pools and leaks can reach the buried walls. The soil investigation and the use of the room decide."),
+   ],
+ },
 }
