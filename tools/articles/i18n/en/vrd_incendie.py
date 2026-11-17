@@ -305,7 +305,7 @@ T = {
            ("When must a trench be shored?", "In France, beyond 1.30 m deep when the width is less than or equal to two thirds of the depth; it is good practice to follow on any site.")],
  },
  "conseil-securite-incendie-erp-maroc-decret": {
-   "title": "Fire safety for public buildings in Morocco: what Decree 2-14-499 requires",
+   "title": "Fire safety for ERP in Morocco: what Decree 2-14-499 requires",
    "crumb": "Fire safety for ERP",
    "desc": "Fire safety in Morocco: Decree 2-14-499 of 15 October 2014, classification, high-rise above 28 m (50 m for housing), approval by a certified engineering firm.",
    "lead": "Restaurant, clinic, school, hotel, shop: how the Moroccan fire safety regulation applies to your project and when you need to deal with it.",
@@ -463,7 +463,7 @@ T = {
  "conseil-issues-de-secours-degagements": {
    "title": "Emergency exits and escape routes: number, width, exit units",
    "crumb": "Emergency exits",
-   "desc": "Emergency exits: 0.60 m exit unit, widths of 0.90 m and 1.40 m, number of exits according to occupancy (19, 50, 100, 200 people) and the rules that apply.",
+   "desc": "Emergency exits: the 0.60 m exit unit, actual widths of 0.90 m and 1.40 m, and the number of exits required by occupancy (19, 50, 100, 200 people).",
    "lead": "How many exits, how wide, and where to place them: the calculation logic for the escape routes of a restaurant, a shop or a hotel.",
    "body": """
 <p>The number and width of emergency exits depend on the <b>occupancy</b> the space can receive. Width is counted in <b>exit units (UP)</b> of 0.60 m, with a rounding rule: a one-unit exit actually measures 0.90 m and a two-unit exit 1.40 m. These rules, taken from French ERP regulations, are the most widespread calculation reference; in Morocco, the values to apply are those of the fire safety regulation (Decree 2-14-499), to be checked for each project.</p>
@@ -503,7 +503,7 @@ T = {
  },
  "conseil-ria-colonne-seche-sprinkler": {
    "title": "Fire hose reel, dry riser, sprinkler: differences and use cases",
-   "crumb": "Hose reel, dry riser, sprinkler",
+   "crumb": "Hose reels, risers, sprinklers",
    "desc": "Fire hose reel (DN 25 or 33, 20 or 30 m hose), dry riser for firefighters only, sprinkler opening at 68 °C: role, use cases, water reserve and maintenance.",
    "lead": "Three water-based systems that are often confused: one for staff, another for firefighters, the third that acts on its own.",
    "body": """
