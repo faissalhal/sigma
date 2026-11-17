@@ -78,7 +78,7 @@ T = {
    ],
  },
  "conseil-garantie-decennale-maroc": {
-   "title": "Decennial guarantee in Morocco: Article 769 of the DOC and RCD insurance",
+   "title": "Decennial guarantee in Morocco: DOC Article 769 and RCD insurance",
    "crumb": "Decennial guarantee",
    "desc": "Decennial guarantee in Morocco: Article 769 of the DOC makes architects, engineers and contractors liable for 10 years for collapse; RCD insurance since 2024.",
    "lead": "In Morocco, decennial liability has existed since the Dahir of Obligations and Contracts, but its scope is narrower than in France. What it covers, who it targets and how to protect yourself.",
@@ -202,7 +202,7 @@ T = {
  "conseil-plans-de-recolement-dos": {
    "title": "As-built drawings and DOE: the file to demand at the end of works",
    "crumb": "As-built and DOE",
-   "desc": "As-built drawings and DOE file: buried networks, wiring diagrams, technical data sheets. Why you should demand them from the contractor before the final payment.",
+   "desc": "As-built drawings and DOE: buried networks, wiring diagrams, data sheets. Why you should demand them from the contractor before the final payment.",
    "lead": "In five years' time, when a leak appears under the tiles or a circuit breaker trips, this file will save you days of searching and a lot of money.",
    "body": """<p><b>As-built drawings</b> (plans de récolement) show what was <b>actually</b> built, not what was planned. They are part of the <b>DOE</b> (dossier des ouvrages exécutés, as-built works file), the set of documents describing the delivered building: drawings, diagrams, technical data sheets, manuals and test reports. You must demand them from the contractor before final acceptance.</p>
 <h2>Why this file is essential</h2>
@@ -572,7 +572,7 @@ T = {
  "conseil-orientation-maison-climat-chaud": {
    "title": "Orienting your house in a hot climate: the rules for Marrakech",
    "crumb": "House orientation",
-   "desc": "Orienting a house in Marrakech: shaded south-facing openings, little west glazing, buffer rooms, a patio and cross-ventilation at night. Rules that cost almost nothing.",
+   "desc": "Orienting a house in Marrakech: shaded south-facing openings, little west glazing, buffer rooms, a shaded patio and night-time cross-ventilation.",
    "lead": "Before any insulation or air conditioning, the way the house sits on its plot determines much of its summer comfort.",
    "body": """<p>In a hot climate like Marrakech, good orientation means placing the <b>large openings to the south</b>, where they are easy to shade, <b>limiting glazing to the west</b>, the most demanding façade in summer, and organising the house to encourage <b>night-time ventilation</b>. These choices cost almost nothing if they are made at the sketch stage.</p>
 <h2>What the sun does in Marrakech</h2>
@@ -604,6 +604,195 @@ T = {
      ("What is the best orientation for a house in Marrakech?", "Large south-facing openings shaded by a canopy, few openings to the west, buffer rooms to the west and cross-ventilation to cool the house at night."),
      ("Why is the west façade the hottest?", "It receives low sun in the afternoon, when the outdoor air is at its hottest, and horizontal shading does not block it."),
      ("Is a canopy enough on the south side?", "Often yes: in Marrakech, the midday summer sun peaks at around 82°; a modest overhang effectively shades a south-facing opening."),
+   ],
+ },
+ "conseil-isolant-toiture-terrasse-choix": {
+   "title": "Which insulation for a flat roof terrace in Morocco? A comparison",
+   "crumb": "Roof terrace insulation",
+   "desc": "Roof terrace insulation in Morocco: XPS in an inverted roof, polyurethane, rock wool. Conductivity, thickness (4 to 7 cm in zone 5) and installation rules.",
+   "lead": "The roof terrace is the part of the envelope that receives the most sun. Choosing the right insulation, and placing it correctly relative to the waterproofing, transforms comfort on the top floor.",
+   "body": """<p>For a roof terrace in Morocco, the two most common solutions are <b>extruded polystyrene (XPS) laid on top of the waterproofing</b>, known as an inverted roof, and <b>polyurethane or rock wool boards under the waterproofing</b>. The choice depends on how the terrace is used (accessible or not), the waterproofing system and the available thickness. A lightweight concrete screed laid to falls insulates little on its own.</p>
+<h2>Comparison of insulation materials</h2>
+<div class="tableau"><table><thead><tr><th>Insulation</th><th>Conductivity λ (W/m.K, indicative)</th><th>Position</th><th>Strengths / limitations</th></tr></thead><tbody>
+<tr><td>Extruded polystyrene (XPS)</td><td>about 0.029 to 0.035</td><td>On the waterproofing (inverted roof)</td><td>Resistant to water and compression; protects the waterproofing; must be ballasted (gravel, paving slabs)</td></tr>
+<tr><td>Polyurethane / PIR</td><td>about 0.022 to 0.028</td><td>Under the waterproofing</td><td>Very high performance for a given thickness; vulnerable to moisture if the waterproofing leaks</td></tr>
+<tr><td>High-density rock wool</td><td>about 0.035 to 0.040</td><td>Under the waterproofing</td><td>Non-combustible; sensitive to water</td></tr>
+<tr><td>Expanded polystyrene (EPS)</td><td>about 0.031 to 0.038</td><td>Under the waterproofing or under the slab</td><td>Economical; less water-resistant than XPS</td></tr>
+<tr><td>Aerated or lightweight concrete</td><td>considerably higher</td><td>Screed laid to falls</td><td>Useful as a supplement, insufficient on its own</td></tr>
+</tbody></table></div>
+<p>Indicative values: check the product's technical data sheet. The thermal resistance of a layer is calculated as R = thickness (m) / λ. Thus 6 cm of XPS at 0.033 gives R ≈ 1.8 m².K/W.</p>
+<h2>What thickness in Marrakech?</h2>
+<p>The RTCM thermal regulation (decree 2-13-874) sets, for Marrakech (zone 5), a minimum roof performance that depends on the type of building and the glazing ratio. A technical guide on insulation in Morocco indicates, for residential buildings in zone 5, thicknesses of around 4 to 7 cm depending on the insulation material and the proportion of glazing. These are regulatory minimums: for the comfort of an air-conditioned top floor, a greater thickness is often cost-effective. The exact calculation is the BET's job.</p>
+<h2>Installation rules</h2>
+<ol>
+<li>Choose insulation <b>compatible</b> with the waterproofing system (bitumen, membrane) and approved by the manufacturer.</li>
+<li>In an inverted roof, use <b>XPS</b> only and <b>ballast</b> it against wind.</li>
+<li>Treat the <b>upstands and parapet</b> to avoid a thermal bridge around the edge.</li>
+<li>Protect the insulation during the works: foot traffic and stored materials crush it.</li>
+<li>Specify a light-coloured finish or ballast to reflect radiation.</li>
+</ol>
+<h2>Insulating an existing terrace</h2>
+<p>On a house that is already built, an inverted roof is often the simplest solution: if the waterproofing is in good condition, the XPS is laid on top of it, followed by ballast. If the waterproofing needs redoing, take advantage of the works to place the insulation under the new waterproofing or as an inverted roof. In both cases, check the height available under door thresholds and the height of the upstands, as well as the slab's capacity to carry the additional weight.</p>
+<h2>The role of the engineering consultancy</h2>
+<p>The BET determines the thickness required to comply with the RTCM and achieve the desired comfort, checks the load on the slab (gravel, paving on pedestals) and coordinates with the waterproofing contractor. See <a href="conseil-etancheite-toiture-terrasse-maroc.html">roof terrace waterproofing</a> and <a href="conseil-isolation-thermique-rtcm-maroc.html">insulation and the RTCM</a>.</p>
+""",
+   "faq": [
+     ("What is the best insulation for a roof terrace?", "Extruded polystyrene (XPS) in an inverted roof is the most common because it resists water and protects the waterproofing; polyurethane offers higher performance for the same thickness under the waterproofing."),
+     ("What roof insulation thickness is needed in Marrakech?", "A technical guide indicates, for residential buildings in RTCM zone 5, thicknesses of around 4 to 7 cm depending on the insulation and glazing; more improves comfort, and the exact calculation is the BET's job."),
+     ("What is an inverted roof?", "A roof where the insulation (XPS) is laid on top of the waterproofing and then ballasted with gravel or paving slabs; the waterproofing is thus protected from the sun and thermal shocks."),
+   ],
+ },
+ "conseil-brique-isolante-monomur-maroc": {
+   "title": "Insulating brick, double wall or monomur: which wall in Morocco?",
+   "crumb": "Insulating walls",
+   "desc": "Exterior walls in Morocco: double brick wall with 4 to 8 cm of insulation, monomur clay block, aerated concrete, external insulation. A comparison of options.",
+   "lead": "Hollow brick on its own insulates little. Here is how to choose a wall build-up that really protects against the heat, without compromising the seismic-resistant structure.",
+   "body": """<p>For a high-performance exterior wall in Morocco, the most common and safest solution is the <b>double brick wall with insulation</b> (polystyrene or mineral wool) in the central cavity. <b>Monomur-type honeycomb clay blocks</b> and <b>aerated concrete</b> insulate better than ordinary hollow brick and simplify laying, but their performance depends heavily on the thickness and the product. In all cases, the concrete columns and tie beams must be treated.</p>
+<h2>Common wall build-ups</h2>
+<div class="tableau"><table><thead><tr><th>Build-up</th><th>Insulation</th><th>Remarks</th></tr></thead><tbody>
+<tr><td>Single hollow brick + renders</td><td>Low</td><td>The most widespread, insufficient on an exposed façade</td></tr>
+<tr><td>Double wall with air cavity</td><td>Medium</td><td>Better than a single wall, but air alone insulates little if the cavity is ventilated or clogged with mortar</td></tr>
+<tr><td>Double wall with insulation (4 to 8 cm)</td><td>Good</td><td>Proven solution, compatible with the concrete frame</td></tr>
+<tr><td>Thick “monomur” honeycomb clay block</td><td>Good depending on product</td><td>Quick to lay, thin joints; requires certified products and careful detailing</td></tr>
+<tr><td>Aerated concrete</td><td>Good depending on thickness</td><td>Light, easy to cut; suitable renders essential</td></tr>
+<tr><td>External insulation on masonry</td><td>Very good</td><td>Also treats the thermal bridges at the columns</td></tr>
+</tbody></table></div>
+<p>To compare, ask for the <b>thermal resistance R</b> (m².K/W) or the <b>U-value</b> (W/m².K) of the complete wall as stated by the manufacturer. The higher R is, the better the wall insulates.</p>
+<h2>What you need to know about thermal mass</h2>
+<p>In Marrakech, the difference between day and night temperatures is large. A heavy wall (solid brick, concrete) insulated <b>on the outside</b> stores the coolness of the night and dampens the heat of the day. A lightweight wall, or one insulated only from the inside, reacts more quickly to temperature changes. The ideal combines insulation with mass on the inner side of the insulation.</p>
+<h2>Structural precautions</h2>
+<ul>
+<li>Infill walls are not load-bearing, but they must be <b>tied and connected</b> to the frame in accordance with the RPS 2011 seismic regulation.</li>
+<li>A thicker or heavier wall changes the loads on the beams and foundations: the BET needs to know.</li>
+<li>Insulating blocks must be fixed according to the manufacturer's instructions, particularly for guardrail and window frame anchors.</li>
+</ul>
+<h2>And the RTCM?</h2>
+<p>The thermal building regulation (decree 2-13-874) sets requirements for exterior walls that vary according to the zone (Marrakech in zone 5) and the glazing ratio. A double wall with insulation generally makes it possible to meet them; the compliance calculation is carried out on the complete wall. See <a href="conseil-isolation-thermique-rtcm-maroc.html">insulation and the RTCM</a> and <a href="conseil-pont-thermique-solutions.html">thermal bridges</a>.</p>
+<p><b>Cost and benefit.</b> A double wall with insulation costs a little more than a single wall: a second row of bricks, the insulation and slightly less floor area. In return, the required air conditioning capacity and consumption fall, and summer comfort improves markedly in exposed rooms. Ask the contractor for a separate price for the insulated wall so that you can compare, and check on site that the insulation is continuous and not crushed.</p>
+<h2>The role of the engineering consultancy</h2>
+<p>The BET calculates the U-value of the proposed walls, checks compliance with the RTCM, incorporates the weight of the walls into the structural calculation and proposes junction details with the columns and slabs.</p>
+""",
+   "faq": [
+     ("Does hollow brick insulate well?", "No: a single hollow brick with its renders insulates little; on an exposed façade, a double wall with insulation or external insulation is much more effective."),
+     ("Double wall with an air cavity or with insulation?", "With insulation: an air cavity alone insulates little, especially if it is ventilated or filled with mortar debris; 4 to 8 cm of insulation makes a marked difference to performance."),
+     ("Is monomur suitable for Morocco?", "It can be, if it is a certified product of sufficient thickness, laid according to the instructions, with the concrete columns and tie beams treated."),
+   ],
+ },
+ "conseil-protection-solaire-brise-soleil": {
+   "title": "Solar shading: louvres, canopies, shutters and mashrabiya",
+   "crumb": "Solar shading",
+   "desc": "Solar shading in Morocco: canopy on the south side, vertical louvres and shutters on the west, mashrabiya. Why external shading beats internal blinds.",
+   "lead": "Stopping the sun before it reaches the glass is the most effective measure against overheating. The right device depends on the orientation of the façade.",
+   "body": """<p><b>External solar shading</b> stops most of the radiation before it reaches the glazing; an <b>internal</b> curtain or blind, by contrast, lets the heat into the room and then traps it behind the glass. In Marrakech, the right choice depends on the orientation: <b>horizontal on the south side</b>, <b>vertical or movable on the east and west</b>.</p>
+<h2>Which device for which façade</h2>
+<div class="tableau"><table><thead><tr><th>Façade</th><th>Position of the sun in summer</th><th>Suitable shading</th></tr></thead><tbody>
+<tr><td>South</td><td>Very high at midday (about 82° in Marrakech at the solstice)</td><td>Canopy, roof overhang, pergola, horizontal louvres</td></tr>
+<tr><td>West</td><td>Low in the afternoon, during the hottest hours</td><td>Shutters, louvred shutters, vertical or adjustable louvres, mashrabiya</td></tr>
+<tr><td>East</td><td>Low in the morning</td><td>Movable external shutters or blinds</td></tr>
+<tr><td>North</td><td>Little direct sun</td><td>Rarely necessary</td></tr>
+</tbody></table></div>
+<h2>The solutions and their advantages</h2>
+<ul>
+<li><b>Concrete canopy or overhang</b>: integrated into the structure, maintenance-free; to be planned with the BET because it is a cantilever and a potential thermal bridge.</li>
+<li><b>Fixed louvres</b> (aluminium, concrete or timber blades): effective if the angle is calculated for the orientation.</li>
+<li><b>Adjustable louvres</b>: adapt to the time of day and season, and let light through.</li>
+<li><b>Shutters and louvred shutters</b>: very effective on the west; louvred shutters ventilate while shading.</li>
+<li><b>Mashrabiya</b>: a traditional openwork screen that filters sun and views; its density should be adapted to the orientation.</li>
+<li><b>External fabric blinds</b>: economical, to be chosen in a fabric resistant to UV and wind.</li>
+<li><b>Vegetation</b>: deciduous trees and planted pergolas provide shade in summer and let the sun through in winter.</li>
+</ul>
+<h2>Common mistakes</h2>
+<ol>
+<li>A horizontal canopy on a west façade: it hardly stops the late-afternoon sun at all.</li>
+<li>Large unshaded picture windows, compensated for by oversized air conditioning.</li>
+<li>Dark internal blinds, which heat up and radiate into the room.</li>
+</ol>
+<h2>The link with the RTCM</h2>
+<p>The thermal regulation (decree 2-13-874) sets requirements for the solar factor of openings, which take shading into account. Good external shading can allow clearer, brighter glazing. See <a href="conseil-double-vitrage-chaleur-maroc.html">double glazing and heat</a> and <a href="conseil-orientation-maison-climat-chaud.html">house orientation</a>.</p>
+<p><b>Maintenance and durability.</b> In the Marrakech sun, materials age quickly: prefer powder-coated aluminium, concrete or treated timber outdoors, and certified UV-resistant fabrics. The mechanisms of blinds and roller shutters suffer from dust: provide access for maintenance and protected motors. Well-designed fixed shading requires almost nothing; movable shading has to be operated every day, which automation can make easier, for example with control based on the time of day or sunlight.</p>
+<h2>The role of the engineering consultancy</h2>
+<p>The BET calculates the depth of canopies and the angle of louvres according to the orientation, checks their structure and fixings, and measures their effect on the air conditioning capacity to be installed.</p>
+""",
+   "faq": [
+     ("Internal blind or external shading?", "External shading is much more effective: it stops the radiation before the glass, whereas an internal blind lets the heat into the room."),
+     ("Which solar shading for a west façade?", "Vertical or movable shading: shutters, louvred shutters, adjustable louvres or mashrabiya, because the afternoon sun is low."),
+     ("Is a canopy enough on the south side?", "Generally yes in Marrakech, where the midday summer sun is very high (about 82° at the solstice); a modest overhang is enough to shade the opening."),
+   ],
+ },
+ "conseil-facture-electricite-reduire-villa": {
+   "title": "Reducing a villa's electricity bill in Morocco: the main levers",
+   "crumb": "Electricity bill",
+   "desc": "Reducing a villa's electricity bill: inverter air conditioning set to 25-26 °C, roof terrace insulation, solar water heater, pool pump, solar panels.",
+   "lead": "In a villa in Marrakech, air conditioning, hot water and the swimming pool account for most of the bill. Here are the levers, ranked by effectiveness.",
+   "body": """<p>To reduce a villa's electricity bill in Morocco, act first on the three biggest items: <b>air conditioning</b>, <b>hot water production</b> and the <b>swimming pool pump</b>. The residential tariff is progressive by consumption bands: every kilowatt-hour saved at the top of the bill is the most expensive one. A tariff reform is also being prepared by the regulator (ANRE), with entry into force announced for 2027: reducing your consumption is lasting protection.</p>
+<h2>The items and their levers</h2>
+<div class="tableau"><table><thead><tr><th>Item</th><th>Main lever</th><th>Effort</th></tr></thead><tbody>
+<tr><td>Air conditioning</td><td>Correctly sized inverter units, set point around 25-26 °C in summer, filter maintenance</td><td>Low to medium</td></tr>
+<tr><td>Heat entering through the roof</td><td>Roof terrace insulation</td><td>Medium</td></tr>
+<tr><td>Exposed glazing</td><td>External solar shading on the west and south</td><td>Medium</td></tr>
+<tr><td>Hot water</td><td>Solar water heater or heat pump</td><td>Medium</td></tr>
+<tr><td>Swimming pool</td><td>Variable-speed pump, filtration time adapted to the season</td><td>Low</td></tr>
+<tr><td>Lighting</td><td>LEDs everywhere, motion sensors outdoors</td><td>Low</td></tr>
+<tr><td>Remaining consumption</td><td>Photovoltaics for self-consumption</td><td>Investment</td></tr>
+</tbody></table></div>
+<h2>Air conditioning: the biggest item</h2>
+<ol>
+<li><b>Every degree counts</b>: setting 25-26 °C instead of 21-22 °C significantly reduces consumption, with genuine comfort if the air is dry.</li>
+<li><b>Only cool occupied rooms</b>: a zoned system is better than all or nothing.</li>
+<li><b>Clean the filters</b> and have the units serviced: a clogged heat exchanger uses more energy for the same cooling.</li>
+<li><b>Shade the outdoor unit</b> without obstructing air flow.</li>
+<li><b>Reduce the need</b>: insulation and solar shading often make it possible to reduce the installed capacity. See <a href="conseil-climatisation-puissance-btu-m2.html">air conditioning capacity</a>.</li>
+</ol>
+<h2>Hot water and solar</h2>
+<p>With the sunshine in Marrakech, a solar water heater covers most needs for much of the year. For electricity itself, photovoltaic panels for self-consumption reduce daytime consumption, precisely when the air conditioning runs the most; their legal framework is set by Law 82-21 on self-generation. See <a href="conseil-panneaux-solaires-autoconsommation-loi-82-21.html">photovoltaics and Law 82-21</a>.</p>
+<h2>Start by measuring</h2>
+<p>Read your meter every week for a month, noting your use of the air conditioning and the pool. Sub-metering per circuit at the panel makes it possible to identify precisely which item is drifting.</p>
+<p><b>Common mistakes.</b> Leaving the air conditioning running with doors and windows open, installing an oversized air conditioner that cycles on and off, heating water with an electric storage heater set too high, or running the pool pump all day in winter: these habits weigh heavily on a bill. Also check for hidden consumption, such as a booster pump that starts constantly because of a small leak.</p>
+<h2>The role of the engineering consultancy</h2>
+<p>The BET carries out a consumption assessment, identifies the priority items and costs the solutions (insulation, replacement of air conditioners, solar). For a larger building, see the <a href="conseil-audit-energetique-batiment.html">energy audit</a>.</p>
+""",
+   "faq": [
+     ("What is the largest consumption item in a villa in Marrakech?", "Most often air conditioning in summer, followed by hot water production and, if there is one, the swimming pool pump."),
+     ("What temperature should the air conditioning be set to?", "Around 25 to 26 °C in summer: each degree lower significantly increases consumption for a limited gain in comfort."),
+     ("Do solar panels really reduce the bill?", "Yes for daytime consumption, which coincides with air conditioning; self-generation is governed by Law 82-21."),
+   ],
+ },
+ "conseil-audit-energetique-batiment": {
+   "title": "Energy audit of a building in Morocco: content and obligation",
+   "crumb": "Energy audit",
+   "desc": "Energy audit in Morocco: Law 47-09, decree 2-17-746, thresholds of 1,500 toe (industry) and 500 toe (tertiary sector), content and value for a hotel.",
+   "lead": "An energy audit shows where a building's energy goes and which actions pay off the most. For some companies, it is mandatory in Morocco.",
+   "body": """<p>An <b>energy audit</b> is a detailed analysis of the consumption of a building or site, resulting in a costed action plan: expected savings, cost, payback period. In Morocco, it is <b>mandatory</b> for the highest-consuming establishments under <b>Law No. 47-09</b> on energy efficiency and <b>Decree No. 2-17-746</b> of 10 April 2019. For other buildings, it remains voluntary but is often very cost-effective.</p>
+<h2>Who is obliged?</h2>
+<div class="tableau"><table><thead><tr><th>Sector</th><th>Annual consumption threshold (according to the specialist press)</th></tr></thead><tbody>
+<tr><td>Industry, including energy production</td><td>1,500 toe (tonnes of oil equivalent)</td></tr>
+<tr><td>Tertiary sector, transport, energy distribution</td><td>500 toe</td></tr>
+</tbody></table></div>
+<p>The establishments concerned must have the audit carried out by an <b>approved body</b> and declare their consumption to the Moroccan Agency for Energy Efficiency (AMEE). The exact frequency and procedures should be checked in the text of the decree. A large hotel, a clinic or a shopping centre can reach the tertiary threshold.</p>
+<h2>The content of an audit</h2>
+<ol>
+<li><b>Data collection</b>: electricity, gas and fuel oil bills over at least one year, drawings, equipment, occupancy hours.</li>
+<li><b>Visit and measurements</b>: building envelope (insulation, glazing), air conditioning, hot water production, lighting, pumps, kitchen, swimming pool; consumption logging if necessary.</li>
+<li><b>Assessment</b>: breakdown of consumption by use, comparison with benchmark ratios.</li>
+<li><b>Action plan</b>: measures ranked by cost-effectiveness, from free adjustments to major investments.</li>
+</ol>
+<h2>Typical actions identified</h2>
+<ul>
+<li><b>No investment</b>: temperature set points, operating hours, switching off unused equipment.</li>
+<li><b>Low investment</b>: LEDs, variable speed drives on pumps and fans, controls.</li>
+<li><b>Medium investment</b>: roof insulation, solar shading, heat recovery from chillers for hot water.</li>
+<li><b>Major investment</b>: replacement of the cooling plant, collective solar water heating, photovoltaics.</li>
+</ul>
+<h2>What about a villa or a riad?</h2>
+<p>A private house is not subject to the obligation, but a simplified diagnosis helps target spending: should you insulate the terrace, change the air conditioners or install solar? See <a href="conseil-facture-electricite-reduire-villa.html">reducing a villa's electricity bill</a>. For a guest house, energy has a direct impact on profitability.</p>
+<p><b>How much does an audit pay back?</b> Savings depend on the starting building. In an establishment that has never been optimised, the first adjustment and management measures often bring quick gains without investment; works then follow according to their payback period. The value of the audit lies precisely in costing each action so as to avoid investing first in what pays back the least. It also serves as a baseline for monitoring consumption after the works and checking that the announced savings are actually achieved.</p>
+<h2>The role of the engineering consultancy</h2>
+<p>SIGMA ICC carries out energy assessments of residential and tertiary buildings: bill analysis, technical visit, costed action plan and support during the works, in line with the RTCM thermal regulation. See also <a href="conseil-isolation-thermique-rtcm-maroc.html">insulation and the RTCM</a>.</p>
+""",
+   "faq": [
+     ("Is an energy audit mandatory in Morocco?", "Yes for establishments exceeding certain consumption thresholds, under Law 47-09 and Decree 2-17-746: 1,500 toe per year in industry and 500 toe in the tertiary sector according to the specialist press."),
+     ("Who can carry out a mandatory energy audit?", "An energy audit body approved by the government authority in charge of energy."),
+     ("Is an audit useful for a villa?", "A villa is not subject to the obligation, but a simplified diagnosis helps choose between insulation, replacing air conditioners and solar according to their cost-effectiveness."),
    ],
  },
 }
