@@ -34,21 +34,25 @@ def entre(h, nom, contenu, avant=None, remplace=None):
 
 
 # 1. menu EN/AR -------------------------------------------------------------------------------------
-CONSEILS_NAV = {"en": "Advice (FR)", "ar": "نصائح (بالفرنسية)"}
+CONSEILS_NAV = {"en": "Advice", "ar": "نصائح"}
 
 
 def menu_conseils():
+    """Menu EN/AR : lien vers la page Conseils de la langue (remplace l'ancien lien vers les conseils en français)."""
     for lg, txt in CONSEILS_NAV.items():
         for f in sorted(os.listdir(os.path.join(ROOT, lg))):
             if not f.endswith(".html"):
                 continue
             p = f"{lg}/{f}"; h = lire(p)
-            if 'id="nav"' not in h or "../conseils.html" in h.split('id="nav"', 1)[1].split("</nav>", 1)[0]:
+            if 'id="nav"' not in h:
                 continue
-            h, n = re.subn(r'(<nav class="nav" id="nav"[^>]*>.*?<a href="faq.html"[^>]*>[^<]*</a>)',
-                           lambda m: m.group(1) + f'<a href="../conseils.html" hreflang="fr">{txt}</a>', h, count=1, flags=re.S)
-            if n:
-                ecrire(p, h)
+            h2 = re.sub(r'<a href="\.\./conseils\.html" hreflang="fr">[^<]*</a>', f'<a href="conseils.html">{txt}</a>', h)
+            nav = h2.split('id="nav"', 1)[1].split("</nav>", 1)[0]
+            if 'href="conseils.html"' not in nav:
+                h2, n = re.subn(r'(<nav class="nav" id="nav"[^>]*>.*?<a href="faq.html"[^>]*>[^<]*</a>)',
+                                lambda m: m.group(1) + f'<a href="conseils.html">{txt}</a>', h2, count=1, flags=re.S)
+            if h2 != h:
+                ecrire(p, h2)
 
 
 # 2. accès rapide sur l'accueil -----------------------------------------------------------------------
@@ -72,22 +76,22 @@ def acces_rapide():
 # 3a. engagements de l'accueil et texte « Qui sommes-nous » -----------------------------------------------
 ENGAGEMENTS = {
     "": ["7 domaines d'études sous un même toit", "Villas, immeubles, hôtels, restaurants, usines et projets agricoles",
-         "Références à Marrakech, Rabat, Fès, El Jadida et Settat", "Un ingénieur joignable 7 j/7"],
+         "Références dans 20 villes et plus de 5 pays : Maroc, France, Sénégal, Côte d'Ivoire, Tunisie…", "Un ingénieur joignable 7 j/7"],
     "en": ["7 engineering disciplines under one roof", "Villas, apartment buildings, hotels, restaurants, factories and farms",
-           "References in Marrakech, Rabat, Fès, El Jadida and Settat", "An engineer on call 7 days a week"],
+           "References in 20 cities and more than 5 countries: Morocco, France, Senegal, Côte d'Ivoire, Tunisia…", "An engineer on call 7 days a week"],
     "ar": ["7 مجالات دراسات تحت سقف واحد", "فيلات وعمارات وفنادق ومطاعم ومصانع ومشاريع فلاحية",
-           "مراجع في مراكش والرباط وفاس والجديدة وسطات", "مهندس متاح طيلة أيام الأسبوع"],
+           "مراجع في 20 مدينة وأكثر من 5 دول: المغرب، فرنسا، السنغال، كوت ديفوار، تونس…", "مهندس متاح طيلة أيام الأسبوع"],
 }
 APROPOS = {
-    "": ["SIGMA ICC est un bureau d'études techniques installé à Guéliz, Marrakech. Nous réalisons les études de tous les lots techniques d'un bâtiment : structure en béton armé, électricité courants forts et courants faibles, plomberie, climatisation et ventilation, thermique et énergie solaire, sécurité incendie et VRD. Nous suivons ensuite le chantier jusqu'à la réception.",
+    "": ["SIGMA ICC est un bureau d'études techniques installé à Guéliz, Marrakech. Nous réalisons les études de tous les lots techniques d'un bâtiment : structure en béton armé, électricité courants forts et courants faibles, plomberie, climatisation et ventilation, thermique et énergie solaire, sécurité incendie et VRD. Nous suivons ensuite le chantier jusqu'à la réception. Nos références couvrent 20 villes dans plus de 5 pays : le Maroc, la France, le Sénégal, la Côte d'Ivoire, la Tunisie…",
          "Nous intervenons sur des villas et des riads, des immeubles, des hôtels, des restaurants, des commerces, des usines et des projets agricoles. Nos clients sont des particuliers, des promoteurs, des exploitants, des industriels, des agriculteurs et des collectivités. Nous travaillons avec leur architecte, du dossier de permis de construire jusqu'aux plans d'exécution.",
          "Quelques réalisations : des villas R+1 avec sous-sol à Marrakech, Rabat et El Jadida ; les études électricité, CVC et sécurité incendie de 9 magasins à Marrakech, Rabat et Fès ; des études de stabilité et la réhabilitation de riads à Marrakech ; le pompage solaire de bornes fontaines près de Settat.",
          "Notre façon de travailler : des notes de calcul et des plans clairs, des quantités justes pour ne pas surdimensionner, et un ingénieur joignable 7 jours sur 7 pendant le chantier."],
-    "en": ["SIGMA ICC is a technical engineering consultancy based in Guéliz, Marrakech. We design every technical package of a building: reinforced concrete structure, high- and low-voltage electrical systems, plumbing, air conditioning and ventilation, thermal and solar energy, fire safety, roads and utilities. We then supervise the site through to handover.",
+    "en": ["SIGMA ICC is a technical engineering consultancy based in Guéliz, Marrakech. We design every technical package of a building: reinforced concrete structure, high- and low-voltage electrical systems, plumbing, air conditioning and ventilation, thermal and solar energy, fire safety, roads and utilities. We then supervise the site through to handover. Our references cover 20 cities in more than 5 countries: Morocco, France, Senegal, Côte d'Ivoire, Tunisia…",
            "We work on villas and riads, apartment buildings, hotels, restaurants, shops, factories and agricultural projects. Our clients are private owners, developers, operators, manufacturers, farmers and local authorities. We work alongside their architect, from the building permit application to the construction drawings.",
            "Selected projects: two-storey villas with basements in Marrakech, Rabat and El Jadida; electrical, HVAC and fire safety design for 9 shops in Marrakech, Rabat and Fès; structural assessment and rehabilitation of riads in Marrakech; solar pumping for public water points near Settat.",
            "How we work: clear calculations and drawings, accurate quantities with no over-design, and an engineer you can reach 7 days a week during the works."],
-    "ar": ["SIGMA ICC مكتب دراسات تقنية مقره بحي جيليز في مراكش. ننجز دراسات جميع الأشغال التقنية للبناية: الهيكل بالخرسانة المسلحة، والكهرباء بالتيارات القوية والضعيفة، والترصيص الصحي، والتكييف والتهوية، والحرارة والطاقة الشمسية، والسلامة من الحريق، والطرق والشبكات المختلفة. ثم نتابع الورش حتى التسليم.",
+    "ar": ["SIGMA ICC مكتب دراسات تقنية مقره بحي جيليز في مراكش. ننجز دراسات جميع الأشغال التقنية للبناية: الهيكل بالخرسانة المسلحة، والكهرباء بالتيارات القوية والضعيفة، والترصيص الصحي، والتكييف والتهوية، والحرارة والطاقة الشمسية، والسلامة من الحريق، والطرق والشبكات المختلفة. ثم نتابع الورش حتى التسليم. تغطي مراجعنا 20 مدينة في أكثر من 5 دول: المغرب، وفرنسا، والسنغال، وكوت ديفوار، وتونس…",
            "نشتغل على الفيلات والرياضات، والعمارات، والفنادق، والمطاعم، والمحلات التجارية، والمصانع، والمشاريع الفلاحية. زبناؤنا خواص، ومنعشون عقاريون، ومسيرو مؤسسات، وصناعيون، وفلاحون، وجماعات. نعمل إلى جانب المهندس المعماري، من ملف رخصة البناء إلى تصاميم التنفيذ.",
            "من إنجازاتنا: فيلات من طابقين مع طابق تحت أرضي في مراكش والرباط والجديدة؛ ودراسات الكهرباء والتكييف والسلامة من الحريق لتسعة محلات تجارية في مراكش والرباط وفاس؛ ودراسات الاستقرار وإعادة تأهيل رياضات في مراكش؛ والضخ بالطاقة الشمسية لسقايات قرب سطات.",
            "طريقة عملنا: مذكرات حساب وتصاميم واضحة، وكميات مضبوطة دون مبالغة في الأبعاد، ومهندس يمكن التواصل معه طيلة أيام الأسبوع خلال الأشغال."],
@@ -112,8 +116,8 @@ def textes_concrets():
 
 # 3b. encadré « En bref » des pages service ------------------------------------------------------------
 LIB = {"": ("En bref", "Demander un devis", "Nos conseils sur ce thème"),
-       "en": ("At a glance", "Get a quote", "Our advice (in French)"),
-       "ar": ("باختصار", "اطلب عرض سعر", "نصائحنا (بالفرنسية)")}
+       "en": ("At a glance", "Get a quote", "Our advice on this topic"),
+       "ar": ("باختصار", "اطلب عرض سعر", "نصائحنا في هذا الموضوع")}
 LOT = {"STRUCTURE": "structure", "CFA": "electricite", "FD": "cvc", "CSSI": "incendie", "EGT": "thermique", "VRD": "vrd", "BIM": "reglementation"}
 BREF = {
  "STRUCTURE": {
@@ -213,7 +217,7 @@ BREF = {
 def en_bref():
     for lg in LANGS:
         titre, devis, cons = LIB[lg]
-        pre = "../" if lg else ""
+        pre = ""
         for k, items in BREF.items():
             p = os.path.join(lg, f"service-{k}.html"); h = lire(p)
             lis = "".join(f"<li><b>{a}</b> : {b}</li>" if not lg == "ar" else f"<li><b>{a}</b>: {b}</li>" for a, b in items[lg])

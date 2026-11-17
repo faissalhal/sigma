@@ -602,6 +602,9 @@ def build():
     tpl = open(os.path.join(ROOT, TEMPLATE), encoding="utf-8").read()
     # le modèle a peut-être déjà sa colonne latérale : on la retire, apply_layout() la recrée pour chaque article
     tpl = re.sub(r'<aside class="article-cote">.*?</aside>', "", tpl, flags=re.S).replace('<div class="conteneur article-grille">', '<div class="conteneur">')
+    # le modèle porte peut-être les liens vers ses propres traductions : on les retire (articles_i18n les recrée pour chaque article)
+    tpl = re.sub(r'<link rel="alternate" hreflang="[^"]+" href="[^"]*">\n', "", tpl)
+    tpl = re.sub(r'<nav class="langues"[^>]*>.*?</nav>', '<nav class="langues" aria-label="Langue"><a href="index.html" hreflang="fr" lang="fr" aria-current="true">FR</a><a href="en/index.html" hreflang="en" lang="en">EN</a><a href="ar/index.html" hreflang="ar" lang="ar">ع</a></nav>', tpl, count=1, flags=re.S)
     head_end = tpl.index("</head>")
     for a in ARTICLES:
         url = f"{DOMAIN}/{a['slug']}.html"
@@ -846,3 +849,5 @@ if __name__ == "__main__":
     apply_layout()
     page_faq()
     liens_services()
+    import articles_i18n  # versions anglaise et arabe (si les traductions existent)
+    articles_i18n.main()
