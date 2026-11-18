@@ -551,9 +551,13 @@ IMG_CHOISIE = {"conseil-prix-piscine-maroc": "images/projects/villa2.jpg",
                "conseil-combien-prises-par-circuit": "images/services/elec-prises.jpg",
                "conseil-electricite-piscine-securite": "images/services/ele1.jpg",
                "conseil-section-cable-calibre-disjoncteur": "images/services/ele2.jpg",
-               "conseil-prix-installation-electrique-villa-maroc": "images/villa-technique.jpg"}
+               "conseil-prix-installation-electrique-villa-maroc": "images/villa-technique.jpg",
+               "conseil-acheter-riad-a-renover-marrakech": "images/projects/riad1.jpg",
+               "conseil-diametre-tuyaux-plomberie-maison": "images/services/plombier.jpg",
+               "conseil-per-multicouche-cuivre-choisir": "images/services/cvc1.jpg",
+               "conseil-reservoir-eau-citerne-maison": "images/projects/pompage2.jpeg"}
 # lots dont chaque article a déjà son image unique (contrôlé à chaque génération)
-LOTS_IMAGES_UNIQUES = {"structure", "electricite"}
+LOTS_IMAGES_UNIQUES = {"structure", "electricite", "achat", "expertise"}
 
 
 # articles du fichier achat.py qui forment le thème « Expertise avant achat »
@@ -588,14 +592,15 @@ def charger_lots():
     import collections
     # les images réservées aux lots déjà traités ne doivent apparaître nulle part ailleurs : les autres articles
     # (lots pas encore illustrés un par un) prennent provisoirement une photo générique non réservée
-    reservees = {a["img"] for a in ARTICLES if a["cat"] in LOTS_IMAGES_UNIQUES}
+    reservees = {a["img"] for a in ARTICLES if a["cat"] in LOTS_IMAGES_UNIQUES} | set(IMG_CHOISIE.values())
     secours = [x for x in ["images/projects/project1.jpg", "images/projects/project2.jpg", "images/projects/project3.jpg",
                "images/projects/project4.jpg", "images/projects/project5.jpg", "images/projects/project6.jpg",
                "images/projects/villa1.jpg", "images/projects/riad1.jpg", "images/projects/riad2.jpg", "images/projects/riad3.jpg",
                "images/villa-finie.jpg"] if x not in reservees]
     k = 0
     for a in ARTICLES:
-        if a["cat"] not in LOTS_IMAGES_UNIQUES and a["img"] in reservees:
+        if a["cat"] not in LOTS_IMAGES_UNIQUES and a["img"] in reservees and IMG_CHOISIE.get(a["slug"]) != a["img"] \
+                and a["img"] != f"images/conseils/{a['slug']}.jpg":
             a["img"] = secours[k % len(secours)]; k += 1
     usage = collections.Counter(a["img"] for a in ARTICLES)
     for a in ARTICLES:
