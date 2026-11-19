@@ -555,9 +555,13 @@ IMG_CHOISIE = {"conseil-prix-piscine-maroc": "images/projects/villa2.jpg",
                "conseil-acheter-riad-a-renover-marrakech": "images/projects/riad1.jpg",
                "conseil-diametre-tuyaux-plomberie-maison": "images/services/plombier.jpg",
                "conseil-per-multicouche-cuivre-choisir": "images/services/cvc1.jpg",
-               "conseil-reservoir-eau-citerne-maison": "images/projects/pompage2.jpeg"}
+               "conseil-reservoir-eau-citerne-maison": "images/projects/pompage2.jpeg",
+               "conseil-prix-climatisation-villa-maroc": "images/services/clim-exterieur.jpg",
+               "conseil-vmc-simple-double-flux-maroc": "images/services/ventilation.jpg",
+               "conseil-facture-electricite-reduire-villa": "images/services/ener.jpg",
+               "conseil-orientation-maison-climat-chaud": "images/projects/villa1.jpg"}
 # lots dont chaque article a déjà son image unique (contrôlé à chaque génération)
-LOTS_IMAGES_UNIQUES = {"structure", "electricite", "achat", "expertise"}
+LOTS_IMAGES_UNIQUES = {"structure", "electricite", "achat", "expertise", "plomberie", "cvc", "thermique"}
 
 
 # articles du fichier achat.py qui forment le thème « Expertise avant achat »
@@ -595,7 +599,7 @@ def charger_lots():
     reservees = {a["img"] for a in ARTICLES if a["cat"] in LOTS_IMAGES_UNIQUES} | set(IMG_CHOISIE.values())
     secours = [x for x in ["images/projects/project1.jpg", "images/projects/project2.jpg", "images/projects/project3.jpg",
                "images/projects/project4.jpg", "images/projects/project5.jpg", "images/projects/project6.jpg",
-               "images/projects/villa1.jpg", "images/projects/riad1.jpg", "images/projects/riad2.jpg", "images/projects/riad3.jpg",
+               "images/projects/riad2.jpg", "images/projects/riad2.jpg", "images/projects/riad3.jpg",
                "images/villa-finie.jpg"] if x not in reservees]
     k = 0
     for a in ARTICLES:
