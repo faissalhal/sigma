@@ -180,7 +180,7 @@ def construire(lang):
         def ancre(m):
             n[0] += 1
             return f'<h2 id="partie-{n[0]}">{m.group(1)}</h2>'
-        body = t["body"]
+        body = A.avec_schemas(s, t["body"], lang, "../")   # schémas explicatifs, s'ils existent dans cette langue
         if lang == "ar":  # termes français entre parenthèses : isolés pour ne pas être retournés ni coupés dans le texte arabe
             body = re.sub(r"\(([A-Za-zÀ-ÿŒœ0-9][A-Za-zÀ-ÿŒœ0-9 '’\-.,/+%°²³]*)\)", r'<bdi dir="ltr">(\1)</bdi>', body)
         body = re.sub(r"<h2>(.*?)</h2>", ancre, body)

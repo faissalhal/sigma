@@ -369,7 +369,7 @@ T = {
 <p>All bathroom circuits are protected by a 30 mA residual current device. Switches are prohibited in zones 0 and 1.</p>
 <h2>Practical cases</h2>
 <ul>
-<li><b>Walk-in shower</b> without a fixed screen: zone 1 is no longer limited by the shower tray: it extends over a 1.20 m radius around the fixed shower head, according to the rules of the 2002 edition as amended. So place sockets and switches further away than with a conventional shower tray.</li>
+<li><b>Walk-in shower</b> without a fixed screen: zone 1 is no longer limited by the shower tray: it extends over a 1.20 m radius around the fixed shower head, according to the rules of the 2002 edition as amended. Zone 0 then becomes a 10 cm layer above the floor over the same 1.20 m radius, and zone 2 extends 60 cm further (see the diagram below). So place sockets and switches further away than with a conventional shower tray.</li>
 <li><b>Vanity unit with a socket</b>: the socket must be outside the zones, or be limited to a shaver socket in zone 2.</li>
 <li><b>Washing machine in the bathroom</b>: outside the zones only.</li>
 <li><b>Towel radiator</b>: class II in zone 2, or outside the zones.</li>

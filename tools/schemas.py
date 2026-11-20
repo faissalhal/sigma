@@ -103,10 +103,20 @@ TXT = {
   "sdb_note": "Repères NF C 15-100 (édition 2002 amendée)",
   "leg": "LÉGENDE",
   "v0": "Volume 0", "v0a": "Intérieur de la baignoire", "v0b": "TBTS 12 V, IPX7 uniquement",
-  "v1": "Volume 1", "v1a": "Au-dessus, jusqu'à 2,25 m", "v1b": "TBTS 12 V · interrupteurs interdits",
+  "v1": "Volume 1", "v1a": "Au-dessus, jusqu'à 2,25 m", "v1b": "TBTS 12 V, IPX5 uniquement",
   "v2": "Volume 2", "v2a": "Bande de 60 cm autour du volume 1", "v2b": "Classe II, IPX4 minimum",
   "hv": "Hors volume", "hva": "Le reste de la pièce", "hvb": "Prises 16 A, interrupteurs, lave-linge",
   "ddr": "Tous les circuits : différentiel 30 mA",
+  "cache": "Volume caché (sous la baignoire) : aucun appareil",
+  "dch_titre": "Les volumes d'une douche à l'italienne",
+  "dch_sous": "Sans receveur ni paroi fixe : les volumes se mesurent depuis la pomme de douche",
+  "dch_note": "Repères NF C 15-100 · d'après l'infographie Legrand « Les points clés de la norme NF C 15-100 »",
+  "coupe": "Vue en coupe", "plan": "Vue de dessus",
+  "d0": "Volume 0", "d0a": "Couche de 10 cm au-dessus du sol,", "d0b": "sur 1,20 m autour de la douche · IPX7",
+  "d1": "Volume 1", "d1a": "Rayon de 1,20 m, jusqu'à 2,25 m", "d1b": "TBTS 12 V, IPX5",
+  "d2": "Volume 2", "d2a": "60 cm de plus autour du volume 1", "d2b": "Classe II, IPX4 minimum",
+  "dhv": "Hors volume", "dhva": "Au-delà de 1,80 m de la douche", "dhvb": "Prises 16 A, interrupteurs",
+  "drec": "Avec receveur : volume 0 = intérieur du receveur",
   "semelle_titre": "Semelle isolée, poteau et longrine",
   "semelle_sous": "Vue en coupe d'une fondation de villa et de ses aciers",
   "semelle_note": "Exemple : poteau de 300 kN sur un sol à 2 bars. Dimensions et ferraillage à déterminer par l'ingénieur.",
@@ -184,7 +194,9 @@ def salle_de_bain(x, rtl=False):
     leg = panneau(items, rtl, 140, x["leg"])
     # bandeau différentiel
     bx = 24 if rtl else PANNEAU_X
-    leg += (f'<rect x="{bx + 18}" y="{H - 128}" width="{W - PANNEAU_X - 60}" height="40" rx="10" fill="#fff6d6" stroke="{JAUNE}"/>'
+    leg += (f'<rect x="{bx + 18}" y="{H - 176}" width="{W - PANNEAU_X - 60}" height="40" rx="10" fill="#eef1f4" stroke="{TRAIT}"/>'
+            + t(bx + (W - PANNEAU_X - 24) // 2, H - 150, x["cache"], 14.5, 600, ENCRE, "middle")
+            + f'<rect x="{bx + 18}" y="{H - 128}" width="{W - PANNEAU_X - 60}" height="40" rx="10" fill="#fff6d6" stroke="{JAUNE}"/>'
             + t(bx + (W - PANNEAU_X - 24) // 2, H - 102, x["ddr"], 15.5, 700, ENCRE, "middle"))
     return cadre(x["sdb_titre"], x["sdb_sous"], x["sdb_note"], rtl, "".join(b) + leg)
 
@@ -249,7 +261,68 @@ def semelle(x, rtl=False):
     return cadre(x["semelle_titre"], x["semelle_sous"], x["semelle_note"], rtl, "".join(b) + panneau(items, rtl, 128, None, True))
 
 
-SCHEMAS = {"volumes-salle-de-bain": salle_de_bain, "semelle-longrine": semelle}
+def douche(x, rtl=False):
+    ox = 432 if rtl else 40
+    sol, m = 650, 160
+    h225 = sol - int(2.25 * m)
+    mur = ox + 40
+    r1, r2 = mur + int(1.20 * m), mur + int(1.80 * m)        # 1,20 m et 1,80 m depuis la douche
+    fin = ox + 430
+    b = []
+    b.append(t(mur, 150, x["coupe"], 16, 800, GRIS, "start", False, 'letter-spacing="1"'))
+    b.append(f'<g filter="url(#ombre)"><rect x="{mur}" y="170" width="{fin - mur}" height="{sol - 170}" fill="url(#carreaux)"/></g>')
+    b.append(f'<rect x="{mur - 10}" y="{sol}" width="{fin - mur + 20}" height="20" fill="url(#sol)"/>')
+    b.append(f'<rect x="{mur - 12}" y="170" width="12" height="{sol - 150}" fill="#c9ced6"/>')
+    # zones
+    b.append(f'<rect x="{mur}" y="{h225}" width="{r1 - mur}" height="{sol - h225}" fill="{BLEU}" fill-opacity=".20"/>')
+    b.append(f'<rect x="{r1}" y="{h225}" width="{r2 - r1}" height="{sol - h225}" fill="{BLEU}" fill-opacity=".09"/>')
+    b.append(f'<rect x="{mur}" y="{sol - 16}" width="{r1 - mur}" height="16" fill="{BLEU_F}" fill-opacity=".85"/>')
+    b.append(f'<path d="M{mur} {h225} H{r2} V{sol}" fill="none" stroke="{BLEU_F}" stroke-width="2.2" stroke-dasharray="9 6"/>')
+    b.append(f'<line x1="{r1}" y1="{h225}" x2="{r1}" y2="{sol}" stroke="{BLEU_F}" stroke-width="1.6" stroke-dasharray="5 5"/>')
+    # pomme de douche fixe au plafond / mur, jet d'eau, caniveau
+    b.append(f'<path d="M{mur} {h225 + 26} H{mur + 46} V{h225 + 40}" stroke="#7d8792" stroke-width="6" fill="none"/>')
+    b.append(f'<ellipse cx="{mur + 46}" cy="{h225 + 44}" rx="20" ry="6" fill="#6b7580"/>')
+    for i in range(-3, 4):
+        b.append(f'<line x1="{mur + 46 + i * 5}" y1="{h225 + 52}" x2="{mur + 46 + i * 12}" y2="{sol - 24}" stroke="#7fb3e6" stroke-width="1.6" stroke-dasharray="2 7" opacity=".9"/>')
+    b.append(f'<rect x="{mur + 120}" y="{sol - 3}" width="60" height="6" rx="3" fill="#7d8792"/>')
+    b.append(f'<g filter="url(#ombre2)"><rect x="{r2 + 20}" y="470" width="36" height="36" rx="7" fill="#fff" stroke="{ENCRE}" stroke-width="2"/></g>'
+             f'<circle cx="{r2 + 32}" cy="488" r="3.2" fill="{ENCRE}"/><circle cx="{r2 + 44}" cy="488" r="3.2" fill="{ENCRE}"/>')
+    # cotes
+    b.append(cote(mur - 26, h225, mur - 26, sol, "2,25 m", mur - 26, (h225 + sol) // 2 - 30, -90))
+    b.append(cote(mur, h225 - 22, r1, h225 - 22, "1,20 m", (mur + r1) // 2, h225 - 22))
+    b.append(cote(r1, h225 - 22, r2, h225 - 22, "0,60 m", (r1 + r2) // 2, h225 - 52))
+    b.append(f'<line x1="{r1 + 8}" y1="{sol - 16}" x2="{r1 + 8}" y2="{sol}" stroke="{ENCRE}" stroke-width="1.6"/>'
+             f'<path d="M{r1 + 8} {sol - 8} H{r1 + 30}" stroke="{ENCRE}" stroke-width="1.2"/>'
+             f'<rect x="{r1 + 30}" y="{sol - 40}" width="66" height="24" rx="12" fill="#fff" stroke="{ENCRE}" stroke-width="1.2"/>'
+             f'<text x="{r1 + 63}" y="{sol - 23}" font-size="15" font-weight="700" fill="{ENCRE}" text-anchor="middle">0,10 m</text>')
+    b.append(pastille(mur + 70, sol - 40, 0, BLEU_F, "#fff"))
+    b.append(pastille(mur + 120, h225 + 150, 1, BLEU, "#fff"))
+    b.append(pastille((r1 + r2) // 2, h225 + 150, 2, "#7fb0e0", ENCRE))
+    b.append(pastille(r2 + 38, 440, "HV", JAUNE, ENCRE))
+    # vue de dessus
+    px, py, mp = ox + 480, 420, 120
+    b.append(t(px, 150, x["plan"], 16, 800, GRIS, "start", False, 'letter-spacing="1"'))
+    b.append(f'<g filter="url(#ombre)"><rect x="{px}" y="170" width="280" height="500" rx="4" fill="url(#carreaux)"/></g>')
+    b.append(f'<path d="M{px} {py - int(1.8 * mp)} A{int(1.8 * mp)} {int(1.8 * mp)} 0 0 1 {px} {py + int(1.8 * mp)} Z" fill="{BLEU}" fill-opacity=".10" stroke="{BLEU_F}" stroke-width="2" stroke-dasharray="8 6"/>')
+    b.append(f'<path d="M{px} {py - int(1.2 * mp)} A{int(1.2 * mp)} {int(1.2 * mp)} 0 0 1 {px} {py + int(1.2 * mp)} Z" fill="{BLEU}" fill-opacity=".26" stroke="{BLEU_F}" stroke-width="2"/>')
+    b.append(f'<rect x="{px - 10}" y="170" width="10" height="500" fill="#9aa3ad"/>')
+    b.append(f'<circle cx="{px + 6}" cy="{py}" r="9" fill="#6b7580" stroke="#fff" stroke-width="3"/>')
+    b.append(f'<line x1="{px + 6}" y1="{py}" x2="{px + int(1.2 * mp * 0.71)}" y2="{py + int(1.2 * mp * 0.71)}" stroke="{ENCRE}" stroke-width="1.6" marker-end="url(#fl)"/>')
+    b.append(t(px + 40, py + 54, "1,20 m", 15, 800, ENCRE))
+    b.append(f'<line x1="{px + int(1.2 * mp * 0.71)}" y1="{py - int(1.2 * mp * 0.71)}" x2="{px + int(1.8 * mp * 0.71)}" y2="{py - int(1.8 * mp * 0.71)}" stroke="{ENCRE}" stroke-width="1.6" marker-start="url(#fl)" marker-end="url(#fl)"/>')
+    b.append(t(px + 150, py - 130, "0,60 m", 15, 800, ENCRE))
+    items = [(BLEU_F, x["d0"], x["d0a"], x["d0b"], None), (BLEU, x["d1"], x["d1a"], x["d1b"], None),
+             ("#9cc3ea", x["d2"], x["d2a"], x["d2b"], None), (JAUNE, x["dhv"], x["dhva"], x["dhvb"], None)]
+    leg = panneau(items, rtl, 140, x["leg"])
+    bx = 24 if rtl else PANNEAU_X
+    leg += (f'<rect x="{bx + 18}" y="{H - 176}" width="{W - PANNEAU_X - 60}" height="40" rx="10" fill="#eef1f4" stroke="{TRAIT}"/>'
+            + t(bx + (W - PANNEAU_X - 24) // 2, H - 150, x["drec"], 13.5, 600, ENCRE, "middle")
+            + f'<rect x="{bx + 18}" y="{H - 128}" width="{W - PANNEAU_X - 60}" height="40" rx="10" fill="#fff6d6" stroke="{JAUNE}"/>'
+            + t(bx + (W - PANNEAU_X - 24) // 2, H - 102, x["ddr"], 15.5, 700, ENCRE, "middle"))
+    return cadre(x["dch_titre"], x["dch_sous"], x["dch_note"], rtl, "".join(b) + leg)
+
+
+SCHEMAS = {"volumes-salle-de-bain": salle_de_bain, "volumes-douche": douche, "semelle-longrine": semelle}
 
 
 def main():

@@ -458,7 +458,7 @@ ARTICLES = [
 <p>Tous les circuits de la salle de bain sont protégés par un différentiel 30 mA. Les interrupteurs sont interdits dans les volumes 0 et 1.</p>
 <h2>Les cas pratiques</h2>
 <ul>
-<li><b>Douche à l'italienne</b> sans paroi fixe : le volume 1 n'est plus limité par le receveur : il s'étend sur un rayon de 1,20 m autour de la pomme de douche fixe, selon les règles de l'édition 2002 amendée. Prévoyez donc les prises et interrupteurs plus loin qu'avec un receveur classique.</li>
+<li><b>Douche à l'italienne</b> sans paroi fixe : le volume 1 n'est plus limité par le receveur : il s'étend sur un rayon de 1,20 m autour de la pomme de douche fixe, selon les règles de l'édition 2002 amendée. Le volume 0 devient alors une couche de 10 cm au-dessus du sol, sur ce même rayon de 1,20 m, et le volume 2 s'étend 60 cm plus loin (voir le schéma ci-dessous). Prévoyez donc les prises et interrupteurs plus loin qu'avec un receveur classique.</li>
 <li><b>Meuble vasque avec prise</b> : la prise doit être hors volume, ou se limiter à une prise rasoir dans le volume 2.</li>
 <li><b>Lave-linge dans la salle de bain</b> : hors volume uniquement.</li>
 <li><b>Sèche-serviettes</b> : classe II en volume 2, ou hors volume.</li>
@@ -474,7 +474,7 @@ ARTICLES = [
   ("Quelle est la largeur du volume 2 ?", "Le volume 2 forme une bande de 60 cm autour du volume 1, jusqu'à 2,25 m de hauteur, selon les règles de la NF C 15-100 édition 2002 amendée."),
   ("Quel éclairage dans une douche ?", "Dans le volume 0, seul un éclairage TBTS 12 V étanche IPX7 est admis ; au-dessus, dans le volume 1, un éclairage TBTS 12 V avec au moins IPX4, IPX5 en cas de jets."),
  ],
- "sources": [
+ "sources": [("https://assets.legrand.com/editorial/legrandfr/outils/documentations-et-guides/norme-salle-de-bains.pdf", "Legrand, les points clés de la norme NF C 15-100"), 
   ("https://www.se.com/fr/fr/work/support/local/reglementation/norme-nfc15-100/salle-de-bain/", "Schneider Electric, NF C 15-100 dans la salle de bain"),
   ("https://sti.eduscol.education.fr/sites/eduscol.education.fr.sti/files/ressources/pedagogiques/9930/9930-salle-de-bain-nfc-15100-2018-05-22.pdf", "Eduscol, fiche salle de bain NF C 15-100"),
   ("https://izi-by-edf.fr/blog/nfc-15-100-salle-de-bain", "IZI by EDF, la NF C 15-100 pour une salle de bain"),

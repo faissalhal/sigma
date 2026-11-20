@@ -630,7 +630,14 @@ SCHEMAS_ARTICLES = {
          "ar": "رسم مقطعي للأحجام 0 و1 و2 في الحمام والمنطقة خارج الأحجام"},
         {"fr": "Les volumes de la salle de bain : ce qu'on peut installer dans chaque zone.",
          "en": "Bathroom zones: what can be installed in each one.",
-         "ar": "أحجام الحمام: ما يمكن تركيبه في كل منطقة."})],
+         "ar": "أحجام الحمام: ما يمكن تركيبه في كل منطقة."}),
+        ("volumes-douche",
+        {"fr": "Schéma des volumes d'une douche à l'italienne en coupe et vue de dessus : volume 0 de 10 cm, rayon de 1,20 m, volume 2 de 60 cm",
+         "en": "Diagram of walk-in shower zones in section and plan: 10 cm zone 0, 1.20 m radius, 60 cm zone 2",
+         "ar": "رسم أحجام الدش الإيطالي في مقطع ومن الأعلى: الحجم 0 بسمك 10 سم، شعاع 1.20 م، الحجم 2 بعرض 60 سم"},
+        {"fr": "Douche à l'italienne : les volumes se mesurent depuis la pomme de douche.",
+         "en": "Walk-in shower: the zones are measured from the shower head.",
+         "ar": "الدش الإيطالي: تُقاس الأحجام انطلاقا من رأس الدش."}, 1)],
     "conseil-semelle-isolee-filante-dimension": [("semelle-longrine",
         {"fr": "Schéma en coupe d'une semelle isolée avec son ferraillage, le poteau et la longrine",
          "en": "Cross-section diagram of an isolated footing with its reinforcement, column and tie beam",
@@ -643,16 +650,24 @@ SCHEMAS_ARTICLES = {
 
 def avec_schemas(slug, body, lang="fr", prefixe=""):
     """Insère les schémas de l'article après son premier paragraphe."""
-    figs = ""
-    for nom, alt, leg in SCHEMAS_ARTICLES.get(slug, []):
+    for item in reversed(SCHEMAS_ARTICLES.get(slug, [])):
+        nom, alt, leg = item[:3]
+        apres_h2 = item[3] if len(item) > 3 else None     # None : après le 1er paragraphe ; n : après le bloc qui suit le n-ième intertitre (0 = premier)
         if not os.path.exists(os.path.join(ROOT, "images", "schemas", lang, nom + ".svg")):
             continue
-        figs += (f'\n<figure class="schema"><img src="{prefixe}images/schemas/{lang}/{nom}.svg" alt="{html.escape(alt[lang])}" '
-                 f'loading="lazy" width="1200" height="760"><figcaption>{html.escape(leg[lang])}</figcaption></figure>\n')
-    if not figs:
-        return body
-    i = body.find("</p>")
-    return body[:i + 4] + figs + body[i + 4:] if i >= 0 else figs + body
+        fig = (f'\n<figure class="schema"><img src="{prefixe}images/schemas/{lang}/{nom}.svg" alt="{html.escape(alt[lang])}" '
+               f'loading="lazy" width="1200" height="760"><figcaption>{html.escape(leg[lang])}</figcaption></figure>\n')
+        if apres_h2 is None:
+            i = body.find("</p>") + 4
+        else:
+            pos = [m.end() for m in re.finditer(r"</h2>", body)]
+            if len(pos) <= apres_h2:
+                continue
+            fins = [body.find(f, pos[apres_h2]) for f in ("</ul>", "</ol>", "</p>", "</table></div>")]
+            fins = [(f + len(e)) for f, e in zip(fins, ("</ul>", "</ol>", "</p>", "</table></div>")) if f >= 0]
+            i = min(fins)
+        body = body[:i] + fig + body[i:]
+    return body
 
 
 def esc(s):
