@@ -559,9 +559,19 @@ IMG_CHOISIE = {"conseil-prix-piscine-maroc": "images/projects/villa2.jpg",
                "conseil-prix-climatisation-villa-maroc": "images/services/clim-exterieur.jpg",
                "conseil-vmc-simple-double-flux-maroc": "images/services/ventilation.jpg",
                "conseil-facture-electricite-reduire-villa": "images/services/ener.jpg",
-               "conseil-orientation-maison-climat-chaud": "images/projects/villa1.jpg"}
+               "conseil-orientation-maison-climat-chaud": "images/projects/villa1.jpg",
+               "conseil-ssi-categorie-a-b-c": "images/services/incendie-alarme.jpg",
+               "conseil-detection-incendie-hotel-riad": "images/services/cssi2.jpg",
+               "conseil-securite-incendie-erp-maroc-decret": "images/services/cssi1.jpg",
+               "conseil-voirie-chaussee-structure": "images/services/vrd3.jpg",
+               "conseil-reseaux-souterrains-tranchee-profondeur": "images/services/vrd4.jpg",
+               "conseil-vrd-lotissement-etapes": "images/services/vrd5.jpg",
+               "conseil-bim-avantages-projet": "images/services/BIM1.jpg",
+               "conseil-suivi-de-chantier-bet-visites": "images/service_img1.jpg",
+               "conseil-bureau-de-controle-role-obligatoire": "images/service_img2.jpg",
+               "conseil-reception-travaux-reserves": "images/slider_img2.jpg"}
 # lots dont chaque article a déjà son image unique (contrôlé à chaque génération)
-LOTS_IMAGES_UNIQUES = {"structure", "electricite", "achat", "expertise", "plomberie", "cvc", "thermique"}
+LOTS_IMAGES_UNIQUES = {k for k, _ in LOTS}  # tous les thèmes ont maintenant une image propre par article
 
 
 # articles du fichier achat.py qui forment le thème « Expertise avant achat »
