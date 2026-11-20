@@ -622,6 +622,39 @@ def charger_lots():
             raise SystemExit(f"image en double : {a['img']} ({[b['slug'] for b in ARTICLES if b['img'] == a['img']]})")
 
 
+# schémas explicatifs (tools/schemas.py) : slug -> [(fichier, texte alternatif par langue, légende par langue)]
+SCHEMAS_ARTICLES = {
+    "conseil-volumes-salle-de-bain-electricite": [("volumes-salle-de-bain",
+        {"fr": "Schéma en coupe des volumes 0, 1 et 2 d'une salle de bain et de la zone hors volume",
+         "en": "Cross-section diagram of bathroom zones 0, 1 and 2 and the area outside the zones",
+         "ar": "رسم مقطعي للأحجام 0 و1 و2 في الحمام والمنطقة خارج الأحجام"},
+        {"fr": "Les volumes de la salle de bain : ce qu'on peut installer dans chaque zone.",
+         "en": "Bathroom zones: what can be installed in each one.",
+         "ar": "أحجام الحمام: ما يمكن تركيبه في كل منطقة."})],
+    "conseil-semelle-isolee-filante-dimension": [("semelle-longrine",
+        {"fr": "Schéma en coupe d'une semelle isolée avec son ferraillage, le poteau et la longrine",
+         "en": "Cross-section diagram of an isolated footing with its reinforcement, column and tie beam",
+         "ar": "رسم مقطعي لأساس منفرد مع تسليحه والعمود والرابط الأرضي"},
+        {"fr": "Une semelle isolée en coupe : largeur, hauteur utile, nappe d'aciers, béton de propreté et longrine.",
+         "en": "An isolated footing in section: width, effective depth, steel mesh, blinding concrete and tie beam.",
+         "ar": "أساس منفرد في مقطع: العرض، والارتفاع النافع، وشبكة الحديد، وخرسانة النظافة، والرابط الأرضي."})],
+}
+
+
+def avec_schemas(slug, body, lang="fr", prefixe=""):
+    """Insère les schémas de l'article après son premier paragraphe."""
+    figs = ""
+    for nom, alt, leg in SCHEMAS_ARTICLES.get(slug, []):
+        if not os.path.exists(os.path.join(ROOT, "images", "schemas", lang, nom + ".svg")):
+            continue
+        figs += (f'\n<figure class="schema"><img src="{prefixe}images/schemas/{lang}/{nom}.svg" alt="{html.escape(alt[lang])}" '
+                 f'loading="lazy" width="900" height="600"><figcaption>{html.escape(leg[lang])}</figcaption></figure>\n')
+    if not figs:
+        return body
+    i = body.find("</p>")
+    return body[:i + 4] + figs + body[i + 4:] if i >= 0 else figs + body
+
+
 def esc(s):
     return html.escape(s, quote=True)
 
@@ -662,7 +695,7 @@ def build():
         cta = ('<div class="encadre"><h3>Un projet en préparation ?</h3><p>SIGMA ICC réalise les études béton armé, électricité, plomberie et CVC, ainsi que le suivi de chantier, pour les villas, riads, hôtels et commerces.</p>\n'
                '    <div class="actions"><a class="btn" href="contact.html#formulaire">Demander une étude</a><a class="btn secondaire" href="chiffrage.html">Estimer mes travaux</a></div></div>')
         content = (f'<article class="contenu article">\n  <p class="meta">Publié le {DATE_TXT} · {a["min"]} min de lecture · SIGMA ICC, bureau d\'études techniques</p>'
-                   + a["body"] + faq + "\n  " + cta + "\n  " + src + "\n</article>")
+                   + avec_schemas(a["slug"], a["body"], "fr") + faq + "\n  " + cta + "\n  " + src + "\n</article>")
         h = re.sub(r'<article class="contenu article">.*?</article>', lambda m: content, h, count=1, flags=re.S)
         open(os.path.join(ROOT, a["slug"] + ".html"), "w", encoding="utf-8").write(h)
     page_conseils()

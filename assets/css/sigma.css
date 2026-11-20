@@ -715,3 +715,8 @@ mark.a-completer { background: #fff1b8; color: #6b4f00; padding: 0 4px; border-r
 @media (min-width: 961px) and (max-width: 1280px) { [dir="rtl"] .nav a { padding-left: 6px; padding-right: 6px; font-size: .95rem; } [dir="rtl"] .entete .conteneur { gap: 12px; } }
 @media (min-width: 961px) and (max-width: 1099px) { .nav a.secondaire-nav { display: none !important; } .nav a { padding-left: 7px; padding-right: 7px; } .nav a.btn-nav { margin-left: 4px; } }
 @media (min-width: 961px) and (max-width: 1099px) { [dir="rtl"] .nav a { padding-left: 5px; padding-right: 5px; font-size: .9rem; } }
+
+/* Schémas explicatifs des articles */
+.contenu figure.schema { margin: 8px 0 4px; display: grid; gap: 8px; }
+.contenu figure.schema img { width: 100%; height: auto; border: 1px solid var(--trait); border-radius: var(--rayon); background: #fff; cursor: zoom-in; }
+.contenu figure.schema figcaption { font-size: .92rem; color: var(--gris); }
