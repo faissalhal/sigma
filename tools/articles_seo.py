@@ -648,7 +648,7 @@ def avec_schemas(slug, body, lang="fr", prefixe=""):
         if not os.path.exists(os.path.join(ROOT, "images", "schemas", lang, nom + ".svg")):
             continue
         figs += (f'\n<figure class="schema"><img src="{prefixe}images/schemas/{lang}/{nom}.svg" alt="{html.escape(alt[lang])}" '
-                 f'loading="lazy" width="900" height="600"><figcaption>{html.escape(leg[lang])}</figcaption></figure>\n')
+                 f'loading="lazy" width="1200" height="760"><figcaption>{html.escape(leg[lang])}</figcaption></figure>\n')
     if not figs:
         return body
     i = body.find("</p>")
